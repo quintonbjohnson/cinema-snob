@@ -13,19 +13,6 @@
     tools:showIn="@layout/activity_main"
     android:background="@color/black">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/app_name"
-        android:id="@+id/textView"
-        android:layout_marginTop="84dp"
-        android:enabled="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/lightGrey"
-        android:textSize="48dp" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,5 +52,14 @@
         android:layout_alignStart="@+id/login_password_entry"
         android:layout_alignEnd="@+id/login_password_entry"
         android:background="@color/orange" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@mipmap/script_logo"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignStart="@+id/login_username_entry" />
 
 </RelativeLayout>
