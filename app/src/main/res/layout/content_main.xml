@@ -23,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:hint="@string/username_hint"
         android:textAlignment="center"
-        android:textColor="@color/lightGrey"
+        android:textColor="@color/brightBlue"
         android:textColorHint="@color/lightGrey"
         android:textColorHighlight="@color/orange"
         android:typeface="sans" />
@@ -38,7 +38,7 @@
         android:textAlignment="center"
         android:layout_below="@+id/login_username_entry"
         android:layout_alignStart="@+id/login_username_entry"
-        android:textColor="@color/lightGrey"
+        android:textColor="@color/brightBlue"
         android:textColorHint="@color/lightGrey"
         android:textColorHighlight="@color/orange"
         android:typeface="normal" />
@@ -56,10 +56,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@mipmap/script_logo"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="false"
-        android:layout_alignStart="@+id/login_username_entry" />
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:src="@mipmap/login_logo"
+        android:layout_above="@+id/login_username_entry" />
 
 </RelativeLayout>
