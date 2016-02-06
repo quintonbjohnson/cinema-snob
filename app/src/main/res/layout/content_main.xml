@@ -64,6 +64,8 @@
         android:layout_below="@+id/login_password_entry"
         android:layout_alignStart="@+id/login_password_entry"
         android:layout_alignEnd="@+id/login_password_entry"
-        android:background="@color/orange" />
+        android:background="@color/orange"
+        android:onClick="login"
+        />
 
 </RelativeLayout>
