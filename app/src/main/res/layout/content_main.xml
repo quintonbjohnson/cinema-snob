@@ -27,7 +27,8 @@
         android:textColor="@color/brightBlue"
         android:textColorHint="@color/lightGrey"
         android:textColorHighlight="@color/orange"
-        android:typeface="sans" />
+        android:typeface="sans"
+        android:fontFamily="Helvetica" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -42,7 +43,8 @@
         android:textColor="@color/brightBlue"
         android:textColorHint="@color/lightGrey"
         android:textColorHighlight="@color/orange"
-        android:typeface="normal" />
+        android:typeface="normal"
+        android:fontFamily="Helvetica" />
 
     <Button
         android:layout_width="wrap_content"
@@ -53,7 +55,8 @@
         android:layout_alignStart="@+id/login_password_entry"
         android:layout_alignEnd="@+id/login_password_entry"
         android:background="@color/orange"
-        android:enabled="true" />
+        android:enabled="true"
+        android:fontFamily="Helvetica" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -75,6 +78,7 @@
         android:textColor="@color/brightBlue"
         android:textAlignment="center"
         android:textSize="12dp"
-        android:paddingTop="10dp" />
+        android:paddingTop="10dp"
+        android:fontFamily="Helvetica" />
 
 </RelativeLayout>
