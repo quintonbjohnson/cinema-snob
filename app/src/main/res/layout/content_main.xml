@@ -68,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/needs_to_register"
+        android:text="@string/suggest_registration"
         android:id="@+id/suggestRegister"
         android:layout_below="@+id/submit_login"
         android:layout_alignStart="@+id/submit_login"

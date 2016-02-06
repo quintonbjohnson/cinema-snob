@@ -15,7 +15,7 @@
         completions."
     </string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="username_hint">"Username</string>
-    <string name="password_hint">"Password</string>
-    <string name="needs_to_register">Don't have an account? Create one here.</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="suggest_registration">Don\'t have an account? Register here.</string>
 </resources>
