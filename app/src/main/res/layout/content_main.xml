@@ -18,7 +18,30 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Cinema Snob"
         android:id="@+id/textView"
+        android:layout_marginTop="84dp"
+        android:enabled="true"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_marginTop="33dp"
+        android:hint="Password"
+        android:layout_below="@+id/editText2"
+        android:layout_alignStart="@+id/editText2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp" />
+        android:hint="Username" />
+
 </RelativeLayout>
