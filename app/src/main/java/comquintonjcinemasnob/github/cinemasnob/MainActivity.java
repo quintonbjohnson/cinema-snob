@@ -26,19 +26,21 @@ public class MainActivity extends AppCompatActivity {
         Button submitLogin = (Button) findViewById(R.id.submit_login);
         submitLogin.setOnClickListener(new View.OnClickListener() {
                                           public void onClick(View view) {
-                                              Snackbar.make(view, "Message", Snackbar.LENGTH_LONG).setAction("Action", null).show();}
+                                              Snackbar.make(view, "Message", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                                          }
                                        });
 
         UserManagement manager = new UserManager();
         //hard coded for M3
         manager.addUser("User", "pass");
+        onLoginButtonClicked();
     }
 
-    public void onLoginButtonClicked(View v) {
+    public void onLoginButtonClicked() {
         EditText usernameBox = (EditText)findViewById(R.id.login_username_entry);
         EditText passwordBox = (EditText)findViewById(R.id.login_password_entry);
         AuthenticationManagement af = new UserManager();
-        CharSequence failedLogin = "";
+        CharSequence failedLogin;
         if (af.handleLoginRequests(usernameBox.getText().toString(), passwordBox.getText().toString())) {
             Intent goToHomeScreen = new Intent(this, HomeScreen.class);
             startActivity(goToHomeScreen);

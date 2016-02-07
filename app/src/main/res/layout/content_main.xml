@@ -28,6 +28,7 @@
         android:textColorHint="@color/lightGrey"
         android:textColorHighlight="@color/orange"
         android:typeface="sans"
+        android:enabled="true"
         android:fontFamily="Helvetica" />
 
     <EditText
@@ -44,6 +45,7 @@
         android:textColorHint="@color/lightGrey"
         android:textColorHighlight="@color/orange"
         android:typeface="normal"
+        android:enabled="true"
         android:fontFamily="Helvetica" />
 
     <Button
@@ -56,6 +58,7 @@
         android:layout_alignEnd="@+id/login_password_entry"
         android:background="@color/orange"
         android:enabled="true"
+        android:onClick="onLoginButtonClicked"
         android:fontFamily="Helvetica" />
 
     <ImageView
