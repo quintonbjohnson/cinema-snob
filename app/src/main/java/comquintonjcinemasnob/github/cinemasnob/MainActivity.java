@@ -23,20 +23,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button submitLogin = (Button) findViewById(R.id.submit_login);
-        submitLogin.setOnClickListener(new View.OnClickListener() {
-                                          public void onClick(View view) {
-                                              Snackbar.make(view, "Message", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                                          }
-                                       });
-
         UserManagement manager = new UserManager();
         //hard coded for M3
         manager.addUser("User", "pass");
-        onLoginButtonClicked();
+
+        Button submitLogin = (Button) findViewById(R.id.submit_login);
+        submitLogin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onLoginButtonClicked(view);
+            }
+        });
     }
 
-    public void onLoginButtonClicked() {
+    public void onLoginButtonClicked(View v) {
         EditText usernameBox = (EditText)findViewById(R.id.login_username_entry);
         EditText passwordBox = (EditText)findViewById(R.id.login_password_entry);
         AuthenticationManagement af = new UserManager();
