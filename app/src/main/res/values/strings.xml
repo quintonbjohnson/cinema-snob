@@ -20,4 +20,8 @@
     <string name="suggest_registration">Don\'t have an account? Register here.</string>
     <string name="title_activity_home_screen">HomeScreen</string>
     <string name="title_activity_create_profile">CreateProfile</string>
+    <string name="title_activity_user_profile">UserProfile</string>
+    <string name="movies_watched">Movies Watched</string>
+    <string name="favorite_movies">Favorite Movies</string>
+    <string name="username">Username</string>
 </resources>
