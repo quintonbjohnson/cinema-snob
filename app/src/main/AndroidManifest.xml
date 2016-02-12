@@ -20,7 +20,16 @@
         <activity
             android:name=".HomeScreen"
             android:label="@string/title_activity_home_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateProfile"
+            android:label="@string/title_activity_create_profile"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="comquintonjcinemasnob.github.cinemasnob.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
