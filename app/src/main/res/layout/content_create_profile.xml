@@ -21,9 +21,19 @@
         android:background="@color/orange"
         android:enabled="true"
         android:fontFamily="Helvetica"
-        android:layout_alignTop="@+id/register_password"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginTop="79dp" />
+        android:layout_marginBottom="78dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/textView" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/cancel_register"
+        android:background="@color/orange"
+        android:enabled="true"
+        android:fontFamily="Helvetica"
+        android:layout_alignTop="@+id/submit_register"
+        android:layout_toStartOf="@+id/textView" />
 
     <ImageView
         android:layout_width="wrap_content"
