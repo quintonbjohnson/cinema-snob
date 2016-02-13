@@ -13,6 +13,18 @@
     tools:showIn="@layout/activity_create_profile"
     android:background="@color/black">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:id="@+id/submit_register"
+        android:background="@color/orange"
+        android:enabled="true"
+        android:fontFamily="Helvetica"
+        android:layout_alignTop="@+id/register_password"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="79dp" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,11 +42,11 @@
         android:inputType="textPersonName"
         android:text="Username"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/register_username"
         android:backgroundTint="@color/white"
         android:textColor="@color/white"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/editText2"
+        android:layout_above="@+id/register_email"
         android:layout_alignParentLeft="true"
         android:fontFamily="Helvetica" />
 
@@ -43,12 +55,12 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/register_email"
         android:textColor="@color/white"
         android:text="Email"
         android:backgroundTint="@color/white"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/editText3"
+        android:layout_above="@+id/register_password"
         android:layout_alignParentLeft="true"
         android:fontFamily="Helvetica" />
 
@@ -57,7 +69,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText3"
+        android:id="@+id/register_password"
         android:backgroundTint="@color/white"
         android:text="Password"
         android:textColor="@color/white"
