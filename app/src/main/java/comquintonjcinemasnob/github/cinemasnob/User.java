@@ -7,10 +7,12 @@ package comquintonjcinemasnob.github.cinemasnob;
 public class User {
     String userName;
     String password;
+    String email;
 
-    public User(String n, String p) {
+    public User(String n, String p, String e ) {
         userName = n;
         password = p;
+        email = e;
     }
 
     public boolean checkPassword(String pass) {
