@@ -20,6 +20,7 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeScreen.this, MainActivity.class));
+                finish();
             }
         });
 
@@ -32,5 +33,9 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(new Intent(HomeScreen.this, UserProfile.class));
             }
         });
+
+
     }
+
+
 }

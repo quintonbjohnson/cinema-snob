@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             currentUsername = usernameBox.getText().toString();
             Intent goToHomeScreen = new Intent(this, HomeScreen.class);
             startActivity(goToHomeScreen);
+            finish();
         } else {
             failedLogin = "Incorrect Username or Password, try again.";
             Context context = getApplicationContext();
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     public void onNewUserButtonClicked(View v) {
         Intent goToCreateProfile = new Intent(this, CreateProfile.class);
         startActivity(goToCreateProfile);
+        finish();
     }
 
 }
