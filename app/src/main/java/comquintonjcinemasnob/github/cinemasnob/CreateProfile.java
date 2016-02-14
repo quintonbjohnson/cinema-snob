@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class CreateProfile extends AppCompatActivity {
-
+    UserManagement manager = new UserManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +29,8 @@ public class CreateProfile extends AppCompatActivity {
         EditText passwordBox = (EditText)findViewById(R.id.register_email);
         EditText emailBox = (EditText)findViewById(R.id.register_password);
 
-        User newUser = new User(usernameBox.toString(), passwordBox.toString(), emailBox.toString());
+        manager.addUser(usernameBox.toString(), passwordBox.toString(), emailBox.toString());
+        //User newUser = new User(usernameBox.toString(), passwordBox.toString(), emailBox.toString());
 
 
     }

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         UserManagement manager = new UserManager();
         //hard coded for M3
-        manager.addUser("user", "pass");
+        manager.addUser("user", "pass", "email");
 
         Button submitLogin = (Button) findViewById(R.id.submit_login);
         submitLogin.setOnClickListener(new View.OnClickListener() {
