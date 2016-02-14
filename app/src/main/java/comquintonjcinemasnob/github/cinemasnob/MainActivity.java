@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     public void onNewUserButtonClicked(View v) {
         Intent goToCreateProfile = new Intent(this, CreateProfile.class);
         startActivity(goToCreateProfile);
+        finish();
     }
 
 }
