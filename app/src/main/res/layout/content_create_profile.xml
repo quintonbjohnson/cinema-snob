@@ -21,9 +21,9 @@
         android:background="@color/orange"
         android:enabled="true"
         android:fontFamily="Helvetica"
-        android:layout_marginBottom="78dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/textView" />
+        android:layout_below="@+id/register_password"
+        android:layout_toEndOf="@+id/register_password"
+        android:layout_marginTop="55dp" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,34 +35,6 @@
         android:layout_alignTop="@+id/submit_register"
         android:layout_toStartOf="@+id/textView" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@mipmap/login_logo"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="400dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Username"
-        android:ems="10"
-        android:id="@+id/register_username"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/white"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/register_email"
-        android:layout_alignParentLeft="true"
-        android:fontFamily="Helvetica"
-        android:enabled="false"
-        android:phoneNumber="false"
-        android:contextClickable="false" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,10 +44,9 @@
         android:textColor="@color/white"
         android:text="Email"
         android:backgroundTint="@color/white"
-        android:layout_alignParentStart="true"
+        android:fontFamily="Helvetica"
         android:layout_above="@+id/register_password"
-        android:layout_alignParentLeft="true"
-        android:fontFamily="Helvetica" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -86,12 +57,11 @@
         android:backgroundTint="@color/white"
         android:text="Password"
         android:textColor="@color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="165dp"
         android:textColorHint="@color/white"
         android:hint="Passwor"
-        android:textIsSelectable="false" />
+        android:textIsSelectable="false"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -99,10 +69,22 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Registration"
         android:id="@+id/textView"
-        android:layout_marginBottom="32dp"
         android:textColor="@color/white"
         android:fontFamily="Helvetica"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="175dp" />
+        android:layout_marginTop="102dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_above="@+id/register_email"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/register_email"
+        android:backgroundTint="@color/white"
+        android:hint="Username"
+        android:text="Username"
+        android:textColor="@color/white" />
 
 </RelativeLayout>
