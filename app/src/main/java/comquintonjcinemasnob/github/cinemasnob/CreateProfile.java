@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class CreateProfile extends AppCompatActivity {
-    UserManagement manager = new UserManager();
     UserOpenHelper userdb;
     Context context;
     @Override
