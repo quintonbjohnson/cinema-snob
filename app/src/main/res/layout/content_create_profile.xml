@@ -58,7 +58,10 @@
         android:layout_alignParentStart="true"
         android:layout_above="@+id/register_email"
         android:layout_alignParentLeft="true"
-        android:fontFamily="Helvetica" />
+        android:fontFamily="Helvetica"
+        android:enabled="false"
+        android:phoneNumber="false"
+        android:contextClickable="false" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -87,7 +90,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="165dp"
         android:textColorHint="@color/white"
-        android:hint="Password"
+        android:hint="Passwor"
         android:textIsSelectable="false" />
 
     <TextView
