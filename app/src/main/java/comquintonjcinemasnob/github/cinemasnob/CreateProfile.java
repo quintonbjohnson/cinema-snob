@@ -75,6 +75,7 @@ public class CreateProfile extends AppCompatActivity {
             Intent goToMainActivity = new Intent(this, MainActivity.class);
             startActivity(goToMainActivity);
             finish();
+            finish();
         }
     }
 
