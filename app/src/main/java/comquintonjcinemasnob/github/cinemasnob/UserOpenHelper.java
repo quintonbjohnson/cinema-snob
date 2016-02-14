@@ -2,6 +2,7 @@ package comquintonjcinemasnob.github.cinemasnob;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -42,7 +43,34 @@ public class UserOpenHelper extends SQLiteOpenHelper {
                         USER_TABLE_NAME,
                         null,
                         values);
+    }
 
+
+
+    // dbhelper.getUser(dbhelper, name, pass, email);
+    public User getUser(UserOpenHelper dbhelp, String name, String pass, String email) {
+        SQLiteDatabase db = dbhelp.getReadableDatabase();
+        String[] projection = {
+                KEY_USERNAME,
+                KEY_PASSWORD,
+                KEY_EMAIL
+        };
+        String sortOrder = KEY_USERNAME + " DESC";
+
+        String selection = name;
+
+        Cursor c = db.query(
+                USER_TABLE_NAME,
+                projection,
+                selection,
+                null,
+                null,
+                null,
+                sortOrder
+                );
+        c.moveToFirst();
+
+        return new User()
     }
 
     @Override

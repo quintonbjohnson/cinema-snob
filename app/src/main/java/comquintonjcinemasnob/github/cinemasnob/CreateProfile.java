@@ -81,4 +81,8 @@ public class CreateProfile extends AppCompatActivity {
     public Context getContext(){
         return context;
     }
+
+    public UserOpenHelper getDB() {
+        return userdb;
+    }
 }
