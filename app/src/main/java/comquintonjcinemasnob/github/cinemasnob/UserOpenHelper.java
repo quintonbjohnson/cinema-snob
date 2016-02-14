@@ -57,13 +57,14 @@ public class UserOpenHelper extends SQLiteOpenHelper {
         };
         String sortOrder = KEY_USERNAME + " DESC";
 
-        String selection = name;
+        String selection = KEY_USERNAME;
+        String[] selectionArgs = {name};
 
         Cursor c = db.query(
                 USER_TABLE_NAME,
                 projection,
                 selection,
-                null,
+                selectionArgs,
                 null,
                 null,
                 sortOrder
