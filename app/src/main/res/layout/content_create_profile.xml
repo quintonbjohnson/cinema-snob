@@ -58,7 +58,7 @@
         android:text="Password"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:hint="Passwor"
+        android:hint="Password"
         android:textIsSelectable="false"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
@@ -82,9 +82,11 @@
         android:layout_above="@+id/register_email"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/register_email"
-        android:backgroundTint="@color/white"
         android:hint="Username"
+        android:backgroundTint="@color/white"
         android:text="Username"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:enabled="true"
+        />
 
 </RelativeLayout>
