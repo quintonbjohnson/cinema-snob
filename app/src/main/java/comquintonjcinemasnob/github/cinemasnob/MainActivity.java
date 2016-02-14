@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method called when 'Login' button is clicked, handles login request and does appropriate
+     * response
+     * @param v Current view
+     */
     public void onLoginButtonClicked(View v) {
         EditText usernameBox = (EditText)findViewById(R.id.login_username_entry);
         EditText passwordBox = (EditText)findViewById(R.id.login_password_entry);
@@ -59,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
             fail.show();
         }
     }
+
+    /**
+     * Called when 'Register' button is pressed, send user to CreateProfile activity
+     * @param v Current view
+     */
     public void onNewUserButtonClicked(View v) {
         Intent goToCreateProfile = new Intent(this, CreateProfile.class);
         startActivity(goToCreateProfile);
