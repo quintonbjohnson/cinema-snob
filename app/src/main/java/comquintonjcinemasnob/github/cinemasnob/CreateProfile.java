@@ -47,8 +47,8 @@ public class CreateProfile extends AppCompatActivity {
         EditText passwordBox = (EditText)findViewById(R.id.register_password);
         EditText emailBox = (EditText)findViewById(R.id.register_email);
 
-        UserOpenHelper db = new UserOpenHelper(this);
-        db.putUser(db, usernameBox.toString(), passwordBox.toString(), emailBox.toString());
+        //UserOpenHelper db = new UserOpenHelper(this);
+        //db.putUser(db, usernameBox.toString(), passwordBox.toString(), emailBox.toString());
         //Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();
 
         Intent goToHomeScreen = new Intent(this, HomeScreen.class);
