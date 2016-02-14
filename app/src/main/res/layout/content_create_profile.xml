@@ -42,11 +42,12 @@
         android:ems="10"
         android:id="@+id/register_email"
         android:textColor="@color/white"
-        android:text="Email"
         android:backgroundTint="@color/white"
         android:fontFamily="Helvetica"
         android:layout_above="@+id/register_password"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColorHint="@color/white"
+        android:hint="Email" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -55,7 +56,6 @@
         android:ems="10"
         android:id="@+id/register_password"
         android:backgroundTint="@color/white"
-        android:text="Password"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:hint="Password"
@@ -84,9 +84,8 @@
         android:layout_alignEnd="@+id/register_email"
         android:hint="Username"
         android:backgroundTint="@color/white"
-        android:text="Username"
         android:textColor="@color/white"
         android:enabled="true"
-        />
+        android:textColorHint="@color/white" />
 
 </RelativeLayout>
