@@ -5,7 +5,7 @@ package comquintonjcinemasnob.github.cinemasnob;
  * Includes functions for managing users on the system
  */
 public interface UserManagement {
-    void addUser(String name, String pass);
+    void addUser(String name, String pass, String email);
     User findUserById(String id);
 }
 

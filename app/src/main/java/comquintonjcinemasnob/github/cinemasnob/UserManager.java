@@ -16,8 +16,8 @@ public class UserManager  implements AuthenticationManagement, UserManagement{
         return users.get(id);
     }
 
-    public void addUser(String name, String pass) {
-        User user = new User(name, pass);
+    public void addUser(String name, String pass, String email) {
+        User user = new User(name, pass, email);
         users.put(name, user);
     }
 
