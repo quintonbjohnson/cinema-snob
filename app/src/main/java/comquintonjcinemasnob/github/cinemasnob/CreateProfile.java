@@ -43,6 +43,7 @@ public class CreateProfile extends AppCompatActivity {
     public void onCancelRegisterClicked(View view) {
         Intent goToMainActivity = new Intent(this, MainActivity.class);
         startActivity(goToMainActivity);
+        finish();
     }
 
     /**
@@ -69,8 +70,8 @@ public class CreateProfile extends AppCompatActivity {
             userdb.putUser(userdb, usernameBox.toString(), passwordBox.toString(), emailBox.toString());
             Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();
 
-            manager.addUser(usernameBox.getText().toString(), passwordBox.getText().toString(),
-                    emailBox.getText().toString());
+//            manager.addUser(usernameBox.getText().toString(), passwordBox.getText().toString(),
+//                    emailBox.getText().toString());
             Intent goToMainActivity = new Intent(this, MainActivity.class);
             startActivity(goToMainActivity);
             finish();

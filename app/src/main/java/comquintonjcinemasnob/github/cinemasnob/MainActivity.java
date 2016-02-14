@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         if (af.handleLoginRequests(usernameBox.getText().toString(), passwordBox.getText().toString())) {
             Intent goToHomeScreen = new Intent(this, HomeScreen.class);
             startActivity(goToHomeScreen);
+            finish();
         } else {
             failedLogin = "Incorrect Username or Password, try again.";
             Context context = getApplicationContext();
