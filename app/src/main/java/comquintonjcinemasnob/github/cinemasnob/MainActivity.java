@@ -33,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
                 onLoginButtonClicked(view);
             }
         });
+
+
+        Button registerNewUser = (Button) findViewById(R.id.register);
+        registerNewUser.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onNewUserButtonClicked(view);
+            }
+        });
     }
 
     public void onLoginButtonClicked(View v) {
@@ -50,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
             Toast fail = Toast.makeText(context, failedLogin, duration);
             fail.show();
         }
+    }
+    public void onNewUserButtonClicked(View v) {
+        Intent goToCreateProfile = new Intent(this, CreateProfile.class);
+        startActivity(goToCreateProfile);
     }
 
 }
