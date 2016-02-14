@@ -15,13 +15,12 @@ import android.widget.Toast;
 public class CreateProfile extends AppCompatActivity {
     UserManagement manager = new UserManager();
     UserOpenHelper userdb;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
-        userdb = new UserOpenHelper(this);
-
-
+        context = this;
         Button submitRegister = (Button) findViewById(R.id.submit_register);
         submitRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -56,9 +55,7 @@ public class CreateProfile extends AppCompatActivity {
         EditText passwordBox = (EditText)findViewById(R.id.register_password);
         EditText emailBox = (EditText)findViewById(R.id.register_email);
 
-        //UserOpenHelper db = new UserOpenHelper(this);
-        //db.putUser(db, usernameBox.toString(), passwordBox.toString(), emailBox.toString());
-        //Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();
+
         CharSequence failedLogin;
         if (usernameBox.getText().toString().trim().equals("") || passwordBox.getText().toString().trim().equals("") ||
                 emailBox.getText().toString().trim().equals("")) {
@@ -68,14 +65,19 @@ public class CreateProfile extends AppCompatActivity {
             Toast fail = Toast.makeText(context, failedLogin, duration);
             fail.show();
         } else {
+            userdb = new UserOpenHelper(context);
+            userdb.putUser(userdb, usernameBox.toString(), passwordBox.toString(), emailBox.toString());
+            Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();
+
             manager.addUser(usernameBox.getText().toString(), passwordBox.getText().toString(),
                     emailBox.getText().toString());
             Intent goToMainActivity = new Intent(this, MainActivity.class);
             startActivity(goToMainActivity);
             finish();
         }
-
-        //User newUser = new User(usernameBox.toString(), passwordBox.toString(), emailBox.toString());
     }
 
+    public Context getContext(){
+        return context;
+    }
 }
