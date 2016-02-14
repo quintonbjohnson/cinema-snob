@@ -22,5 +22,15 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(new Intent(HomeScreen.this, MainActivity.class));
             }
         });
+
+        // Profile button sends to profile
+        Button profile = (Button)findViewById(R.id.profile_button);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeScreen.this, UserProfile.class));
+            }
+        });
     }
 }
