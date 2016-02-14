@@ -15,7 +15,7 @@ public class UserOpenHelper extends SQLiteOpenHelper {
     private static final String KEY_PASSWORD = "Password";
     private static final String KEY_EMAIL = "Email";
     // Not 100% sure this is correct syntax
-    private static final String DICTIONARY_TABLE_CREATE =
+    private static final String USER_TABLE_CREATE =
             "CREATE TABLE " + USER_TABLE_NAME + " (" +
                     KEY_USERNAME + " TEXT, " +
                     KEY_PASSWORD + " TEXT, " +
@@ -27,7 +27,7 @@ public class UserOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DICTIONARY_TABLE_CREATE);
+        db.execSQL(USER_TABLE_CREATE);
     }
 
     @Override
