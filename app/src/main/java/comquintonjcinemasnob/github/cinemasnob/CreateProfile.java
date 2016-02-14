@@ -26,8 +26,8 @@ public class CreateProfile extends AppCompatActivity {
 
     public void onRegisterButtonClicked(View view) {
         EditText usernameBox = (EditText)findViewById(R.id.register_username);
-        EditText passwordBox = (EditText)findViewById(R.id.register_email);
-        EditText emailBox = (EditText)findViewById(R.id.register_password);
+        EditText passwordBox = (EditText)findViewById(R.id.register_password);
+        EditText emailBox = (EditText)findViewById(R.id.register_email);
 
         manager.addUser(usernameBox.toString(), passwordBox.toString(), emailBox.toString());
         //User newUser = new User(usernameBox.toString(), passwordBox.toString(), emailBox.toString());
