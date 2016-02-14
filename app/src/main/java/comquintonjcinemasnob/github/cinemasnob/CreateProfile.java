@@ -59,11 +59,20 @@ public class CreateProfile extends AppCompatActivity {
         //UserOpenHelper db = new UserOpenHelper(this);
         //db.putUser(db, usernameBox.toString(), passwordBox.toString(), emailBox.toString());
         //Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();
-
-        manager.addUser(usernameBox.toString(), passwordBox.toString(), emailBox.toString());
-        Intent goToMainActivity = new Intent(this, MainActivity.class);
-        startActivity(goToMainActivity);
-
+        CharSequence failedLogin;
+        if (usernameBox.getText().toString().trim().equals("") || passwordBox.getText().toString().trim().equals("") ||
+                emailBox.getText().toString().trim().equals("")) {
+            failedLogin = "Please enter a valid username, password, and email.";
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast fail = Toast.makeText(context, failedLogin, duration);
+            fail.show();
+        } else {
+            manager.addUser(usernameBox.getText().toString(), passwordBox.getText().toString(),
+                    emailBox.getText().toString());
+            Intent goToMainActivity = new Intent(this, MainActivity.class);
+            startActivity(goToMainActivity);
+        }
 
         //User newUser = new User(usernameBox.toString(), passwordBox.toString(), emailBox.toString());
     }
