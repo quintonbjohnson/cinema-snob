@@ -50,7 +50,6 @@ public class CreateProfile extends AppCompatActivity {
      * Takes place when 'Register' button is clicked, adds User to database if username and email are not taken
      * @param view
      */
-
     public void onRegisterButtonClicked(View view) {
         EditText usernameBox = (EditText)findViewById(R.id.register_username);
         EditText passwordBox = (EditText)findViewById(R.id.register_password);
@@ -69,20 +68,10 @@ public class CreateProfile extends AppCompatActivity {
             userdb = new UserOpenHelper(context);
             userdb.putUser(userdb, usernameBox.getText().toString(), passwordBox.getText().toString(), emailBox.getText().toString());
             Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();
-//            manager.addUser(usernameBox.getText().toString(), passwordBox.getText().toString(),
-//                    emailBox.getText().toString());
             Intent goToMainActivity = new Intent(this, MainActivity.class);
             startActivity(goToMainActivity);
             finish();
             finish();
         }
-    }
-
-    public Context getContext(){
-        return context;
-    }
-
-    public UserOpenHelper getDB() {
-        return userdb;
     }
 }

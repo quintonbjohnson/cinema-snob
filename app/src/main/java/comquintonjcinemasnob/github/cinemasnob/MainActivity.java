@@ -19,13 +19,13 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     public String currentUsername;
+    UserOpenHelper userdb;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        UserManagement manager = new UserManager();
-        UserOpenHelper dbhelp = CreateProfile.getDB();
+        context = this;
 
         Button submitLogin = (Button) findViewById(R.id.submit_login);
         submitLogin.setOnClickListener(new View.OnClickListener() {
@@ -51,13 +51,16 @@ public class MainActivity extends AppCompatActivity {
     public void onLoginButtonClicked(View v) {
         EditText usernameBox = (EditText)findViewById(R.id.login_username_entry);
         EditText passwordBox = (EditText)findViewById(R.id.login_password_entry);
-        AuthenticationManagement af = new UserManager();
+
+        userdb = new UserOpenHelper(context);
+        User test = userdb.getUser(userdb, usernameBox.getText().toString());
         CharSequence failedLogin;
-        if (af.handleLoginRequests(usernameBox.getText().toString(), passwordBox.getText().toString())) {
-            currentUsername = usernameBox.getText().toString();
-            Intent goToHomeScreen = new Intent(this, HomeScreen.class);
-            startActivity(goToHomeScreen);
-            finish();
+        if(!(userdb.getUser(userdb, usernameBox.getText().toString()) == null)) {
+            if (passwordBox.getText().toString().equals(test.getPassword())) {
+                Intent goToHomeScreen = new Intent(this, HomeScreen.class);
+                startActivity(goToHomeScreen);
+                finish();
+            }
         } else {
             failedLogin = "Incorrect Username or Password, try again.";
             Context context = getApplicationContext();

@@ -11,7 +11,6 @@ public class UserManager  implements AuthenticationManagement, UserManagement{
 
     //Map of users in the system
     private static Map<String, User> users = new HashMap<>();
-
     /**
      * Finds the user by username
      * @param id Username

@@ -22,11 +22,10 @@ public class User {
     }
 
     /**
-     * Checks if password provided matches actual password
-     * @param pass Password provided by user
-     * @return True or false if password matches or does not match
+     * Getter method for password
+     * @return User's password
      */
-    public boolean checkPassword(String pass) {
-        return password.equals(pass);
+    public String getPassword() {
+        return password;
     }
 }

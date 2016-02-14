@@ -48,7 +48,7 @@ public class UserOpenHelper extends SQLiteOpenHelper {
 
 
     // dbhelper.getUser(dbhelper, name, pass, email);
-    public User getUser(UserOpenHelper dbhelp, String name, String pass, String email) {
+    public User getUser(UserOpenHelper dbhelp, String name) {
         SQLiteDatabase db = dbhelp.getReadableDatabase();
         String[] projection = {
                 KEY_USERNAME,
@@ -68,9 +68,13 @@ public class UserOpenHelper extends SQLiteOpenHelper {
                 null,
                 sortOrder
                 );
-        c.moveToFirst();
-
-        return new User()
+        if (!(c.moveToFirst())) {
+            return null;
+        }
+        String username = c.getString(c.getColumnIndexOrThrow(KEY_USERNAME));
+        String password = c.getString(c.getColumnIndexOrThrow(KEY_PASSWORD));
+        String useremail = c.getString(c.getColumnIndexOrThrow(KEY_EMAIL));
+        return new User(username, password, useremail);
     }
 
     @Override
