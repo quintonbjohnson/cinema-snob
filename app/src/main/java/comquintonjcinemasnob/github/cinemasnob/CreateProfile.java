@@ -66,7 +66,7 @@ public class CreateProfile extends AppCompatActivity {
             fail.show();
         } else {
             userdb = new UserOpenHelper(context);
-            userdb.putUser(userdb, usernameBox.toString(), passwordBox.toString(), emailBox.toString());
+            userdb.putUser(userdb, usernameBox.getText().toString(), passwordBox.getText().toString(), emailBox.getText().toString());
             Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();
 
             manager.addUser(usernameBox.getText().toString(), passwordBox.getText().toString(),
