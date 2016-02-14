@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+    public String currentUsername;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         AuthenticationManagement af = new UserManager();
         CharSequence failedLogin;
         if (af.handleLoginRequests(usernameBox.getText().toString(), passwordBox.getText().toString())) {
+            currentUsername = usernameBox.getText().toString();
             Intent goToHomeScreen = new Intent(this, HomeScreen.class);
             startActivity(goToHomeScreen);
             finish();
