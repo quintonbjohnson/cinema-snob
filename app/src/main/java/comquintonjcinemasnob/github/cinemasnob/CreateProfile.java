@@ -72,6 +72,7 @@ public class CreateProfile extends AppCompatActivity {
                     emailBox.getText().toString());
             Intent goToMainActivity = new Intent(this, MainActivity.class);
             startActivity(goToMainActivity);
+            finish();
         }
 
         //User newUser = new User(usernameBox.toString(), passwordBox.toString(), emailBox.toString());
