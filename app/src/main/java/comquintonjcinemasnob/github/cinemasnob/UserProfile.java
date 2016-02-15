@@ -27,9 +27,5 @@ public class UserProfile extends AppCompatActivity {
 
         TextView moviesWatched = (TextView)findViewById(R.id.MoviesWatchedText);
         TextView moviesFavorited = (TextView)findViewById(R.id.FavoriteMoviesText);
-
     }
-
-
-
 }
