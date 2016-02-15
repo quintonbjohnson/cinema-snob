@@ -14,8 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Map;
+// TODO     Fix query so you can actually login
+// TODO     Fix registration to check if user already exists
+// TODO     Edit profile for current user
 
 public class MainActivity extends AppCompatActivity {
     public String currentUsername;
