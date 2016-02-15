@@ -13,9 +13,14 @@ import android.widget.Toast;
  * Registration screen
  */
 public class CreateProfile extends AppCompatActivity {
+
     UserOpenHelper userdb;
     Context context;
 
+    /*
+     * On Creation of the activity
+     * @param savedInstanceState the saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -12,10 +12,6 @@ import android.widget.TextView;
  */
 public class UserProfile extends AppCompatActivity {
 
-    /*public UserProfile(String name) {
-        username = name;
-    }*/
-
     /*
      * On creation of the UserProfile
      * @param savedInstanceState the saved instance
@@ -25,21 +21,20 @@ public class UserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        Button editProfile = (Button)findViewById(R.id.EditProfile);
+        Button editProfileButton = (Button) findViewById(R.id.EditProfile);
 
-        editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 Bundle retrieveCurrentUser = getIntent().getExtras();
                 Intent goToEditProfile = new Intent(UserProfile.this, EditProfile.class);
                 goToEditProfile.putExtras(retrieveCurrentUser);
                 startActivity(goToEditProfile);
+                finish();
             }
         });
 
-
-        TextView major = (TextView)findViewById(R.id.MajorText);
-        TextView interests = (TextView)findViewById(R.id.InterestsText);
+        TextView major = (TextView)findViewById(R.id.majorText);
+        TextView interests = (TextView)findViewById(R.id.interestsText);
         TextView nameView = (TextView)findViewById(R.id.usernameText);
 
         if (getIntent().getExtras().containsKey("USER_NAME")) {
@@ -47,14 +42,12 @@ public class UserProfile extends AppCompatActivity {
             nameView.setText(retrieveCurrentUser.getString("USER_NAME"));
         } else if (getIntent().getExtras().containsKey("PROFILE_CHANGES")) {
             Bundle retrieveProfileChanges = getIntent().getExtras();
-            major.setText(retrieveProfileChanges.getStringArray("PROFILE_CHANGES")[0]);
-            interests.setText(retrieveProfileChanges.getStringArray("PROFILE_CHANGES")[1]);
+            String[] arrayChanges = retrieveProfileChanges.getStringArray("PROFILE_CHANGES");
+            if (arrayChanges != null) {
+                major.setText(arrayChanges[0]);
+                interests.setText(arrayChanges[1]);
+                nameView.setText(arrayChanges[2]);
+            }
         }
-
-
-
-
-
-
     }
 }

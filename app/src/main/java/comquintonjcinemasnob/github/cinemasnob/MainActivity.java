@@ -13,24 +13,30 @@ import android.widget.Toast;
  * Class for the main activity
  */
 public class MainActivity extends AppCompatActivity {
+
     UserOpenHelper userdb;
     Context context;
     User currentUser;
 
+    /*
+     * On Creation of the activity
+     * @param savedInstanceState the saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
 
-
-
+        // Login
         Button submitLogin = (Button) findViewById(R.id.submit_login);
         submitLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onLoginButtonClicked(view);
             }
         });
+
+        // Register
         Button registerNewUser = (Button) findViewById(R.id.register);
         registerNewUser.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -92,5 +98,4 @@ public class MainActivity extends AppCompatActivity {
     public User getCurrentUser() {
         return currentUser;
     }
-
 }

@@ -12,13 +12,13 @@ import android.security.KeyStoreParameter;
  * Class for the UserOpenHelper SQLite database
  */
 public class UserOpenHelper extends SQLiteOpenHelper {
+
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "Users";
     private static final String USER_TABLE_NAME = "Registered";
     private static final String KEY_USERNAME = "Username";
     private static final String KEY_PASSWORD = "Password";
     private static final String KEY_EMAIL = "Email";
-    // Not 100% sure this is correct syntax
     private static final String USER_TABLE_CREATE =
             "CREATE TABLE " + USER_TABLE_NAME + " (" +
                     KEY_USERNAME + " TEXT, " +
