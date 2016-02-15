@@ -24,4 +24,5 @@
     <string name="movies_watched">Movies Watched</string>
     <string name="favorite_movies">Favorite Movies</string>
     <string name="username">Username</string>
+    <string name="title_activity_edit_profile">EditProfile</string>
 </resources>

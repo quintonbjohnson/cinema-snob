@@ -50,15 +50,24 @@ public class MainActivity extends AppCompatActivity {
 
         userdb = new UserOpenHelper(context);
         currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
-        if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
+        // Check if User exists
+        if (currentUser != null) {
+            if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
                 Intent goToHomeScreen = new Intent(this, HomeScreen.class);
                 Bundle currentUserBundle = new Bundle();
                 currentUserBundle.putString("USER_NAME", currentUser.getUserName());
                 goToHomeScreen.putExtras(currentUserBundle);
                 startActivity(goToHomeScreen);
                 finish();
+            } else {
+                CharSequence failedLogin = "Incorrect Username or Password, try again.";
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+                Toast fail = Toast.makeText(context, failedLogin, duration);
+                fail.show();
+            }
         } else {
-            CharSequence failedLogin = "Incorrect Username or Password, try again.";
+            CharSequence failedLogin = "User doesn't exist.";
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast fail = Toast.makeText(context, failedLogin, duration);
