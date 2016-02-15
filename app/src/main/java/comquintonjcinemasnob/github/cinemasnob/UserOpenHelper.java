@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.security.KeyStoreParameter;
 
 /**
  * Created by Brandon on 2/13/2016.
@@ -75,11 +76,9 @@ public class UserOpenHelper extends SQLiteOpenHelper {
         };
         String sortOrder = KEY_USERNAME + " DESC";
 
-        String selection = KEY_USERNAME + "=?";
-        String[] selectionArgs = new String[1];
-        selectionArgs[0] = name;
+        Cursor c = db.query(USER_TABLE_NAME, new String[] {KEY_USERNAME, KEY_PASSWORD, KEY_EMAIL}, KEY_USERNAME + "=?",
+                new String[] { name }, null, null, null, null);
 
-       Cursor c = db.query(USER_TABLE_NAME, projection, selection, selectionArgs, null, null, null);
         if (!(c.moveToFirst())) {
             return null;
         }

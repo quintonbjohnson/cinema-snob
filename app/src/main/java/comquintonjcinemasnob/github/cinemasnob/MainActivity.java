@@ -49,16 +49,13 @@ public class MainActivity extends AppCompatActivity {
         EditText passwordBox = (EditText)findViewById(R.id.login_password_entry);
 
         userdb = new UserOpenHelper(context);
-        User test = userdb.getUser(userdb, usernameBox.getText().toString());
-        CharSequence failedLogin;
-        if(!(userdb.getUser(userdb, usernameBox.getText().toString()) == null)) {
-            if (passwordBox.getText().toString().equals(test.getPassword())) {
+        User currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
+        if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
                 Intent goToHomeScreen = new Intent(this, HomeScreen.class);
                 startActivity(goToHomeScreen);
                 finish();
-            }
         } else {
-            failedLogin = "Incorrect Username or Password, try again.";
+            CharSequence failedLogin = "Incorrect Username or Password, try again.";
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast fail = Toast.makeText(context, failedLogin, duration);

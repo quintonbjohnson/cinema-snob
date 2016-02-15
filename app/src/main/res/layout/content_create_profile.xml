@@ -38,6 +38,20 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/register_username"
+        android:layout_above="@+id/register_email"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/register_email"
+        android:hint="Username"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
+        android:enabled="true"
+        android:textColorHint="@color/white"
+        android:fontFamily="Helvetica" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/register_email"
@@ -75,19 +89,5 @@
         android:layout_marginTop="102dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/register_username"
-        android:layout_above="@+id/register_email"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/register_email"
-        android:hint="Username"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/white"
-        android:enabled="true"
-        android:textColorHint="@color/white"
-        android:fontFamily="Helvetica" />
 
 </RelativeLayout>
