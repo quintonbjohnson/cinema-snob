@@ -37,7 +37,10 @@ public class HomeScreen extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeScreen.this, UserProfile.class));
+                Bundle retrieveCurrentUser = getIntent().getExtras();
+                Intent goToProfile = new Intent(HomeScreen.this, UserProfile.class);
+                goToProfile.putExtras(retrieveCurrentUser);
+                startActivity(goToProfile);
             }
         });
 

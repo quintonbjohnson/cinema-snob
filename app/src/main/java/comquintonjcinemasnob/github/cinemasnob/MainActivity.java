@@ -52,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
         currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
         if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
                 Intent goToHomeScreen = new Intent(this, HomeScreen.class);
-                Bundle newBundle = new Bundle();
-                newBundle.putString(currentUser.getUserName(), );
+                Bundle currentUserBundle = new Bundle();
+                currentUserBundle.putString("USER_NAME", currentUser.getUserName());
+                goToHomeScreen.putExtras(currentUserBundle);
                 startActivity(goToHomeScreen);
                 finish();
         } else {

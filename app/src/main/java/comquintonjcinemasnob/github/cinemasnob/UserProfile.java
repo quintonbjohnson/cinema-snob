@@ -25,9 +25,10 @@ public class UserProfile extends AppCompatActivity {
 
 
         TextView nameView = (TextView)findViewById(R.id.usernameText);
-//        nameView.setText(username);
+        Bundle retrieveCurrentUser = getIntent().getExtras();
+        nameView.setText(retrieveCurrentUser.getString("USER_NAME"));
 
-        TextView moviesWatched = (TextView)findViewById(R.id.MoviesWatchedText);
-        TextView moviesFavorited = (TextView)findViewById(R.id.FavoriteMoviesText);
+        TextView major = (TextView)findViewById(R.id.MajorText);
+        TextView interests = (TextView)findViewById(R.id.InterestsText);
     }
 }
