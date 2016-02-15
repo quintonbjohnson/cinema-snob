@@ -46,7 +46,8 @@ public class CreateProfile extends AppCompatActivity {
     }
 
     /**
-     * Takes place when 'Register' button is clicked, adds User to database if username and email are not taken
+     * Takes place when 'Register' button is clicked, adds User to database
+     * if username and email are not taken
      * @param view
      */
     public void onRegisterButtonClicked(View view) {
@@ -54,18 +55,32 @@ public class CreateProfile extends AppCompatActivity {
         EditText passwordBox = (EditText)findViewById(R.id.register_password);
         EditText emailBox = (EditText)findViewById(R.id.register_email);
 
+        userdb = new UserOpenHelper(context);
+        User checkUser = userdb.getUser(userdb, usernameBox.getText().toString());
 
         CharSequence failedLogin;
-        if (usernameBox.getText().toString().trim().equals("") || passwordBox.getText().toString().trim().equals("") ||
-                emailBox.getText().toString().trim().equals("")) {
+        // Invalid entries
+        if (usernameBox.getText().toString().trim().equals("") ||
+                passwordBox.getText().toString().trim().equals("") ||
+                emailBox.getText().toString().trim().equals("") ||
+                !(emailBox.getText().toString().contains("@"))) {
             failedLogin = "Please enter a valid username, password, and email.";
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast fail = Toast.makeText(context, failedLogin, duration);
+            fail.show();
+        } else if (!(checkUser == null)) {
+            failedLogin = "That username already exists.";
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast fail = Toast.makeText(context, failedLogin, duration);
             fail.show();
         } else {
             userdb = new UserOpenHelper(context);
-            userdb.putUser(userdb, usernameBox.getText().toString(), passwordBox.getText().toString(), emailBox.getText().toString());
+            userdb.putUser(userdb,
+                    usernameBox.getText().toString(),
+                    passwordBox.getText().toString(),
+                    emailBox.getText().toString());
             Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();
             Intent goToMainActivity = new Intent(this, MainActivity.class);
             startActivity(goToMainActivity);

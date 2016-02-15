@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-// TODO     Fix query so you can actually login
-// TODO     Fix registration to check if user already exists
 // TODO     Edit profile for current user
 /*
  * Class for the main activity
