@@ -6,8 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+/*
+ * Home Screen
+ */
 public class HomeScreen extends AppCompatActivity {
 
+    /**
+     * On creation of HomeScreen activity
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

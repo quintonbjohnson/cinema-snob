@@ -1,19 +1,22 @@
 package comquintonjcinemasnob.github.cinemasnob;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
+/*
+ * User profile
+ */
 public class UserProfile extends AppCompatActivity {
 
     /*public UserProfile(String name) {
         username = name;
     }*/
+
+    /*
+     * On creation of the UserProfile
+     * @param savedInstanceState the saved instance
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

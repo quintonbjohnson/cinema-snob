@@ -5,10 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 /**
  * Created by Brandon on 2/13/2016.
+ * Class for the UserOpenHelper SQLite database
  */
 public class UserOpenHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
@@ -24,15 +24,30 @@ public class UserOpenHelper extends SQLiteOpenHelper {
                     KEY_PASSWORD + " TEXT, " +
                     KEY_EMAIL + " TEXT)";
 
+    /*
+     * The constructor
+     * @param context the context of the activity
+     */
     public UserOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
+    /*
+     * On creation of the SQLite Database
+     * @param db the SQLite Database
+     */
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(USER_TABLE_CREATE);
     }
 
+    /*
+     * Put user in database
+     * @param dbhelp the database helper
+     * @param name the username
+     * @param pass the password
+     * @param email the email
+     */
     public void putUser(UserOpenHelper dbhelp, String name, String pass, String email) {
         SQLiteDatabase db = dbhelp.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -45,9 +60,12 @@ public class UserOpenHelper extends SQLiteOpenHelper {
                         values);
     }
 
-
-
-    // dbhelper.getUser(dbhelper, name, pass, email);
+    /*
+     * Gets user from database used in login
+     * @param dbhelp database helper
+     * @param name username to get user
+     * @return the user
+     */
     public User getUser(UserOpenHelper dbhelp, String name) {
         SQLiteDatabase db = dbhelp.getReadableDatabase();
         String[] projection = {
@@ -71,6 +89,12 @@ public class UserOpenHelper extends SQLiteOpenHelper {
         return new User(username, password, useremail);
     }
 
+    /*
+     * On upgrade, not used
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
