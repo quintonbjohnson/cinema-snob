@@ -23,7 +23,7 @@ public class UserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
 
         TextView nameView = (TextView)findViewById(R.id.usernameText);
-        //nameView.setText(username);
+//        nameView.setText(username);
 
         TextView moviesWatched = (TextView)findViewById(R.id.MoviesWatchedText);
         TextView moviesFavorited = (TextView)findViewById(R.id.FavoriteMoviesText);

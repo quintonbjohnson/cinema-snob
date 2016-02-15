@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class CreateProfile extends AppCompatActivity {
     UserOpenHelper userdb;
     Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

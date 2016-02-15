@@ -14,9 +14,10 @@ import android.widget.Toast;
  * Class for the main activity
  */
 public class MainActivity extends AppCompatActivity {
-    public String currentUsername;
     UserOpenHelper userdb;
     Context context;
+    User currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         EditText passwordBox = (EditText)findViewById(R.id.login_password_entry);
 
         userdb = new UserOpenHelper(context);
-        User currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
+        currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
         if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
                 Intent goToHomeScreen = new Intent(this, HomeScreen.class);
                 startActivity(goToHomeScreen);
@@ -69,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
         Intent goToCreateProfile = new Intent(this, CreateProfile.class);
         startActivity(goToCreateProfile);
         finish();
+    }
+
+    /**
+     * Gets the current logged in User
+     * @return User
+     */
+    public User getCurrentUser() {
+        return currentUser;
     }
 
 }
