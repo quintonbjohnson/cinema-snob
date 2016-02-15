@@ -28,4 +28,13 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    /**
+     * Getter method for username
+     * @return User's username
+     */
+    public String getUserName() {
+        return userName;
+    }
+
 }

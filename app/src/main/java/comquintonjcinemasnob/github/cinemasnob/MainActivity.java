@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-// TODO     Edit profile for current user
 /*
  * Class for the main activity
  */
@@ -23,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
+
+
 
         Button submitLogin = (Button) findViewById(R.id.submit_login);
         submitLogin.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
         if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
                 Intent goToHomeScreen = new Intent(this, HomeScreen.class);
+                Bundle newBundle = new Bundle();
+                newBundle.putString(currentUser.getUserName(), );
                 startActivity(goToHomeScreen);
                 finish();
         } else {

@@ -22,6 +22,8 @@ public class UserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+
+
         TextView nameView = (TextView)findViewById(R.id.usernameText);
 //        nameView.setText(username);
 
