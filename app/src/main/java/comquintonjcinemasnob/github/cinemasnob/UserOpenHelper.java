@@ -34,10 +34,6 @@ public class UserOpenHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    /*
-     * On creation of the SQLite Database
-     * @param db the SQLite Database
-     */
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(USER_TABLE_CREATE);
     }

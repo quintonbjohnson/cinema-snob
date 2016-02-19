@@ -12,10 +12,6 @@ import android.widget.TextView;
  */
 public class UserProfile extends AppCompatActivity {
 
-    /*
-     * On creation of the UserProfile
-     * @param savedInstanceState the saved instance
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -18,10 +18,6 @@ public class MainActivity extends AppCompatActivity {
     Context context;
     User currentUser;
 
-    /*
-     * On Creation of the activity
-     * @param savedInstanceState the saved state
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

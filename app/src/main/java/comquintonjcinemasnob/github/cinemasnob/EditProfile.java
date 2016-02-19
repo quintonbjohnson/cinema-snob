@@ -11,10 +11,6 @@ import android.widget.Toast;
 
 public class EditProfile extends AppCompatActivity {
 
-    /*
-     * On Creation of the activity
-     * @param savedInstanceState the saved state
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
