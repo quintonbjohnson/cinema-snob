@@ -34,9 +34,19 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Movie List"
-        android:id="@+id/movielist_button"
+        android:text="Recent Movies"
+        android:id="@+id/recentMovies_button"
         android:background="@color/orange"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/recentDVD_button"
+        android:layout_toStartOf="@+id/logout_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recent DVDs"
+        android:id="@+id/recentDVD_button"
+        android:background="@color/orange"
+        android:layout_below="@+id/profile_button"
+        android:layout_toEndOf="@+id/profile_button"
+        android:layout_marginTop="37dp" />
 </RelativeLayout>

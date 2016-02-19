@@ -41,6 +41,10 @@
         <activity
             android:name=".RecentMoviesActivity"
             android:label="@string/title_activity_recent_movies"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RecentDVDActivity"
+            android:label="@string/title_activity_recent_dvd"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

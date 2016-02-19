@@ -37,7 +37,5 @@ public class HomeScreenActivity extends AppCompatActivity {
                 startActivity(goToProfile);
             }
         });
-
-
     }
 }
