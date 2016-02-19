@@ -5,9 +5,11 @@ package comquintonjcinemasnob.github.cinemasnob;
  * Represents a single user
  */
 public class User {
-    String userName;
-    String password;
-    String email;
+
+    private String userName;
+    private String password;
+    private String email;
+    private static User currentUser;
 
     /**
      * Instantiates the User object
@@ -35,5 +37,21 @@ public class User {
      */
     public String getUserName() {
         return userName;
+    }
+
+    /**
+     * Gets the currentUser
+     * @return the currentUser
+     */
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    /**
+     * Sets the currentUser
+     * @param user theCurrentUser
+     */
+    static void setCurrentUser(User user) {
+        currentUser = user;
     }
 }

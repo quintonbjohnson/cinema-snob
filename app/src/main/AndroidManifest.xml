@@ -14,28 +14,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginScreenActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".HomeScreen"
+            android:name=".HomeScreenActivity"
             android:label="@string/title_activity_home_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateProfile"
+            android:name=".RegistrationActivity"
             android:label="@string/title_activity_create_profile"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".LoginScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="comquintonjcinemasnob.github.cinemasnob.MainActivity" />
+                android:value=".LoginScreenActivity" />
         </activity>
         <activity
-            android:name=".UserProfile"
+            android:name=".UserProfileActivity"
             android:label="@string/title_activity_user_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".EditProfile"
+            android:name=".EditProfileActivity"
             android:label="@string/title_activity_edit_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -7,12 +7,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-public class EditProfile extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity {
+
+    Context context;
+    ProfileOpenHelper profiledb;
+    User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        context = this;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
@@ -36,14 +41,15 @@ public class EditProfile extends AppCompatActivity {
 
         String majorData = majorBox.getText().toString();
         String interestsData = interestsBox.getText().toString();
-        Bundle retrieveCurrentUser = getIntent().getExtras();
-        String[] changes = {majorData, interestsData, retrieveCurrentUser.getString("USER_NAME")};
 
-        Bundle textChangesBundle = new Bundle();
-        // Sending updated profile info
-        textChangesBundle.putStringArray("PROFILE_CHANGES", changes);
-        Intent goToProfile = new Intent(this, UserProfile.class);
-        goToProfile.putExtras(textChangesBundle);
+        // Get currentUser and update database info
+        currentUser = User.getCurrentUser();
+        profiledb = new ProfileOpenHelper(context);
+        profiledb.updateMajor(profiledb, majorData);
+        profiledb.updateInterests(profiledb, interestsData);
+
+        // Go back to ProfileActivity
+        Intent goToProfile = new Intent(this, UserProfileActivity.class);
         startActivity(goToProfile);
         finish();
     }

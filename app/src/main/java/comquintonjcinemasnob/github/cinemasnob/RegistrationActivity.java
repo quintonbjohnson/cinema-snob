@@ -10,17 +10,18 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /*
- * Registration screen
+ * RegistrationActivity screen
  */
-public class CreateProfile extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     UserOpenHelper userdb;
+    ProfileOpenHelper profiledb;
     Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_profile);
+        setContentView(R.layout.activity_registration);
         context = this;
         Button submitRegister = (Button) findViewById(R.id.submit_register);
         submitRegister.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +43,7 @@ public class CreateProfile extends AppCompatActivity {
      * @param view
      */
     public void onCancelRegisterClicked(View view) {
-        Intent goToMainActivity = new Intent(this, MainActivity.class);
+        Intent goToMainActivity = new Intent(this, LoginScreenActivity.class);
         startActivity(goToMainActivity);
         finish();
     }
@@ -61,30 +62,36 @@ public class CreateProfile extends AppCompatActivity {
         User checkUser = userdb.getUser(userdb, usernameBox.getText().toString());
 
         CharSequence failedLogin;
-        // Invalid entries
         if (usernameBox.getText().toString().trim().equals("") ||
                 passwordBox.getText().toString().trim().equals("") ||
                 emailBox.getText().toString().trim().equals("") ||
                 !(emailBox.getText().toString().contains("@"))) {
+            // Invalid entries
             failedLogin = "Please enter a valid username, password, and email.";
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast fail = Toast.makeText(context, failedLogin, duration);
             fail.show();
         } else if (!(checkUser == null)) {
+            // Username exists already
             failedLogin = "That username already exists.";
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast fail = Toast.makeText(context, failedLogin, duration);
             fail.show();
         } else {
+            // RegistrationActivity works
             userdb = new UserOpenHelper(context);
             userdb.putUser(userdb,
                     usernameBox.getText().toString(),
                     passwordBox.getText().toString(),
                     emailBox.getText().toString());
+            profiledb = new ProfileOpenHelper(context);
+            profiledb.putProfile(profiledb,
+                    usernameBox.getText().toString(),
+                    "", "");
             Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();
-            Intent goToMainActivity = new Intent(this, MainActivity.class);
+            Intent goToMainActivity = new Intent(this, LoginScreenActivity.class);
             startActivity(goToMainActivity);
             finish();
             finish();

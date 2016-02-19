@@ -9,7 +9,7 @@ import android.widget.Button;
 /*
  * Home Screen
  */
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class HomeScreen extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeScreen.this, MainActivity.class));
+                startActivity(new Intent(HomeScreenActivity.this, LoginScreenActivity.class));
                 finish();
             }
         });
@@ -33,9 +33,7 @@ public class HomeScreen extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle retrieveCurrentUser = getIntent().getExtras();
-                Intent goToProfile = new Intent(HomeScreen.this, UserProfile.class);
-                goToProfile.putExtras(retrieveCurrentUser);
+                Intent goToProfile = new Intent(HomeScreenActivity.this, UserProfileActivity.class);
                 startActivity(goToProfile);
             }
         });

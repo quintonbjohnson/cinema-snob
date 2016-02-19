@@ -12,7 +12,7 @@ import android.widget.Toast;
 /*
  * Class for the main activity
  */
-public class MainActivity extends AppCompatActivity {
+public class LoginScreenActivity extends AppCompatActivity {
 
     UserOpenHelper userdb;
     Context context;
@@ -55,10 +55,8 @@ public class MainActivity extends AppCompatActivity {
         // Check if User exists
         if (currentUser != null) {
             if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
-                Intent goToHomeScreen = new Intent(this, HomeScreen.class);
-                Bundle currentUserBundle = new Bundle();
-                currentUserBundle.putString("USER_NAME", currentUser.getUserName());
-                goToHomeScreen.putExtras(currentUserBundle);
+                Intent goToHomeScreen = new Intent(this, HomeScreenActivity.class);
+                currentUser.setCurrentUser(currentUser);
                 startActivity(goToHomeScreen);
                 finish();
             } else {
@@ -78,20 +76,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Called when 'Register' button is pressed, send user to CreateProfile activity
+     * Called when 'Register' button is pressed, send user to RegistrationActivity
      * @param v Current view
      */
     public void onNewUserButtonClicked(View v) {
-        Intent goToCreateProfile = new Intent(this, CreateProfile.class);
+        Intent goToCreateProfile = new Intent(this, RegistrationActivity.class);
         startActivity(goToCreateProfile);
         finish();
-    }
-
-    /**
-     * Gets the current logged in User
-     * @return User
-     */
-    public User getCurrentUser() {
-        return currentUser;
     }
 }

@@ -16,12 +16,11 @@ public class RecentMoviesActivity extends AppCompatActivity {
             "Deadpool",
             "Fight Club"
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recent_movies);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         ListView view = (ListView)findViewById(R.id.movieList);
         //view.setAdapter(new EnhancedListAdapter(this, movieList));
