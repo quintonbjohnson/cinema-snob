@@ -14,6 +14,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_login_screen_activity" />
+    <include layout="@layout/content_login_screen" />
 
 </android.support.design.widget.CoordinatorLayout>
