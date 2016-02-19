@@ -17,7 +17,10 @@
         android:id="@+id/logout_button"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:background="@color/orange" />
+        android:background="@color/orange"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:fontFamily="Helvetica" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -28,7 +31,10 @@
         android:background="@color/orange"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/logout_button" />
+        android:layout_alignBottom="@+id/logout_button"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:fontFamily="Helvetica" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -37,8 +43,11 @@
         android:text="Recent Movies"
         android:id="@+id/recentMovies_button"
         android:background="@color/orange"
-        android:layout_alignTop="@+id/recentDVD_button"
-        android:layout_toStartOf="@+id/logout_button" />
+        android:paddingLeft="15dp"
+        android:paddingRight="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/logout_button"
+        android:fontFamily="Helvetica" />
 
     <Button
         android:layout_width="wrap_content"
@@ -46,7 +55,9 @@
         android:text="Recent DVDs"
         android:id="@+id/recentDVD_button"
         android:background="@color/orange"
-        android:layout_below="@+id/profile_button"
+        android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/profile_button"
-        android:layout_marginTop="37dp" />
+        android:paddingLeft="15dp"
+        android:paddingRight="13dp"
+        android:fontFamily="Helvetica" />
 </RelativeLayout>
