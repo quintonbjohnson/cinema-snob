@@ -35,9 +35,9 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
+        TextView nameView = (TextView)findViewById(R.id.usernameText);
         TextView major = (TextView)findViewById(R.id.majorText);
         TextView interests = (TextView)findViewById(R.id.interestsText);
-        TextView nameView = (TextView)findViewById(R.id.usernameText);
 
         // Get currentUser and profile
         currentUser = User.getCurrentUser();
@@ -46,6 +46,8 @@ public class UserProfileActivity extends AppCompatActivity {
             Profile currentProfile = profiledb.getProfile(profiledb, currentUser.getUserName());
 
             // Set text fields
+            System.out.println("Major:" + currentProfile.getMajor());
+            System.out.println(currentProfile.getInterests());
             nameView.setText(currentUser.getUserName());
             major.setText(currentProfile.getMajor());
             interests.setText(currentProfile.getInterests());

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.security.KeyStoreParameter;
 
 /**
  * Class for the ProfileOpenHelper SQLite database
@@ -84,7 +83,7 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
         String username = c.getString(c.getColumnIndexOrThrow(KEY_USERNAME));
         String major = c.getString(c.getColumnIndexOrThrow(KEY_MAJOR));
         String interests = c.getString(c.getColumnIndexOrThrow(KEY_INTERESTS));
-        return new Profile(username, interests, major);
+        return new Profile(username, major, interests);
     }
 
     /**

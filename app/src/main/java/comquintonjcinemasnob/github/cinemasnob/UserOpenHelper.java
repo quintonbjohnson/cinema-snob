@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.security.KeyStoreParameter;
 
 /**
- * Created by Brandon on 2/13/2016.
  * Class for the UserOpenHelper SQLite database
  */
 public class UserOpenHelper extends SQLiteOpenHelper {
