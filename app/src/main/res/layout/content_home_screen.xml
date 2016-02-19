@@ -44,7 +44,7 @@
         android:id="@+id/recentMovies_button"
         android:background="@color/orange"
         android:paddingLeft="15dp"
-        android:paddingRight="13dp"
+        android:paddingRight="15dp"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/logout_button"
         android:fontFamily="Helvetica" />
@@ -58,6 +58,6 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/profile_button"
         android:paddingLeft="15dp"
-        android:paddingRight="13dp"
+        android:paddingRight="15dp"
         android:fontFamily="Helvetica" />
 </RelativeLayout>
