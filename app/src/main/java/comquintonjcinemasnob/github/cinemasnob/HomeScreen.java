@@ -40,6 +40,17 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
+        //Move list button sends the user to the movie list
+        Button movies = (Button)findViewById(R.id.movielist_button);
+
+        movies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeScreen.this, RecentMoviesActivity.class));
+                finish();
+            }
+        });
+
 
     }
 }
