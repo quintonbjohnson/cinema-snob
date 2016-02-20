@@ -85,9 +85,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     passwordBox.getText().toString(),
                     emailBox.getText().toString());
             ProfileOpenHelper profiledb = new ProfileOpenHelper(context);
-            profiledb.putProfile(profiledb,
-                    usernameBox.getText().toString(),
-                    "", "");
+            profiledb.putProfile(profiledb, usernameBox.getText().toString(), "", "");
             Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();
             Intent goToMainActivity = new Intent(this, LoginScreenActivity.class);
             startActivity(goToMainActivity);

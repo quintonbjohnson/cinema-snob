@@ -9,25 +9,16 @@
     tools:showIn="@layout/activity_recent_dvd"
     android:background="@color/black">
 
-    <ListView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_marginTop="68dp"
-        android:clickable="true"
-        android:visibility="visible"
-        android:background="#a6a6a6"
-        android:divider="@color/black"
-        android:dividerHeight="@dimen/abc_dialog_min_width_minor"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText2"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Recent DVDs"
-        android:textColor="@color/white"
+        android:id="@+id/recentText"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:fontFamily="Helvetica" />
+
 </RelativeLayout>

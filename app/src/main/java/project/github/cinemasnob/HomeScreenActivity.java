@@ -30,7 +30,8 @@ public class HomeScreenActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeScreenActivity.this, LoginScreenActivity.class));
+                Intent logout = new Intent(HomeScreenActivity.this, LoginScreenActivity.class);
+                startActivity(logout);
                 finish();
             }
         });
@@ -52,17 +53,19 @@ public class HomeScreenActivity extends AppCompatActivity {
         recentMovies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Go to recent movies
+                Intent goToRecentMovie = new Intent(HomeScreenActivity.this, RecentMoviesActivity.class);
+                startActivity(goToRecentMovie);
             }
         });
 
         // RecentDVDs button sends to recent DVDs
-        Button recentDVDs = (Button)findViewById(R.id.recentDVD_button);
+        Button recentDVD = (Button)findViewById(R.id.recentDVD_button);
 
-        recentMovies.setOnClickListener(new View.OnClickListener() {
+        recentDVD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Go to recent DVDs
+                Intent goToRecentDVD= new Intent(HomeScreenActivity.this, RecentDVDActivity.class);
+                startActivity(goToRecentDVD);
             }
         });
 
@@ -72,7 +75,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                // Do nothing
             }
 
             @Override
@@ -83,7 +86,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                // Do nothing
             }
         });
     }

@@ -9,25 +9,15 @@
     tools:showIn="@layout/activity_recent_movies"
     android:background="@color/black">
 
-    <ListView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/movieList"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="53dp"
-        android:clickable="true"
-        android:visibility="visible"
-        android:background="#a6a6a6"
-        android:divider="@color/black"
-        android:dividerHeight="@dimen/abc_dialog_min_width_minor" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Recent Movies"
+        android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Recent Movies"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:fontFamily="Helvetica" />
 </RelativeLayout>
