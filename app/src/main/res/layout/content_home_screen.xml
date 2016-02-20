@@ -7,7 +7,10 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".HomeScreenActivity"
     tools:showIn="@layout/activity_home_screen"
-    android:background="@color/black">
+    android:background="@color/black"
+    android:focusable="false"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true" >
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -60,4 +63,33 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:fontFamily="Helvetica" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchText"
+        android:hint="Search"
+        android:foreground="@color/white"
+        android:fontFamily="Helvetica"
+        android:textColorHint="@color/white"
+        android:foregroundTint="@color/white"
+        android:backgroundTint="@color/white"
+        android:layout_below="@+id/profile_button"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp"
+        android:layout_alignEnd="@+id/logout_button"
+        android:textColor="@color/white"
+        android:editable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:enabled="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movieList"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/searchText"
+        android:background="#a6a6a6" />
+
 </RelativeLayout>

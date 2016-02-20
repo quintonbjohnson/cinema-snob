@@ -3,13 +3,21 @@ package project.github.cinemasnob;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 
 /*
  * Home Screen
  */
 public class HomeScreenActivity extends AppCompatActivity {
+
+    private static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
+    private static final int MOVIE_PAGE_LIMIT = 10;
+    private ListView movieList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,47 @@ public class HomeScreenActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToProfile = new Intent(HomeScreenActivity.this, UserProfileActivity.class);
                 startActivity(goToProfile);
+            }
+        });
+
+        // RecentMovies button sends to recent movies
+        Button recentMovies = (Button)findViewById(R.id.recentMovies_button);
+
+        recentMovies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Go to recent movies
+            }
+        });
+
+        // RecentDVDs button sends to recent DVDs
+        Button recentDVDs = (Button)findViewById(R.id.recentDVD_button);
+
+        recentMovies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Go to recent DVDs
+            }
+        });
+
+        // Search for Movies
+        movieList = (ListView) findViewById(R.id.movieList);
+        EditText searchBox = (EditText) findViewById(R.id.searchText);
+        searchBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // TODO: Make appropriate URLConnection / JSON / API calls here
+                // Request task; access API and make a URLConnection request
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
