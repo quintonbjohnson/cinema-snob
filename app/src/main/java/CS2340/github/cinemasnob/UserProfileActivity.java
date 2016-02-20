@@ -1,4 +1,4 @@
-package comquintonjcinemasnob.github.cinemasnob;
+package CS2340.github.cinemasnob;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,13 +13,11 @@ import android.content.Context;
  */
 public class UserProfileActivity extends AppCompatActivity {
 
-    Context context;
-    ProfileOpenHelper profiledb;
-    User currentUser;
+    private ProfileOpenHelper profiledb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        context = this;
+        Context context = this;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
@@ -40,7 +38,7 @@ public class UserProfileActivity extends AppCompatActivity {
         TextView interests = (TextView)findViewById(R.id.interestsText);
 
         // Get currentUser and profile
-        currentUser = User.getCurrentUser();
+        User currentUser = User.getCurrentUser();
         if (currentUser != null) {
             ProfileOpenHelper profiledb = new ProfileOpenHelper(context);
             Profile currentProfile = profiledb.getProfile(profiledb, currentUser.getUserName());

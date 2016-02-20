@@ -1,12 +1,13 @@
-package comquintonjcinemasnob.github.cinemasnob;
+package CS2340.github.cinemasnob;
 
 /**
  * Represents a single Profile
  */
 public class Profile {
-    String userName;
-    String interests;
-    String major;
+
+    private String interests;
+    private String major;
+    private String userName;
 
     /**
      * Instantiates the Profile object
@@ -34,5 +35,9 @@ public class Profile {
      */
     public String getInterests() {
         return interests;
+    }
+
+    public String getUsername() {
+        return userName;
     }
 }

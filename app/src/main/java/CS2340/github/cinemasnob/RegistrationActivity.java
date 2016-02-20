@@ -1,4 +1,4 @@
-package comquintonjcinemasnob.github.cinemasnob;
+package CS2340.github.cinemasnob;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,9 +14,7 @@ import android.widget.Toast;
  */
 public class RegistrationActivity extends AppCompatActivity {
 
-    UserOpenHelper userdb;
-    ProfileOpenHelper profiledb;
-    Context context;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     /**
      * Takes place when 'Cancel' button is clicked, sends user to login screen
-     * @param view
+     * @param view The current view
      */
     public void onCancelRegisterClicked(View view) {
         Intent goToMainActivity = new Intent(this, LoginScreenActivity.class);
@@ -51,14 +49,14 @@ public class RegistrationActivity extends AppCompatActivity {
     /**
      * Takes place when 'Register' button is clicked, adds User to database
      * if username and email are not taken
-     * @param view
+     * @param view The current view
      */
     public void onRegisterButtonClicked(View view) {
         EditText usernameBox = (EditText)findViewById(R.id.register_username);
         EditText passwordBox = (EditText)findViewById(R.id.register_password);
         EditText emailBox = (EditText)findViewById(R.id.register_email);
 
-        userdb = new UserOpenHelper(context);
+        UserOpenHelper userdb = new UserOpenHelper(context);
         User checkUser = userdb.getUser(userdb, usernameBox.getText().toString());
 
         CharSequence failedLogin;
@@ -86,7 +84,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     usernameBox.getText().toString(),
                     passwordBox.getText().toString(),
                     emailBox.getText().toString());
-            profiledb = new ProfileOpenHelper(context);
+            ProfileOpenHelper profiledb = new ProfileOpenHelper(context);
             profiledb.putProfile(profiledb,
                     usernameBox.getText().toString(),
                     "", "");

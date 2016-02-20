@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="comquintonjcinemasnob.github.cinemasnob.RecentMoviesActivity">
+    tools:context="CS2340.github.cinemasnob.RecentMoviesActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

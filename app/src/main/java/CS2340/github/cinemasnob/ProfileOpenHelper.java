@@ -1,4 +1,4 @@
-package comquintonjcinemasnob.github.cinemasnob;
+package CS2340.github.cinemasnob;
 
 import android.content.ContentValues;
 import android.content.Context;

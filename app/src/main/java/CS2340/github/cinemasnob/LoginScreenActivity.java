@@ -1,4 +1,4 @@
-package comquintonjcinemasnob.github.cinemasnob;
+package CS2340.github.cinemasnob;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,9 +14,7 @@ import android.widget.Toast;
  */
 public class LoginScreenActivity extends AppCompatActivity {
 
-    UserOpenHelper userdb;
-    Context context;
-    User currentUser;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +48,13 @@ public class LoginScreenActivity extends AppCompatActivity {
         EditText usernameBox = (EditText)findViewById(R.id.login_username_entry);
         EditText passwordBox = (EditText)findViewById(R.id.login_password_entry);
 
-        userdb = new UserOpenHelper(context);
-        currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
+        UserOpenHelper userdb = new UserOpenHelper(context);
+        User currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
         // Check if User exists
         if (currentUser != null) {
             if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
                 Intent goToHomeScreen = new Intent(this, HomeScreenActivity.class);
-                currentUser.setCurrentUser(currentUser);
+                User.setCurrentUser(currentUser);
                 startActivity(goToHomeScreen);
                 finish();
             } else {

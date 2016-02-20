@@ -1,4 +1,4 @@
-package comquintonjcinemasnob.github.cinemasnob;
+package CS2340.github.cinemasnob;
 
 /**
  * Represents a single user
@@ -7,7 +7,6 @@ public class User {
 
     private String userName;
     private String password;
-    private String email;
     private static User currentUser;
 
     /**
@@ -19,7 +18,6 @@ public class User {
     public User(String n, String p, String e ) {
         userName = n;
         password = p;
-        email = e;
     }
 
     /**

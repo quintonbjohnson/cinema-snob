@@ -1,4 +1,4 @@
-package comquintonjcinemasnob.github.cinemasnob;
+package CS2340.github.cinemasnob;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +13,7 @@ import android.widget.EditText;
  */
 public class EditProfileActivity extends AppCompatActivity {
 
-    Context context;
-    ProfileOpenHelper profiledb;
-    User currentUser;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +44,8 @@ public class EditProfileActivity extends AppCompatActivity {
         String interestsData = interestsBox.getText().toString();
 
         // Get currentUser and update database info
-        currentUser = User.getCurrentUser();
-        profiledb = new ProfileOpenHelper(context);
+        User currentUser = User.getCurrentUser();
+        ProfileOpenHelper profiledb = new ProfileOpenHelper(context);
         profiledb.updateMajor(profiledb, majorData);
         profiledb.updateInterests(profiledb, interestsData);
 
