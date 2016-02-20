@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="CS2340.github.cinemasnob">
+    package="project.github.cinemasnob">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -14,36 +14,36 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="CS2340.github.cinemasnob.LoginScreenActivity"
+            android:name="project.github.cinemasnob.LoginScreenActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="CS2340.github.cinemasnob.HomeScreenActivity"
+            android:name="project.github.cinemasnob.HomeScreenActivity"
             android:label="@string/title_activity_home_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="CS2340.github.cinemasnob.RegistrationActivity"
+            android:name="project.github.cinemasnob.RegistrationActivity"
             android:label="@string/title_activity_create_profile"
-            android:parentActivityName="CS2340.github.cinemasnob.LoginScreenActivity"
+            android:parentActivityName="project.github.cinemasnob.LoginScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="CS2340.github.cinemasnob.LoginScreenActivity" />
+                android:value="project.github.cinemasnob.LoginScreenActivity" />
         </activity>
         <activity
-            android:name="CS2340.github.cinemasnob.UserProfileActivity"
+            android:name="project.github.cinemasnob.UserProfileActivity"
             android:label="@string/title_activity_user_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="CS2340.github.cinemasnob.EditProfileActivity"
+            android:name="project.github.cinemasnob.EditProfileActivity"
             android:label="@string/title_activity_edit_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="CS2340.github.cinemasnob.RecentMoviesActivity"
+            android:name="project.github.cinemasnob.RecentMoviesActivity"
             android:label="@string/title_activity_recent_movies"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="CS2340.github.cinemasnob.RecentDVDActivity"
+            android:name="project.github.cinemasnob.RecentDVDActivity"
             android:label="@string/title_activity_recent_dvd"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

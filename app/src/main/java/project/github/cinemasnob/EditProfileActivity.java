@@ -1,4 +1,4 @@
-package CS2340.github.cinemasnob;
+package project.github.cinemasnob;
 
 import android.content.Context;
 import android.content.Intent;

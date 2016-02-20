@@ -1,4 +1,4 @@
-package CS2340.github.cinemasnob;
+package project.github.cinemasnob;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
