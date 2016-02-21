@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.android.volley.toolbox.JsonObjectRequest;
+
 /*
  * Home Screen
  */
@@ -80,8 +82,14 @@ public class HomeScreenActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // TODO: Make appropriate URLConnection / JSON / API calls here
-                // Request task; access API and make a URLConnection request
+                String search = (String) s;
+                String url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q="
+                        + s
+                        + "&page_limit=Page"
+                        + MOVIE_PAGE_LIMIT
+                        + "&page=1&apikey="
+                        + API_KEY;
+                JsonObjectRequest jsObjRequest = new JsonObjectRequest ()
             }
 
             @Override
