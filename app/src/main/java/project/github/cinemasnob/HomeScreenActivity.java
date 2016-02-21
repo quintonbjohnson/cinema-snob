@@ -18,8 +18,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /*
  * Home Screen
@@ -94,30 +98,38 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String search = s.toString();
-                String url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q="
-                        + search
-                        + "&page_limit="
-                        + MOVIE_PAGE_LIMIT
-                        + "&page=1&apikey="
-                        + API_KEY;
+                String url = "";
+                try {
+                    url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q="
+                            + URLEncoder.encode(search,"UTF-8")
+                            + "&page_limit="
+                            + MOVIE_PAGE_LIMIT
+                            + "&page=1&apikey="
+                            + API_KEY;
+                } catch (UnsupportedEncodingException e){
+                    e.printStackTrace();
+                }
+                Log.d("URL Encode", url);
+
                 JsonObjectRequest jsonObjReq = new JsonObjectRequest (
                         Request.Method.GET,
                         url,
                         null,
                         new Response.Listener<JSONObject>() {
-
                             @Override
                             public void onResponse(JSONObject response) {
-                                //try {
-                                    String result = "" + response.length();
-                                    test.setText(result);
-
-                                /*catch (JSONException e) {
+                                try {
+                                    JSONArray movies = response.getJSONArray("movies");
+                                    JSONObject movie = movies.getJSONObject(0);
+                                    String result = movie.getString("title");
+                                    Log.d("RESULT MOVIE TITLE", result);
+                                    // test.setText(result);
+                                } catch (JSONException e) {
                                     e.printStackTrace();
                                     Toast.makeText(getApplicationContext(),
                                             "Error: " + e.getMessage(),
                                             Toast.LENGTH_LONG).show();
-                                }*/
+                                }
                             }
                         },
                         new Response.ErrorListener() {
@@ -135,12 +147,4 @@ public class HomeScreenActivity extends AppCompatActivity {
             }
         });
     }
-    /*
-    private void makeJsonObjectRequest() {
-        JsonObjectRequest jobjreq = new JsonObjectRequest(Request.Method.GET, urlJsonObj,
-                null, new Response.Listener<JSONOBject>() {
-
-        })
-    }
-    */
 }
