@@ -5,12 +5,21 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /*
  * Home Screen
@@ -20,6 +29,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     private static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
     private static final int MOVIE_PAGE_LIMIT = 10;
     private ListView movieList;
+    private TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +83,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         // Search for Movies
         movieList = (ListView) findViewById(R.id.movieList);
+        test = (TextView) findViewById(R.id.test);
         EditText searchBox = (EditText) findViewById(R.id.searchText);
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override
@@ -89,7 +100,31 @@ public class HomeScreenActivity extends AppCompatActivity {
                         + MOVIE_PAGE_LIMIT
                         + "&page=1&apikey="
                         + API_KEY;
-                JsonObjectRequest jsObjRequest = new JsonObjectRequest ()
+                JsonObjectRequest jsonObjReq = new JsonObjectRequest (
+                        Request.Method.GET,
+                        url,
+                        null,
+                        new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    test.setText(response.getInt("total"));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    Toast.makeText(getApplicationContext(),
+                                            "Error: " + e.getMessage(),
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d("Ohfuck.jpg", "Shit fam you fucked up good");
+                            }
+                        });
+                RequestController.getInstance().addToRequestQueue(jsonObjReq);
             }
 
             @Override
@@ -98,4 +133,12 @@ public class HomeScreenActivity extends AppCompatActivity {
             }
         });
     }
+    /*
+    private void makeJsonObjectRequest() {
+        JsonObjectRequest jobjreq = new JsonObjectRequest(Request.Method.GET, urlJsonObj,
+                null, new Response.Listener<JSONOBject>() {
+
+        })
+    }
+    */
 }

@@ -13,7 +13,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name="project.github.cinemasnob.RequestController">
         <activity
             android:name=".LoginScreenActivity"
             android:label="@string/title_activity_main"
@@ -48,5 +49,6 @@
             android:label="@string/title_activity_recent_dvd"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
+
 
 </manifest>
