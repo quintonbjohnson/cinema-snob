@@ -93,10 +93,10 @@ public class HomeScreenActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String search = (String) s;
+                String search = s.toString();
                 String url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q="
-                        + s
-                        + "&page_limit=Page"
+                        + search
+                        + "&page_limit="
                         + MOVIE_PAGE_LIMIT
                         + "&page=1&apikey="
                         + API_KEY;
@@ -108,14 +108,16 @@ public class HomeScreenActivity extends AppCompatActivity {
 
                             @Override
                             public void onResponse(JSONObject response) {
-                                try {
-                                    test.setText(response.getInt("total"));
-                                } catch (JSONException e) {
+                                //try {
+                                    String result = "" + response.length();
+                                    test.setText(result);
+
+                                /*catch (JSONException e) {
                                     e.printStackTrace();
                                     Toast.makeText(getApplicationContext(),
                                             "Error: " + e.getMessage(),
                                             Toast.LENGTH_LONG).show();
-                                }
+                                }*/
                             }
                         },
                         new Response.ErrorListener() {
