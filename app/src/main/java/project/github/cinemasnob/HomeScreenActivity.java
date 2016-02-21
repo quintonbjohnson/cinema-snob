@@ -136,6 +136,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 Log.d("Ohfuck.jpg", "Shit fam you fucked up good");
+                                Log.d("Volley Error", error.getMessage());
                             }
                         });
                 RequestController.getInstance().addToRequestQueue(jsonObjReq);
