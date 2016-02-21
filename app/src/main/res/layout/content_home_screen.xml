@@ -83,7 +83,7 @@
         android:layout_below="@+id/recentDVD_button"
         android:layout_alignParentStart="true"
         android:layout_marginTop="58dp"
-        android:layout_alignEnd="@+id/logout_button" />
+        android:layout_toStartOf="@+id/searchMovies" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -105,5 +105,16 @@
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/recentDVD_button"
         android:layout_marginTop="65dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        android:text="Search"
+        android:id="@+id/searchMovies"
+        android:layout_above="@+id/movieList"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/test" />
 
 </RelativeLayout>
