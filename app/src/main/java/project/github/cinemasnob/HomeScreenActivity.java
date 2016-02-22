@@ -92,7 +92,6 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         // Search for Movies
         movieList = (ListView) findViewById(R.id.movieList);
-        test = (TextView) findViewById(R.id.test);
         final EditText searchBox = (EditText) findViewById(R.id.searchText);
 //        searchBox.addTextChangedListener(new TextWatcher() {
 //            @Override

@@ -91,20 +91,8 @@
         android:id="@+id/movieList"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/searchText"
-        android:background="#a6a6a6" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Test"
-        android:id="@+id/test"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        android:fontFamily="Helvetica"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/recentDVD_button"
-        android:layout_marginTop="65dp" />
+        android:background="#a6a6a6"
+        style="@style/Base.ThemeOverlay.AppCompat.Dark" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -114,7 +102,16 @@
         android:text="Search"
         android:id="@+id/searchMovies"
         android:layout_above="@+id/movieList"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/test" />
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@mipmap/login_logo"
+        android:layout_toStartOf="@+id/recentDVD_button"
+        android:layout_below="@+id/profile_button"
+        android:layout_alignEnd="@+id/logout_button"
+        android:layout_above="@+id/searchMovies" />
 
 </RelativeLayout>
