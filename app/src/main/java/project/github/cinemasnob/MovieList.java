@@ -5,9 +5,6 @@ import java.util.ArrayList;
 /**
  * Created by Maxwell on 2/21/2016.
  * Represents a list of movies returned from the REST call
- * FOR GROUP MEMBERS
- * class that will hold an arrayList of movies
- * the thinking is that we could use this list to map to the adapter
  */
 public class MovieList {
     private ArrayList<Movie> movieList;

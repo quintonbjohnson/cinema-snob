@@ -16,9 +16,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
 /**
  * Activity for recent movies
  */
@@ -37,12 +34,14 @@ public class RecentMoviesActivity extends AppCompatActivity {
         final MovieList listOfMovies = new MovieList();
         String url = "";
         try {
-            url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?page_limit=15&page=1&country=us&apikey="
+            url = "http://api.rottentomatoes.com/api/public/v1.0/" +
+                    "lists/movies/in_theaters.json?page_limit=15&page=1&country=us&apikey="
                     + API_KEY;
         } catch (Exception e){
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
+                url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 //create new movieList
@@ -51,19 +50,24 @@ public class RecentMoviesActivity extends AppCompatActivity {
                     JSONArray movies = response.getJSONArray("movies");
                     //one single movie
                     JSONObject movie = null;
-                    //Test block to see how many movies there are that are returned in the JSON object
+                    //Test block to see how many movies
+                    // there are that are returned in the JSON object
                     for (int i = 0; i < movies.length(); i++) {
                         movie = movies.getJSONObject(i);
                         //create a new movie
-                        Movie newMovie = new Movie(movie.getString("title"), movie.getString("year"), movie.getString("mpaa_rating"));
+                        Movie newMovie = new Movie(movie.getString("title"),
+                                movie.getString("year"),
+                                movie.getString("mpaa_rating"));
                         listOfMovies.addMovie(newMovie);
-                        //will print out all the titles of the movies that were returned from the REST call search
-                        Log.d("Movie Object: ", listOfMovies.getTitleList().get(i).toString());
+                        //will print out all the titles of the movies
+                        // that were returned from the REST call search
+                        Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));
                     }
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(RecentMoviesActivity.this,android.R.layout.simple_list_item_1, listOfMovies.getTitleList());
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                            RecentMoviesActivity.this,
+                            android.R.layout.simple_list_item_1,
+                            listOfMovies.getTitleList());
                     movieList.setAdapter(arrayAdapter);
-//                            String result = movie.getString("title");
-//                            Log.d("**Fetched Movie Title: ", result);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(),
