@@ -169,6 +169,7 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String movieSearchString = searchBox.getText().toString();
+                final MovieList listOfMovies = new MovieList();
                 String url = "";
                 try {
                     url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q="
@@ -184,7 +185,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         //create new movieList
-                        MovieList listOfMovies = new MovieList();
+                        //MovieList listOfMovies = new MovieList();
                         try {
                             JSONArray movies = response.getJSONArray("movies");
                             //one single movie
@@ -198,6 +199,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 //will print out all the titles of the movies that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i).toString());
                             }
+                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(HomeScreenActivity.this,android.R.layout.simple_list_item_1, listOfMovies.getTitleList());
+                            movieList.setAdapter(arrayAdapter);
 //                            String result = movie.getString("title");
 //                            Log.d("**Fetched Movie Title: ", result);
                         } catch (JSONException e) {
@@ -218,8 +221,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 //                 This is the array adapter, it takes the context of the activity as a
 //                 first parameter, the type of list view as a second parameter and your
 //                 array as a third parameter.
-//                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listOfMovies);
-//                movieList.setAdapter(arrayAdapter);
+
             }
         });
     }
