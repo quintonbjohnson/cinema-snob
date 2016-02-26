@@ -9,14 +9,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * Class for the ProfileOpenHelper SQLite database
  */
-public class MovieOpenHelper extends SQLiteOpenHelper {
+public class RatingOpenHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "Movies";
     private static final String MOVIE_TABLE_NAME = "Rated";
     private static final String KEY_USERNAME = "Username";
-    private static final String KEY_TITLE= "Title";
-    private static final String KEY_RATING= "Rating";
+    private static final String KEY_TITLE = "Title";
+    private static final String KEY_RATING = "Rating";
     private static final String MOVIE_TABLE_CREATE =
             "CREATE TABLE " + MOVIE_TABLE_NAME + " (" +
                     KEY_USERNAME + " TEXT, " +
@@ -27,7 +27,7 @@ public class MovieOpenHelper extends SQLiteOpenHelper {
      * The constructor
      * @param context the context of the activity
      */
-    public MovieOpenHelper(Context context) {
+    public RatingOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -61,7 +61,7 @@ public class MovieOpenHelper extends SQLiteOpenHelper {
      * @param name the userName
      * @return the Profile
      */
-    public Movie getMovie(ProfileOpenHelper dbhelp, String name) {
+    public Rating getRating(ProfileOpenHelper dbhelp, String name) {
         SQLiteDatabase db = dbhelp.getReadableDatabase();
         String[] projection = {
                 KEY_USERNAME,
@@ -83,7 +83,7 @@ public class MovieOpenHelper extends SQLiteOpenHelper {
         String username = c.getString(c.getColumnIndexOrThrow(KEY_USERNAME));
         String title = c.getString(c.getColumnIndexOrThrow(KEY_TITLE));
         String rating = c.getString(c.getColumnIndexOrThrow(KEY_RATING));
-        return new Movie(2, username, title, rating);
+        return new Rating(username, title, rating);
     }
 
     /**

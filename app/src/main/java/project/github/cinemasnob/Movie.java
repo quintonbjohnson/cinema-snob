@@ -10,8 +10,6 @@ public class Movie {
     private String title;
     private String year;
     private String mpaa_rating;
-    private String rating;
-    private String username;
 
     public Movie(String title, String year, String mpaa_rating) {
         this.title = title;
@@ -19,14 +17,8 @@ public class Movie {
         this.mpaa_rating = mpaa_rating;
     }
 
-    public Movie(int which, String username, String title, String rating) {
-        this.title = title;
-        this.rating = rating;
-        this.username = username;
-    }
-
     /**
-     * get movie title
+     * Get movie title
      * @return title
      */
     public String getTitle() {
@@ -34,7 +26,7 @@ public class Movie {
     }
 
     /**
-     * get movie year
+     * Get movie year
      * @return year
      */
     public String getYear() {
@@ -42,26 +34,10 @@ public class Movie {
     }
 
     /**
-     * get rating
+     * Get rating
      * @return mpaa_rating
      */
     public String getMpaa_rating() {
         return mpaa_rating;
-    }
-
-    /**
-     * get movie rating
-     * @return rating
-     */
-    public String getRating() {
-        return rating;
-    }
-
-    /**
-     * get username
-     * @return username
-     */
-    public String getUsername() {
-        return username;
     }
 }
