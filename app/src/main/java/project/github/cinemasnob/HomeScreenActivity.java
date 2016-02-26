@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,6 +38,24 @@ public class HomeScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        //Creating a listerner for clicking the listview
+        movieList = (ListView)findViewById(R.id.movieList);
+        movieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                // selected item
+                String title = ((TextView) view).getText().toString();
+
+                // Launching new Activity on selecting single List Item
+                Intent i = new Intent(getApplicationContext(), MovieItemActivity.class);
+                // sending data to new activity
+                i.putExtra("title", title);
+                startActivity(i);
+
+            }
+        });
 
         // Logout button sends back to login screen
         Button logout = (Button)findViewById(R.id.logout_button);
@@ -132,7 +151,6 @@ public class HomeScreenActivity extends AppCompatActivity {
         recentDVD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                movieList = (ListView)findViewById(R.id.movieList);
                 final String movieSearchString = "Recent Movies";
                 final MovieList listOfMovies = new MovieList();
                 String url = "";
