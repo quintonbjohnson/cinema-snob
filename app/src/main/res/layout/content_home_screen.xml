@@ -92,7 +92,8 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/searchText"
         android:background="#a6a6a6"
-        style="@style/Base.ThemeOverlay.AppCompat.Dark" />
+        style="@style/Base.ThemeOverlay.AppCompat.Dark"
+        android:clickable="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

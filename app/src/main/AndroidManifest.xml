@@ -9,12 +9,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".RequestController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name="project.github.cinemasnob.RequestController">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".LoginScreenActivity"
             android:label="@string/title_activity_main"
@@ -41,14 +41,9 @@
             android:label="@string/title_activity_edit_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RecentMoviesActivity"
-            android:label="@string/title_activity_recent_movies"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".RecentDVDActivity"
-            android:label="@string/title_activity_recent_dvd"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".MovieItemActivity"
+            android:label="@string/title_activity_movie_item"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
 
 </manifest>
