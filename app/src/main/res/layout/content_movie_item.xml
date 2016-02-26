@@ -12,4 +12,13 @@
     tools:context="project.github.cinemasnob.MovieItemActivity"
     tools:showIn="@layout/activity_movie_item">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/title_text"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp" />
 </RelativeLayout>
