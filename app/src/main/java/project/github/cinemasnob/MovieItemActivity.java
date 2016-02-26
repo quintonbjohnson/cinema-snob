@@ -31,7 +31,7 @@ public class MovieItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_item);
 
-        TextView txtProduct = (TextView) findViewById(R.id.title_text);
+        TextView titleText = (TextView) findViewById(R.id.title_text);
 
         Intent i = getIntent();
         // getting attached intent data
@@ -57,9 +57,7 @@ public class MovieItemActivity extends AppCompatActivity {
                     for (int i = 0; i < movies.length(); i++) {
                         movie = movies.getJSONObject(i);
                         //create a new movie
-                        Movie newMovie = new Movie(movie.getString("title"),
-                                movie.getString("year"),
-                                movie.getString("mpaa_rating"));
+
                         //will print out all the titles of the movies
                         // that were returned from the REST call search
                     }
@@ -78,7 +76,7 @@ public class MovieItemActivity extends AppCompatActivity {
                 });
         RequestController.getInstance().addToRequestQueue(jsonObjReq);
         // displaying selected product name
-        txtProduct.setText(title);
+        titleText.setText(title);
     }
 
 }
