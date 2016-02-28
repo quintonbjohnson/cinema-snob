@@ -2,6 +2,7 @@ package project.github.cinemasnob;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     private static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
     private static final int MOVIE_PAGE_LIMIT = 10;
     private ListView movieList;
+    public String idNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +48,15 @@ public class HomeScreenActivity extends AppCompatActivity {
                                     int position, long id) {
 
                 // selected item
-                String title = ((TextView) view).getText().toString();
+//                String title = ((TextView) view).getText().toString();
 
+                String titleID = ((TextView) view).getText().toString();
+                titleID = titleID.substring(titleID.indexOf("[") + 1, titleID.indexOf("]"));
+                Log.d("ID", titleID);
                 // Launching new Activity on selecting single List Item
                 Intent i = new Intent(getApplicationContext(), MovieItemActivity.class);
                 // sending data to new activity
-                i.putExtra("title", title);
+                i.putExtra("idNumber", titleID);
                 startActivity(i);
 
             }
@@ -116,7 +121,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 //create a new movie
                                 Movie newMovie = new Movie(movie.getString("title"),
                                         movie.getString("year"),
-                                        movie.getString("mpaa_rating"));
+                                        movie.getString("mpaa_rating"), movie.getString("id"));
                                 listOfMovies.addMovie(newMovie);
                                 //will print out all the titles of the movies
                                 // that were returned from the REST call search
@@ -177,7 +182,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 // Create a new movie
                                 Movie newMovie = new Movie(movie.getString("title"),
                                         movie.getString("year"),
-                                        movie.getString("mpaa_rating"));
+                                        movie.getString("mpaa_rating"), movie.getString("id"));
                                 listOfMovies.addMovie(newMovie);
                             }
                             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(HomeScreenActivity.this,
@@ -240,7 +245,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 movie = movies.getJSONObject(i);
                                 // Create a new movie
                                 Movie newMovie = new Movie(movie.getString("title"),
-                                        movie.getString("year"), movie.getString("mpaa_rating"));
+                                        movie.getString("year"), movie.getString("mpaa_rating"), movie.getString("id"));
                                 listOfMovies.addMovie(newMovie);
                                 // Will print out all the titles of the movies
                                 // that were returned from the REST call search
