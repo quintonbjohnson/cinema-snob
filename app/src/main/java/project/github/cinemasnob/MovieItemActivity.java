@@ -34,7 +34,7 @@ public class MovieItemActivity extends AppCompatActivity {
         TextView titleText = (TextView) findViewById(R.id.title_text);
 
         Intent i = getIntent();
-        // getting attached intent data
+        // getting attached intent data from first element 
         int movieID = i.getIntExtra("ID", 0);
         String url = "";
         try {
