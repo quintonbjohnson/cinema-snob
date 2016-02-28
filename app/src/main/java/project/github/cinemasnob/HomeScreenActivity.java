@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.HashMap;
 
 /*
  * Home Screen
@@ -33,6 +34,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     private static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
     private static final int MOVIE_PAGE_LIMIT = 10;
     private ListView movieList;
+    private HashMap<String, Integer> movieIds = new HashMap<String, Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +49,11 @@ public class HomeScreenActivity extends AppCompatActivity {
 
                 // selected item
                 String title = ((TextView) view).getText().toString();
-
+                int movieID = movieIds.get(title);
                 // Launching new Activity on selecting single List Item
                 Intent i = new Intent(getApplicationContext(), MovieItemActivity.class);
                 // sending data to new activity
-                i.putExtra("title", title);
+                i.putExtra("ID", movieID);
                 startActivity(i);
 
             }
@@ -118,6 +120,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                         movie.getString("year"),
                                         movie.getString("mpaa_rating"));
                                 listOfMovies.addMovie(newMovie);
+                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
                                 //will print out all the titles of the movies
                                 // that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));
@@ -179,6 +182,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                                         movie.getString("year"),
                                         movie.getString("mpaa_rating"));
                                 listOfMovies.addMovie(newMovie);
+                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
+
                             }
                             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(HomeScreenActivity.this,
                                     android.R.layout.simple_list_item_1,
@@ -242,6 +247,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 Movie newMovie = new Movie(movie.getString("title"),
                                         movie.getString("year"), movie.getString("mpaa_rating"));
                                 listOfMovies.addMovie(newMovie);
+                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
                                 // Will print out all the titles of the movies
                                 // that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));

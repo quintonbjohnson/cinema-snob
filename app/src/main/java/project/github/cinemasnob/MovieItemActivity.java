@@ -35,7 +35,7 @@ public class MovieItemActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         // getting attached intent data
-        String title = i.getStringExtra("title");
+        int movieID = i.getIntExtra("ID", 0);
         String url = "";
         try {
             url = "http://api.rottentomatoes.com/api/public/v1.0/" +
@@ -76,7 +76,7 @@ public class MovieItemActivity extends AppCompatActivity {
                 });
         RequestController.getInstance().addToRequestQueue(jsonObjReq);
         // displaying selected product name
-        titleText.setText(title);
+        titleText.setText("" + movieID);
     }
 
 }
