@@ -7,12 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.RatingBar;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
@@ -40,6 +43,7 @@ public class MovieItemActivity extends AppCompatActivity {
         final TextView genreText = (TextView) findViewById(R.id.genreText);
         final TextView ratingText = (TextView) findViewById(R.id.rtRatingText);
         final TextView synopsisText = (TextView) findViewById(R.id.synopsisText);
+        final ImageView profileView = (ImageView) findViewById(R.id.profilePicture);
 
         Intent i = getIntent();
 
@@ -69,23 +73,26 @@ public class MovieItemActivity extends AppCompatActivity {
                     //actors = actorsArray.getJSONObject(0).getString("name") + ", ";
                     for (int i = 0; i < actorsArray.length(); i++) {
                         actors = actors + actorsArray.getJSONObject(i).getString("name");
-                        actors = actors + ", ";
+                        if (i != actorsArray.length() - 1)
+                            actors = actors + ", ";
                     }
                     actorText.setText(actors);
 
                     JSONArray genres = movie.getJSONArray("genres");
                     for (int i = 0; i < genres.length(); i++) {
-                        genre = genre + genres.getJSONObject(i);
+                        genre = genre + genres.getString(i);
+                        if (i != genres.length() - 1)
+                            genre = genre + ", ";
                     }
-
-
                     genreText.setText(genre);
+
                     //criticScore = movie.getString("critics_score");
                     synopsis = movie.getString("synopsis");
                     //titleText.setText(synopsis);
                     //rating = movie.getString("rating");
                     //titleText.setText(rating);
 
+                    //profileView.setImageIcon();
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(),
