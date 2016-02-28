@@ -28,7 +28,7 @@ public class MovieList {
     public ArrayList<String> getTitleList() {
         ArrayList<String> titles = new ArrayList<String>();
         for (int i = 0; i < movieList.size(); i++) {
-            titles.add(movieList.get(i).getTitle() + " [" + movieList.get(i).getID() + "]");
+            titles.add(movieList.get(i).getTitle());
         }
         return titles;
     }

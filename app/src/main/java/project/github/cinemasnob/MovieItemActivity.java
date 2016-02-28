@@ -25,21 +25,35 @@ import project.github.cinemasnob.R;
 
 public class MovieItemActivity extends AppCompatActivity {
 
+    public String title = "";
+    public String actors = "";
+    public String genre = "";
+    public String rating = "";
+    public String synopsis = "";
+    public String criticScore = "";
+
+
+
     private static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_item);
 
-        TextView titleText = (TextView) findViewById(R.id.title_text);
+        final TextView titleText = (TextView) findViewById(R.id.title_text);
+        final TextView actorText = (TextView) findViewById(R.id.actorsText);
+        final TextView genreText = (TextView) findViewById(R.id.genreText);
+        final TextView ratingText = (TextView) findViewById(R.id.rtRatingText);
+        final TextView synopsisText = (TextView) findViewById(R.id.synopsisText);
 
         Intent i = getIntent();
-        // getting attached intent data from first element 
+        // getting attached intent data from first element
         int movieID = i.getIntExtra("ID", 0);
         String url = "";
         try {
-            url = "http://api.rottentomatoes.com/api/public/v1.0/" +
-                    "lists/movies/in_theaters.json?page_limit=15&page=1&country=us&apikey="
+            url = "http://api.rottentomatoes.com/api/public/v1.0/movies/"
+                    + movieID
+                    + ".json?apikey="
                     + API_KEY;
         } catch (Exception e){
             e.printStackTrace();
@@ -49,18 +63,33 @@ public class MovieItemActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    JSONArray movies = response.getJSONArray("movies");
                     //one single movie
-                    JSONObject movie = null;
-                    //Test block to see how many movies
-                    // there are that are returned in the JSON object
-                    for (int i = 0; i < movies.length(); i++) {
-                        movie = movies.getJSONObject(i);
-                        //create a new movie
-
-                        //will print out all the titles of the movies
-                        // that were returned from the REST call search
+                    JSONObject movie = response;
+                    //getting movie data
+                    title = movie.getString("title");
+                    titleText.setText(title);
+                    //Getting actors
+                    JSONArray actorsArray = movie.getJSONArray("abridged_cast");
+                    //actors = actorsArray.getJSONObject(0).getString("name") + ", ";
+                    for (int i = 0; i < actorsArray.length(); i++) {
+                        actors = actors + actorsArray.getJSONObject(i).getString("name");
+                        actors = actors + ", ";
                     }
+                    actorText.setText(actors);
+
+                    JSONArray genres = movie.getJSONArray("genres");
+                    for (int i = 0; i < genres.length(); i++) {
+                        genre = genre + genres.getJSONObject(i);
+                    }
+
+
+                    genreText.setText(genre);
+                    //criticScore = movie.getString("critics_score");
+                    synopsis = movie.getString("synopsis");
+                    //titleText.setText(synopsis);
+                    //rating = movie.getString("rating");
+                    //titleText.setText(rating);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(),
@@ -75,8 +104,13 @@ public class MovieItemActivity extends AppCompatActivity {
                     }
                 });
         RequestController.getInstance().addToRequestQueue(jsonObjReq);
-        // displaying selected product name
-        titleText.setText("" + movieID);
+
+        // displaying all the movie data from JSON object
+
+
+
+
+
     }
 
 }

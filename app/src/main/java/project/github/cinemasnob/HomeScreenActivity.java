@@ -55,7 +55,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                 // sending data to new activity
                 i.putExtra("ID", movieID);
                 startActivity(i);
-
+                finish();
             }
         });
 
@@ -118,7 +118,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 //create a new movie
                                 Movie newMovie = new Movie(movie.getString("title"),
                                         movie.getString("year"),
-                                        movie.getString("mpaa_rating"));
+                                        movie.getString("mpaa_rating"), movie.getString("id"));
                                 listOfMovies.addMovie(newMovie);
                                 movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
                                 //will print out all the titles of the movies
@@ -180,7 +180,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 // Create a new movie
                                 Movie newMovie = new Movie(movie.getString("title"),
                                         movie.getString("year"),
-                                        movie.getString("mpaa_rating"));
+                                        movie.getString("mpaa_rating"), movie.getString("id"));
                                 listOfMovies.addMovie(newMovie);
                                 movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
 
@@ -245,7 +245,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 movie = movies.getJSONObject(i);
                                 // Create a new movie
                                 Movie newMovie = new Movie(movie.getString("title"),
-                                        movie.getString("year"), movie.getString("mpaa_rating"));
+                                        movie.getString("year"), movie.getString("mpaa_rating"), movie.getString("id"));
                                 listOfMovies.addMovie(newMovie);
                                 movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
                                 // Will print out all the titles of the movies
