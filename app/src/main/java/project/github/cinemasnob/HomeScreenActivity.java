@@ -55,7 +55,6 @@ public class HomeScreenActivity extends AppCompatActivity {
                 // sending data to new activity
                 i.putExtra("ID", movieID);
                 startActivity(i);
-                finish();
             }
         });
 

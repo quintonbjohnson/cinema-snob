@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * Represents a list of movies returned from the REST call
  */
 public class MovieList {
+
     private ArrayList<Movie> movieList;
 
     public MovieList() {

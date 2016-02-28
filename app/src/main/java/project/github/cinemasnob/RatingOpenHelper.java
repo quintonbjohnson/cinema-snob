@@ -43,12 +43,12 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
      * @param title the major of the User
      * @param rating the interests of the User
      */
-    public void putMovie(ProfileOpenHelper dbhelp, String name, String title, String rating) {
+    public void putRating(RatingOpenHelper dbhelp, String name, String title, float rating) {
         SQLiteDatabase db = dbhelp.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_USERNAME, name);
         values.put(KEY_TITLE, title);
-        values.put(KEY_RATING, rating);
+        values.put(KEY_RATING, Float.toString(rating));
         long newRowID = db.insert(
                 MOVIE_TABLE_NAME,
                 null,
@@ -59,9 +59,10 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
      * Get profile based on given info
      * @param dbhelp the database
      * @param name the userName
+     * @param title the title of the movie
      * @return the Profile
      */
-    public Rating getRating(ProfileOpenHelper dbhelp, String name) {
+    public Rating getRating(RatingOpenHelper dbhelp, String name, String title) {
         SQLiteDatabase db = dbhelp.getReadableDatabase();
         String[] projection = {
                 KEY_USERNAME,
@@ -81,9 +82,9 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
             return null;
         }
         String username = c.getString(c.getColumnIndexOrThrow(KEY_USERNAME));
-        String title = c.getString(c.getColumnIndexOrThrow(KEY_TITLE));
+        String movieTitle = c.getString(c.getColumnIndexOrThrow(KEY_TITLE));
         String rating = c.getString(c.getColumnIndexOrThrow(KEY_RATING));
-        return new Rating(username, title, rating);
+        return new Rating(username, movieTitle, Float.parseFloat(rating));
     }
 
     /**
@@ -91,7 +92,7 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
      * @param dbhelp the database
      * @param title the major
      */
-    public void updateTitle(ProfileOpenHelper dbhelp, String title) {
+    public void updateTitle(RatingOpenHelper dbhelp, String title) {
         SQLiteDatabase db = dbhelp.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, title);
@@ -111,7 +112,7 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
      * @param dbhelp the database
      * @param rating the interests
      */
-    public void updateRating(ProfileOpenHelper dbhelp, String rating) {
+    public void updateRating(RatingOpenHelper dbhelp, String rating) {
         SQLiteDatabase db = dbhelp.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_RATING, rating);

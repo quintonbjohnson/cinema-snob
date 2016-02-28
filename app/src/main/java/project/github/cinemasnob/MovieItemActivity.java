@@ -1,14 +1,12 @@
 package project.github.cinemasnob;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,17 +19,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import project.github.cinemasnob.R;
-
 public class MovieItemActivity extends AppCompatActivity {
 
     public String title = "";
     public String actors = "";
     public String genre = "";
-    public String rating = "";
     public String synopsis = "";
-    public String criticScore = "";
-
+    private Context context;
 
 
     private static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
@@ -39,6 +33,7 @@ public class MovieItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_item);
+        context = this;
 
         final TextView titleText = (TextView) findViewById(R.id.title_text);
         final TextView actorText = (TextView) findViewById(R.id.actorsText);
@@ -47,7 +42,8 @@ public class MovieItemActivity extends AppCompatActivity {
         final TextView synopsisText = (TextView) findViewById(R.id.synopsisText);
 
         Intent i = getIntent();
-        // getting attached intent data from first element
+
+        // Getting attached intent data from first element
         int movieID = i.getIntExtra("ID", 0);
         String url = "";
         try {
@@ -100,17 +96,33 @@ public class MovieItemActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Ohfuck.jpg", "We done goofed");
+                        Log.d("Error", "JSON error");
                     }
                 });
         RequestController.getInstance().addToRequestQueue(jsonObjReq);
 
-        // displaying all the movie data from JSON object
+        // Displaying all the movie data from JSON object
 
+        final RatingOpenHelper ratingdb = new RatingOpenHelper(context);
+        RatingBar movieRating = (RatingBar)findViewById(R.id.ratingBar2);
+        Rating currentRating = ratingdb.getRating(ratingdb, User.getCurrentUser().getUserName(), title);
+        if (!(currentRating == null)) {
+            movieRating.setRating(currentRating.getRating());
+        }
+        movieRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 
+            // Called when the user swipes the RatingBar
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
-
-
+                User currentUser = User.getCurrentUser();
+                Rating currentRating = ratingdb.getRating(ratingdb, currentUser.getUserName(), title);
+                if ((currentRating) == null) {
+                    ratingdb.putRating(ratingdb, currentUser.getUserName(), title, rating);
+                } else {
+                    ratingdb.updateRating(ratingdb, Float.toString(rating));
+                }
+            }
+        });
     }
-
 }
