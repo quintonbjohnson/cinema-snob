@@ -7,7 +7,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".UserProfileActivity"
     tools:showIn="@layout/activity_user_profile"
-    android:background="@color/black">
+    android:background="@color/brightBlue"
+    android:padding="25dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,10 +19,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="67dp"
-        android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textColor="@color/cream"
+        android:textSize="30dp"
         android:fontFamily="Helvetica"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,8 +33,9 @@
         android:layout_below="@+id/usernameText"
         android:layout_alignParentStart="true"
         android:layout_marginTop="82dp"
-        android:textColor="@color/white"
-        android:fontFamily="Helvetica" />
+        android:textColor="@color/cream"
+        android:fontFamily="Helvetica"
+        android:textSize="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,10 +44,11 @@
         android:text="Interests"
         android:id="@+id/Interests"
         android:layout_marginTop="119dp"
-        android:textColor="@color/white"
+        android:textColor="@color/cream"
         android:fontFamily="Helvetica"
         android:layout_below="@+id/Major"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,9 +58,10 @@
         android:layout_below="@+id/Major"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:fontFamily="Helvetica" />
+        android:textColor="@color/cream"
+        android:textColorHint="@color/cream"
+        android:fontFamily="Helvetica"
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,9 +71,10 @@
         android:layout_below="@+id/Interests"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:fontFamily="Helvetica" />
+        android:textColor="@color/cream"
+        android:textColorHint="@color/cream"
+        android:fontFamily="Helvetica"
+        android:textSize="20dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -78,5 +83,8 @@
         android:id="@+id/EditProfile"
         android:background="@color/orange"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
 </RelativeLayout>
