@@ -10,11 +10,13 @@ public class Movie {
     private String title;
     private String year;
     private String mpaa_rating;
+    private String movieID;
 
-    public Movie(String title, String year, String mpaa_rating) {
+    public Movie(String title, String year, String mpaa_rating, String movieID) {
         this.title = title;
         this.year = year;
         this.mpaa_rating = mpaa_rating;
+        this.movieID = movieID;
     }
 
     /**
@@ -39,5 +41,13 @@ public class Movie {
      */
     public String getMpaa_rating() {
         return mpaa_rating;
+    }
+
+    /**
+     * Get movie id Number
+     * return movieId
+     */
+    public String getID() {
+        return movieID;
     }
 }
