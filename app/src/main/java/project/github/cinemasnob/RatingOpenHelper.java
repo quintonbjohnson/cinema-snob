@@ -69,8 +69,7 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
                 KEY_USERNAME,
                 KEY_RATING
         };
-        String sortOrder = KEY_TITLE + " DESC";
-        String whereClause = KEY_TITLE+ "=?" + " AND " + KEY_USERNAME + "=?";
+        String whereClause = KEY_TITLE + "=?" + " AND " + KEY_USERNAME + "=?";
         String[] whereArgs = new String[]{title, name};
 
         //Cursor for SQL Database
@@ -91,43 +90,17 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Update a profile major based on given info
-     * @param dbhelp the database
-     * @param title the major
-     */
-    public void updateTitle(RatingOpenHelper dbhelp, String title) {
-        SQLiteDatabase db = dbhelp.getReadableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(KEY_TITLE, title);
-        String selection = KEY_USERNAME + " LIKE ?";
-        String[] selectionArgs = {User.getCurrentUser().getUserName()};
-
-        int count = db.update(
-                MOVIE_TABLE_NAME,
-                values,
-                selection,
-                selectionArgs
-        );
-    }
-
-    /**
      * Update a profile interests based on given info
      * @param dbhelp the database
      * @param rating the interests
      */
-    public void updateRating(RatingOpenHelper dbhelp, String rating) {
+    public void updateRating(RatingOpenHelper dbhelp, String rating, String title, String name) {
         SQLiteDatabase db = dbhelp.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_RATING, rating);
-        String selection = KEY_USERNAME + " LIKE ?";
-        String[] selectionArgs = {User.getCurrentUser().getUserName()};
-
-        int count = db.update(
-                MOVIE_TABLE_NAME,
-                values,
-                selection,
-                selectionArgs
-        );
+        String whereClause = KEY_TITLE + "=?" + " AND " + KEY_USERNAME + "=?";
+        String[] whereArgs = new String[]{title, name};
+        db.update(MOVIE_TABLE_NAME, values, whereClause, whereArgs);
     }
 
     @Override

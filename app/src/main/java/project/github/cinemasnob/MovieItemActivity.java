@@ -93,8 +93,8 @@ public class MovieItemActivity extends AppCompatActivity {
                     //rating = movie.getString("rating");
                     //titleText.setText(rating);
 
-                    Bitmap myBitmap = BitmapFactory.decodeFile(movie.getJSONObject("posters").getString("profile"));
-                    profileView.setImageBitmap(myBitmap);
+                    //Bitmap myBitmap = BitmapFactory.decodeFile(movie.getJSONObject("posters").getString("profile"));
+                    //profileView.setImageBitmap(myBitmap);
                     //profileView.setImageIcon();
                     ratingdb = new RatingOpenHelper(context);
                     RatingBar movieRating = (RatingBar) findViewById(R.id.ratingBar2);
@@ -133,7 +133,9 @@ public class MovieItemActivity extends AppCompatActivity {
                 if ((currentRating) == null) {
                     ratingdb.putRating(ratingdb, currentUser.getUserName(), title, rating);
                 } else {
-                    ratingdb.updateRating(ratingdb, Float.toString(rating));
+                    System.out.println(currentUser.getUserName());
+                    ratingdb.updateRating(ratingdb, Float.toString(rating), title,
+                            currentUser.getUserName());
                 }
             }
         });
