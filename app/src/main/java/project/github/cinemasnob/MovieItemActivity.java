@@ -2,6 +2,8 @@ package project.github.cinemasnob;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -91,6 +93,8 @@ public class MovieItemActivity extends AppCompatActivity {
                     //rating = movie.getString("rating");
                     //titleText.setText(rating);
 
+                    Bitmap myBitmap = BitmapFactory.decodeFile(movie.getJSONObject("posters").getString("profile"));
+                    profileView.setImageBitmap(myBitmap);
                     //profileView.setImageIcon();
                     ratingdb = new RatingOpenHelper(context);
                     RatingBar movieRating = (RatingBar) findViewById(R.id.ratingBar2);
