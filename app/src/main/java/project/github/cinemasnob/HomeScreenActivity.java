@@ -35,6 +35,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     private static final int MOVIE_PAGE_LIMIT = 10;
     private ListView movieList;
     private HashMap<String, Integer> movieIds = new HashMap<String, Integer>();
+    private EditText searchBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                 // sending data to new activity
                 i.putExtra("ID", movieID);
                 startActivity(i);
-                finish();
+                searchBox.setText("");
             }
         });
 
@@ -209,7 +210,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         // Search for Movies
         movieList = (ListView) findViewById(R.id.movieList);
-        final EditText searchBox = (EditText) findViewById(R.id.searchText);
+        searchBox = (EditText) findViewById(R.id.searchText);
 
         // Display the movies related to the search text in the list view
         Button searchForMovies = (Button)findViewById(R.id.searchMovies);

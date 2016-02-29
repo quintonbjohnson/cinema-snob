@@ -7,9 +7,9 @@ public class Rating {
 
     private String username;
     private String movieTitle;
-    private String rating;
+    private float rating;
 
-    public Rating(String username, String movieTitle, String rating) {
+    public Rating(String username, String movieTitle, float rating) {
         this.username = username;
         this.movieTitle = movieTitle;
         this.rating = rating;
@@ -35,7 +35,7 @@ public class Rating {
      * Get rating
      * @return rating
      */
-    public String getRating() {
+    public float getRating() {
         return rating;
     }
 }
