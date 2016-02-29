@@ -1,6 +1,8 @@
 package project.github.cinemasnob;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -95,6 +97,8 @@ public class MovieItemActivity extends AppCompatActivity {
                     //rating = movie.getString("rating");
                     //titleText.setText(rating);
 
+                    Bitmap myBitmap = BitmapFactory.decodeFile(movie.getJSONObject("posters").getString("profile"));
+                    profileView.setImageBitmap(myBitmap);
                     //profileView.setImageIcon();
                 } catch (JSONException e) {
                     e.printStackTrace();
