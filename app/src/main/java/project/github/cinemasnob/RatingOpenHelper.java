@@ -14,13 +14,13 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "Movies";
     private static final String MOVIE_TABLE_NAME = "Rated";
-    private static final String KEY_USERNAME = "Username";
     private static final String KEY_TITLE = "Title";
+    private static final String KEY_USERNAME = "Username";
     private static final String KEY_RATING = "Rating";
     private static final String MOVIE_TABLE_CREATE =
             "CREATE TABLE " + MOVIE_TABLE_NAME + " (" +
-                    KEY_USERNAME + " TEXT, " +
                     KEY_TITLE + " TEXT, " +
+                    KEY_USERNAME + " TEXT, " +
                     KEY_RATING + " TEXT)";
 
     /*
@@ -46,8 +46,8 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
     public void putRating(RatingOpenHelper dbhelp, String name, String title, float rating) {
         SQLiteDatabase db = dbhelp.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_USERNAME, name);
         values.put(KEY_TITLE, title);
+        values.put(KEY_USERNAME, name);
         values.put(KEY_RATING, Float.toString(rating));
         long newRowID = db.insert(
                 MOVIE_TABLE_NAME,
@@ -65,24 +65,27 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
     public Rating getRating(RatingOpenHelper dbhelp, String name, String title) {
         SQLiteDatabase db = dbhelp.getReadableDatabase();
         String[] projection = {
-                KEY_USERNAME,
                 KEY_TITLE,
+                KEY_USERNAME,
                 KEY_RATING
         };
-        String sortOrder = KEY_USERNAME + " DESC";
+        String sortOrder = KEY_TITLE + " DESC";
+        String whereClause = KEY_TITLE+ "=?" + " AND " + KEY_USERNAME + "=?";
+        String[] whereArgs = new String[]{title, name};
 
         //Cursor for SQL Database
         Cursor c = db.query(MOVIE_TABLE_NAME, new String[] {
-                        KEY_USERNAME, KEY_TITLE, KEY_RATING},
-                KEY_USERNAME + "=?",
-                new String[] { name },
+                        KEY_TITLE, KEY_USERNAME, KEY_RATING},
+                whereClause,
+                whereArgs,
                 null, null, null, null);
 
         if (!(c.moveToFirst())) {
             return null;
         }
-        String username = c.getString(c.getColumnIndexOrThrow(KEY_USERNAME));
+
         String movieTitle = c.getString(c.getColumnIndexOrThrow(KEY_TITLE));
+        String username = c.getString(c.getColumnIndexOrThrow(KEY_USERNAME));
         String rating = c.getString(c.getColumnIndexOrThrow(KEY_RATING));
         return new Rating(username, movieTitle, Float.parseFloat(rating));
     }
