@@ -44,6 +44,10 @@
             android:name=".MovieItemActivity"
             android:label="@string/title_activity_movie_item"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MovieSuggestions"
+            android:label="@string/title_activity_movie_suggestions"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
