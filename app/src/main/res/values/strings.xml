@@ -120,4 +120,6 @@
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_movie_item">MovieItemActivity</string>
     <string name="title_activity_detailed_movie">DetailedMovieActivity</string>
+    <string name="title_activity_movie_suggestion">MovieSuggestionActivity
+    </string>
 </resources>
