@@ -12,13 +12,59 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="project.github.cinemasnob.MovieSuggestionActivity"
     tools:showIn="@layout/activity_movie_suggestion"
-    android:background="@color/brightBlue">
+    android:background="@color/brightBlue"
+    android:id="@+id/year_button">
 
-    <Spinner
+    <Button
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
+        android:text="Major"
+        android:id="@+id/major_button"
+        android:background="@color/orange"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/year_button"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overall"
+        android:id="@+id/overall_button"
+        android:textColor="@color/white"
+        android:background="@color/orange"
+        android:layout_alignTop="@+id/major_button"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Year"
+        android:id="@+id/year_button"
+        android:textColor="@color/white"
+        android:background="@color/orange"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"/>
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="55dp"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:smoothScrollbar="true"
+        android:scrollingCache="true"
+        android:scrollIndicators="right"
+        android:layout_below="@+id/major_button"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Sort movie suggestions"
+        android:textColor="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/overall_button"/>
 </RelativeLayout>
