@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="project.github.cinemasnob.MovieSuggestions"
+    tools:showIn="@layout/activity_movie_suggestions"
+    android:background="@color/brightBlue"
+    android:focusable="false"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true" >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Movies Suggested For You"
+        android:id="@+id/textView9"
+        android:layout_alignEnd="@+id/movieList"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:paddingBottom="10dp" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movieList"
+        android:layout_centerHorizontal="true"
+        android:background="@color/brightBlue"
+        style="@style/Base.ThemeOverlay.AppCompat.Dark"
+        android:clickable="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/spinner" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/textView9"
+        android:layout_alignParentStart="true"
+         />
+</RelativeLayout>

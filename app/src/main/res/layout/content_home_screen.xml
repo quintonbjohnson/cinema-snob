@@ -16,31 +16,19 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:id="@+id/logout_button"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/orange"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:fontFamily="Helvetica"
-        android:textColor="@color/white" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Profile"
         android:id="@+id/profile_button"
         android:background="@color/orange"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignBottom="@+id/logout_button"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
         android:fontFamily="Helvetica"
-        android:textColor="@color/white" />
-
+        android:textColor="@color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="10dp" />
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
@@ -48,12 +36,15 @@
         android:text="Recent Movies"
         android:id="@+id/recentMovies_button"
         android:background="@color/orange"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
         android:fontFamily="Helvetica"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/profile_button"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="10dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -61,19 +52,48 @@
         android:text="Recent DVDs"
         android:id="@+id/recentDVD_button"
         android:background="@color/orange"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
         android:fontFamily="Helvetica"
-        android:layout_gravity="center"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/logout_button"
-        android:textColor="@color/white" />
+        android:layout_toEndOf="@+id/recentMovies_button"
+        android:textColor="@color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="10dp" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Suggest"
+        android:id="@+id/suggestion_button"
+        android:textColor="@color/white"
+        android:background="@color/orange"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="10dp"
+        android:layout_above="@+id/searchText"
+        android:layout_toEndOf="@+id/recentDVD_button" />
 
-    </RelativeLayout>
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/logout_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@id/suggestion_button"
+        android:background="@color/orange"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:fontFamily="Helvetica"
+        android:textColor="@color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -117,28 +137,18 @@
         android:layout_alignParentEnd="true"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="10dp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@mipmap/login_logo"
-        android:layout_toStartOf="@+id/recentDVD_button"
+        android:layout_toStartOf="@+id/searchText"
         android:layout_below="@+id/profile_button"
         android:layout_alignEnd="@+id/logout_button"
         android:layout_above="@+id/searchMovies"
         android:paddingTop="10dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Suggest"
-        android:id="@+id/suggestion_button"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp"
-        android:textColor="@color/white"
-        android:background="@color/orange"/>
 
 </RelativeLayout>
