@@ -121,4 +121,12 @@
     <string name="title_activity_movie_item">MovieItemActivity</string>
     <string name="title_activity_detailed_movie">DetailedMovieActivity</string>
     <string name="title_activity_movie_suggestions">MovieSuggestions</string>
+    <string-array name="sortby">
+        <item>Title (A-Z)</item>
+        <item>Title (Z-A)</item>
+        <item>Rating (High-Low)</item>
+        <item>Rating (Low-High)</item>
+        <item>Year (Old-New)</item>
+        <item>Year (Old-New)</item>
+    </string-array>
 </resources>
