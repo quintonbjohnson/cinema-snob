@@ -13,7 +13,7 @@
     tools:context="project.github.cinemasnob.MovieSuggestionActivity"
     tools:showIn="@layout/activity_movie_suggestion"
     android:background="@color/brightBlue"
-    android:id="@+id/year_button">
+    >
 
     <Button
         style="?android:attr/buttonStyleSmall"
