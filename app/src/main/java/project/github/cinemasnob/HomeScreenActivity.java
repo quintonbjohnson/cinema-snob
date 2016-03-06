@@ -85,6 +85,18 @@ public class HomeScreenActivity extends AppCompatActivity {
             }
         });
 
+        // Suggestion button sends to profile
+        Button suggestion = (Button)findViewById(R.id.suggestion_button);
+
+        suggestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToSuggestion = new Intent(HomeScreenActivity.this,
+                        MovieSuggestionActivity.class);
+                startActivity(goToSuggestion);
+            }
+        });
+
         // RecentMovies button sends to recent movies
         Button recentMovies = (Button)findViewById(R.id.recentMovies_button);
 
