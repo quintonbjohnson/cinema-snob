@@ -16,20 +16,6 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:id="@+id/logout_button"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/orange"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:fontFamily="Helvetica"
-        android:textColor="@color/white" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Profile"
         android:id="@+id/profile_button"
         android:background="@color/orange"
@@ -39,7 +25,9 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:fontFamily="Helvetica"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        android:padding="9dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -53,7 +41,9 @@
         android:fontFamily="Helvetica"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/profile_button"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        android:padding="9dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -66,12 +56,43 @@
         android:fontFamily="Helvetica"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/logout_button"
-        android:textColor="@color/white" />
+        android:layout_toEndOf="@+id/recentMovies_button"
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        android:padding="9dp" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Suggestions"
+        android:id="@+id/suggestions_button"
+        android:background="@color/orange"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:fontFamily="Helvetica"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/recentDVD_button"
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        android:padding="9dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/logout_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/orange"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:fontFamily="Helvetica"
+        android:textColor="@color/white"
+        android:layout_toEndOf="@+id/suggestions_button"
+        android:textSize="10dp"
+        android:padding="9dp" />
 
     <EditText
         android:layout_width="wrap_content"

@@ -46,5 +46,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
         android:layout_below="@+id/textView9"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:entries="@strings/sortby" />
 </RelativeLayout>
