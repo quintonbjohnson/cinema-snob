@@ -50,7 +50,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="By Major"
+        android:text="By Your Major"
         android:id="@+id/major_button"
         android:layout_above="@+id/sorted_movies"
         android:layout_alignEnd="@+id/description"
