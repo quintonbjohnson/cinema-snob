@@ -127,11 +127,12 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
         if (c.moveToFirst()) {
             do {
                 String rating = c.getString(2);
+                String title = c.getString(0);
                 String id = c.getString(3);
                 int movieID = Integer.parseInt(id);
                 // If the movie hash map doesn't have the ID already, add it
                 if (!(movieHash.containsKey(movieID))) {
-                    MovieHelper movieHelp = new MovieHelper(Integer.parseInt(id), Float.parseFloat(rating), 0);
+                    MovieHelper movieHelp = new MovieHelper(Integer.parseInt(id), Float.parseFloat(rating), 0, title);
                     movieHash.put(Integer.parseInt(id), movieHelp);
                 } else if (movieHash.containsKey(movieID)) {
                     // If it does have the ID already, add count and add rating

@@ -154,7 +154,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Log.d("Ohfuck.jpg", "We done goofed");
+                                Log.d("Error", "There was a volley error.");
                             }
                         });
                 RequestController.getInstance().addToRequestQueue(jsonObjReq);

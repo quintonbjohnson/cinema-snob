@@ -23,14 +23,14 @@
         android:id="@+id/overall_button"
         android:textColor="@color/white"
         android:background="@color/orange"
-        android:layout_below="@+id/textView9"
+        android:layout_below="@+id/description"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"/>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/sorted_movies"
         android:smoothScrollbar="true"
         android:scrollingCache="true"
         android:scrollIndicators="right"
@@ -44,7 +44,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Sort movie suggestions"
         android:textColor="@color/white"
-        android:id="@+id/textView9"
+        android:id="@+id/description"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>
