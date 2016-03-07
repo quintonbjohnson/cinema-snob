@@ -30,6 +30,8 @@ public class MovieSuggestionActivity extends AppCompatActivity {
 
                 // Average out movies in the database
                 ArrayList<MovieHelper> movies = ratingdb.averageOverall(ratingdb);
+                // TODO sort the movies ArrayList by the ratings the MovieHelpers in them have from highest to lowest
+                // TODO get the ID for each movie in the sorted list and place them in the ListView in that order
             }
         });
     }
