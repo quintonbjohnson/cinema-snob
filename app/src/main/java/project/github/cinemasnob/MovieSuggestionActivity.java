@@ -71,7 +71,8 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                 String title = ((TextView) view).getText().toString();
                 int movieID = movieIds.get(title);
                 // Launching new Activity on selecting single List Item
-                Intent goToMovieItem = new Intent(getApplicationContext(), MovieItemActivity.class);
+                Intent goToMovieItem = new Intent(getApplicationContext(),
+                        MovieItemActivity.class);
                 // Sending data to new activity
                 goToMovieItem.putExtra("ID", movieID);
                 startActivity(goToMovieItem);
