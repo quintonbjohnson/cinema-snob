@@ -17,11 +17,13 @@ public class UserOpenHelper extends SQLiteOpenHelper {
     private static final String KEY_USERNAME = "Username";
     private static final String KEY_PASSWORD = "Password";
     private static final String KEY_EMAIL = "Email";
+    private static final String KEY_MAJOR = "Major";
     private static final String USER_TABLE_CREATE =
             "CREATE TABLE " + USER_TABLE_NAME + " (" +
                     KEY_USERNAME + " TEXT, " +
                     KEY_PASSWORD + " TEXT, " +
-                    KEY_EMAIL + " TEXT)";
+                    KEY_EMAIL + " Text, " +
+                    KEY_MAJOR + " TEXT)";
 
     /*
      * The constructor
@@ -43,12 +45,13 @@ public class UserOpenHelper extends SQLiteOpenHelper {
      * @param pass the password
      * @param email the email
      */
-    public void putUser(UserOpenHelper dbhelp, String name, String pass, String email) {
+    public void putUser(UserOpenHelper dbhelp, String name, String pass, String email, String major) {
         SQLiteDatabase db = dbhelp.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_USERNAME, name);
         values.put(KEY_PASSWORD, pass);
         values.put(KEY_EMAIL, email);
+        values.put(KEY_MAJOR, major);
         long newRowID = db.insert(
                         USER_TABLE_NAME,
                         null,
@@ -67,7 +70,7 @@ public class UserOpenHelper extends SQLiteOpenHelper {
 
         //Cursor for SQL Database
         Cursor c = db.query(USER_TABLE_NAME, new String[] {
-                KEY_USERNAME, KEY_PASSWORD, KEY_EMAIL},
+                KEY_USERNAME, KEY_PASSWORD, KEY_EMAIL, KEY_MAJOR},
                 KEY_USERNAME + "=?",
                 new String[] { name },
                 null, null, null, null);
@@ -78,8 +81,9 @@ public class UserOpenHelper extends SQLiteOpenHelper {
         String username = c.getString(c.getColumnIndexOrThrow(KEY_USERNAME));
         String password = c.getString(c.getColumnIndexOrThrow(KEY_PASSWORD));
         String userEmail = c.getString(c.getColumnIndexOrThrow(KEY_EMAIL));
+        String major = c.getString(c.getColumnIndexOrThrow(KEY_MAJOR));
         c.close();
-        return new User(username, password, userEmail);
+        return new User(username, password, userEmail, major);
     }
 
     /*

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -152,6 +153,65 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
         db.close();
         return movies;
     }
+
+    /**
+     * Goes through the database and averages the ratings of movies by major
+     * @param dbhelp the database
+     * @return an ArrayList of MovieHelpers that hold the movie ids with the
+     * average rating by major
+     */
+    public ArrayList<MovieHelper> averageMajor(RatingOpenHelper dbhelp,
+                                               UserOpenHelper userhelp,
+                                               String major) {
+        SQLiteDatabase ratingdb = dbhelp.getReadableDatabase();
+        Cursor c = ratingdb.rawQuery("SELECT Title, Username, Rating, Id FROM Rated ", null);
+        HashMap<Integer, MovieHelper>  movieHash = new HashMap<>();
+        if (c.moveToFirst()) {
+            do {
+
+                String title = c.getString(0);
+                String username = c.getString(1);
+                String rating = c.getString(2);
+                String id = c.getString(3);
+                User currentUser = userhelp.getUser(userhelp, username);
+                int movieID = Integer.parseInt(id);
+                // If the movie hash map doesn't have the ID already, add it
+                if (!(movieHash.containsKey(movieID))) {
+                    System.out.println("Current user: " + currentUser.getMajor());
+                    System.out.println("Other user: " + major);
+                    System.out.println(currentUser.getMajor().toLowerCase()
+                            .equals(major.toLowerCase()));
+                    if (currentUser.getMajor().toLowerCase()
+                            .equals(major.toLowerCase())) {
+                        MovieHelper movieHelp = new MovieHelper(
+                                Integer.parseInt(id),
+                                Float.parseFloat(rating),
+                                0,
+                                title);
+                        movieHash.put(Integer.parseInt(id), movieHelp);
+                    }
+                } else if (movieHash.containsKey(movieID)) {
+                    // If it does have the ID already, add count and add rating
+                    if (currentUser.getMajor().toLowerCase()
+                            .equals(major.toLowerCase())) {
+                        movieHash.get(movieID).addRating(Float.parseFloat(rating));
+                        movieHash.get(movieID).setCount(1);
+                    }
+                }
+            } while (c.moveToNext());
+        }
+        ArrayList<MovieHelper> movies = new ArrayList<>();
+        // Averaging out ratings
+        for (MovieHelper value : movieHash.values()) {
+            int totalMovies = value.getCount();
+            value.setRating(value.getRating() / totalMovies);
+            movies.add(value);
+        }
+        c.close();
+        ratingdb.close();
+        return movies;
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

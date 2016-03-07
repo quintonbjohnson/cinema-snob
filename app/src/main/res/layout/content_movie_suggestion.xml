@@ -19,13 +19,12 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Overall"
+        android:text="By Overall"
         android:id="@+id/overall_button"
         android:textColor="@color/white"
         android:background="@color/orange"
         android:layout_below="@+id/description"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"/>
+        android:layout_alignParentStart="true"/>
 
     <ListView
         android:layout_width="wrap_content"
@@ -47,4 +46,14 @@
         android:id="@+id/description"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="By Major"
+        android:id="@+id/major_button"
+        android:layout_above="@+id/sorted_movies"
+        android:layout_alignEnd="@+id/description"
+        android:background="@color/orange"
+        android:textColor="@color/white"/>
 </RelativeLayout>

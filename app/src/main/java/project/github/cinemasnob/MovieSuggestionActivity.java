@@ -22,6 +22,7 @@ import java.util.HashMap;
 public class MovieSuggestionActivity extends AppCompatActivity {
 
     private RatingOpenHelper ratingdb;
+    private UserOpenHelper userdb;
     private ListView sortedMovieList;
     private HashMap<String, Integer> movieIds = new HashMap<String, Integer>();
 
@@ -32,7 +33,11 @@ public class MovieSuggestionActivity extends AppCompatActivity {
         Context context = this;
         sortedMovieList = (ListView)findViewById(R.id.sorted_movies);
 
+        // Instantiate databases
         ratingdb = new RatingOpenHelper(context);
+        userdb = new UserOpenHelper(context);
+
+        // Sort overall movies
         Button overallButton = (Button)findViewById(R.id.overall_button);
 
         overallButton.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +68,42 @@ public class MovieSuggestionActivity extends AppCompatActivity {
             }
         });
 
+        // Sort overall ratings by major
+        Button majorButton = (Button)findViewById(R.id.major_button);
+
+        majorButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Comparator<MovieHelper> myComparator = new Comparator<MovieHelper>() {
+                    @Override
+                    public int compare(MovieHelper lhs, MovieHelper rhs) {
+                        return (int) ((int) lhs.getRating() - rhs.getRating());
+                    }
+                };
+                // Average out movies in the database
+                ArrayList<MovieHelper> movies = ratingdb.averageMajor(ratingdb,
+                        userdb,
+                        User.getCurrentUser().getMajor());
+                // Sort movies from highest to lowest rating
+                Collections.sort(movies, myComparator);
+                Collections.reverse(movies);
+                ArrayList<String> titles = new ArrayList<String>();
+                for (MovieHelper help : movies) {
+                    titles.add(help.getTitle());
+                    movieIds.put(help.getTitle(), help.getId());
+                }
+
+                // Populate the ListView
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        MovieSuggestionActivity.this,
+                        android.R.layout.simple_list_item_1,
+                        titles);
+                sortedMovieList.setAdapter(arrayAdapter);
+            }
+        });
+
+
+        // When User taps on a movie item, send him or her
+        // to the MovieItemActivity
         sortedMovieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -78,5 +119,7 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                 startActivity(goToMovieItem);
             }
         });
+
+
     }
 }

@@ -55,6 +55,7 @@ public class RegistrationActivity extends AppCompatActivity {
         EditText usernameBox = (EditText)findViewById(R.id.register_username);
         EditText passwordBox = (EditText)findViewById(R.id.register_password);
         EditText emailBox = (EditText)findViewById(R.id.register_email);
+        EditText majorBox = (EditText)findViewById(R.id.register_major);
 
         UserOpenHelper userdb = new UserOpenHelper(context);
         User checkUser = userdb.getUser(userdb, usernameBox.getText().toString());
@@ -83,7 +84,8 @@ public class RegistrationActivity extends AppCompatActivity {
             userdb.putUser(userdb,
                     usernameBox.getText().toString(),
                     passwordBox.getText().toString(),
-                    emailBox.getText().toString());
+                    emailBox.getText().toString(),
+                    majorBox.getText().toString());
             ProfileOpenHelper profiledb = new ProfileOpenHelper(context);
             profiledb.putProfile(profiledb, usernameBox.getText().toString(), "", "");
             Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();

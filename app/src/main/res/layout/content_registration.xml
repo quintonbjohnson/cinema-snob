@@ -101,4 +101,19 @@
         android:textIsSelectable="false"
         android:textSize="30dp" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_major"
+        android:layout_below="@+id/register_password"
+        android:hint="Major"
+        android:layout_alignStart="@+id/register_password"
+        android:layout_alignEnd="@+id/submit_register"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:fontFamily="Helvetica"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:backgroundTint="@color/white"/>
+
 </RelativeLayout>
