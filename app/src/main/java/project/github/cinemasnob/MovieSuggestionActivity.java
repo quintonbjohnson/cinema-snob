@@ -60,11 +60,8 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                 }
 
                 // Populate the ListView
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                        MovieSuggestionActivity.this,
-                        android.R.layout.simple_list_item_1,
-                        titles);
-                sortedMovieList.setAdapter(arrayAdapter);
+                MovieListAdapter adapter = new MovieListAdapter(HomeScreenActivity.this, R.layout.listview_layout, moviesList);
+                sortedMovieList.setAdapter(adapter);
             }
         });
 
@@ -93,11 +90,8 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                 }
 
                 // Populate the ListView
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                        MovieSuggestionActivity.this,
-                        android.R.layout.simple_list_item_1,
-                        titles);
-                sortedMovieList.setAdapter(arrayAdapter);
+                MovieListAdapter adapter = new MovieListAdapter(HomeScreenActivity.this, R.layout.listview_layout, moviesList);
+                sortedMovieList.setAdapter(adapter);
             }
         });
 

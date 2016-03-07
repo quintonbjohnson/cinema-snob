@@ -15,7 +15,6 @@ public class MovieHelper {
         this.id = id;
         this.count = 1;
         this.title = title;
-
     }
 
     /**

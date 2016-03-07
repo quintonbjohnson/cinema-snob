@@ -39,10 +39,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Actors"
         android:id="@+id/textView2"
-        android:layout_below="@+id/profilePicture"
-        android:layout_alignStart="@+id/synopsisText"
         android:paddingTop="20dp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/profilePicture"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,7 +52,8 @@
         android:paddingTop="5dp"
         android:textColor="@color/white"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,7 +74,8 @@
         android:layout_below="@+id/textView3"
         android:layout_alignStart="@+id/actorsText"
         android:paddingTop="5dp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:paddingLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -146,7 +148,8 @@
         android:layout_below="@+id/textView8"
         android:layout_alignStart="@+id/textView4"
         android:paddingTop="5dp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:paddingLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -167,6 +170,7 @@
         android:paddingTop="5dp"
         android:textColor="@color/white"
         android:layout_alignBottom="@+id/textView6"
-        android:layout_toEndOf="@+id/title_text" />
+        android:layout_toEndOf="@+id/title_text"
+        android:paddingLeft="10dp" />
 
 </RelativeLayout>

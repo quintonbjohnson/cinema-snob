@@ -19,12 +19,14 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="By Overall"
+        android:text="Overall"
         android:id="@+id/overall_button"
         android:textColor="@color/white"
         android:background="@color/orange"
         android:layout_below="@+id/description"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignStart="@+id/description"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -35,25 +37,28 @@
         android:scrollIndicators="right"
         android:layout_below="@+id/overall_button"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="36dp"/>
+        android:paddingTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Sort movie suggestions"
+        android:text="Sort suggestions by:"
         android:textColor="@color/white"
         android:id="@+id/description"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="10dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="By Your Major"
+        android:text="Major"
         android:id="@+id/major_button"
         android:layout_above="@+id/sorted_movies"
         android:layout_alignEnd="@+id/description"
         android:background="@color/orange"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp" />
 </RelativeLayout>

@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /*
@@ -49,7 +50,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                     int position, long id) {
 
                 // selected item
-                String title = ((TextView) view).getText().toString();
+                String title = ((TextView) view.findViewById(R.id.movieName)).getText().toString();
                 int movieID = movieIds.get(title);
                 // Launching new Activity on selecting single List Item
                 Intent i = new Intent(getApplicationContext(), MovieItemActivity.class);
@@ -138,11 +139,12 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 // that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));
                             }
-                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                                    HomeScreenActivity.this,
-                                    android.R.layout.simple_list_item_1,
-                                    listOfMovies.getTitleList());
-                            movieList.setAdapter(arrayAdapter);
+                            // Construct the data source
+                            ArrayList<Movie> moviesList = listOfMovies.getMovieList();
+                            // Create the adapter to convert the array to views
+                            MovieListAdapter adapter = new MovieListAdapter(HomeScreenActivity.this, R.layout.listview_layout, moviesList);
+                            // Attach the adapter to a ListView
+                            movieList.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(),
@@ -198,10 +200,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
 
                             }
-                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(HomeScreenActivity.this,
-                                    android.R.layout.simple_list_item_1,
-                                    listOfMovies.getTitleList());
-                            movieList.setAdapter(arrayAdapter);
+                            MovieListAdapter adapter = new MovieListAdapter(HomeScreenActivity.this, R.layout.listview_layout, listOfMovies.getMovieList());
+                            movieList.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(),
@@ -265,11 +265,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 // that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));
                             }
-                            ArrayAdapter<String> arrayAdapter =
-                                    new ArrayAdapter<String>(HomeScreenActivity.this,
-                                            android.R.layout.simple_list_item_1,
-                                            listOfMovies.getTitleList());
-                            movieList.setAdapter(arrayAdapter);
+                            MovieListAdapter adapter = new MovieListAdapter(HomeScreenActivity.this, R.layout.listview_layout, listOfMovies.getMovieList());
+                            movieList.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(),

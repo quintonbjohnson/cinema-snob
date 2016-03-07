@@ -33,4 +33,12 @@ public class MovieList {
         }
         return titles;
     }
+
+    /**
+     * get list of movie objects
+     * @return arraylist of movie objects
+     */
+    public ArrayList<Movie> getMovieList() {
+        return movieList;
+    }
 }
