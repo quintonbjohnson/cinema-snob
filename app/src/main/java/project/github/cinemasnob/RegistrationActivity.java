@@ -47,7 +47,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     /**
-     * Takes place when 'Register' button is clicked, adds User to database
+     * Takes place when 'Register' button is clicked, add User to database
      * if username and email are not taken
      * @param view The current view
      */
