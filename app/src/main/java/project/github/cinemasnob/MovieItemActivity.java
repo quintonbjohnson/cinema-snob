@@ -50,7 +50,7 @@ public class MovieItemActivity extends AppCompatActivity {
         Intent i = getIntent();
 
         // Getting attached intent data from first element
-        int movieID = i.getIntExtra("ID", 0);
+        final int movieID = i.getIntExtra("ID", 0);
         String url = "";
         try {
             url = "http://api.rottentomatoes.com/api/public/v1.0/movies/"
@@ -131,11 +131,11 @@ public class MovieItemActivity extends AppCompatActivity {
                 Rating currentRating = ratingdb.getRating(ratingdb,
                         currentUser.getUserName(), title);
                 if ((currentRating) == null) {
-                    ratingdb.putRating(ratingdb, currentUser.getUserName(), title, rating);
+                    ratingdb.putRating(ratingdb, currentUser.getUserName(), title, rating, movieID);
                 } else {
                     System.out.println(currentUser.getUserName());
                     ratingdb.updateRating(ratingdb, Float.toString(rating), title,
-                            currentUser.getUserName());
+                            currentUser.getUserName(), movieID);
                 }
             }
         });

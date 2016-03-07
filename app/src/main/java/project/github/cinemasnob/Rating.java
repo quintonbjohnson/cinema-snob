@@ -8,11 +8,13 @@ public class Rating {
     private String username;
     private String movieTitle;
     private float rating;
+    private int id;
 
-    public Rating(String username, String movieTitle, float rating) {
+    public Rating(String username, String movieTitle, float rating, int id) {
         this.username = username;
         this.movieTitle = movieTitle;
         this.rating = rating;
+        this.id = id;
     }
 
     /**
@@ -37,5 +39,13 @@ public class Rating {
      */
     public float getRating() {
         return rating;
+    }
+
+    /**
+     * Get id
+     * @return Movie's id
+     */
+    public int getId() {
+        return id;
     }
 }

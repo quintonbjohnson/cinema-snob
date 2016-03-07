@@ -7,17 +7,19 @@ public class User {
 
     private String userName;
     private String password;
+    private String major;
     private static User currentUser;
 
     /**
      * Instantiates the User object
-     * @param n Username
-     * @param p Password
-     * @param e Email
+     * @param name Username
+     * @param password Password
+     * @param major Email
      */
-    public User(String n, String p, String e ) {
-        userName = n;
-        password = p;
+    public User(String name, String password, String major) {
+        this.userName = name;
+        this.password = password;
+        this.major = major;
     }
 
     /**
@@ -33,6 +35,14 @@ public class User {
      * @return User's username
      */
     public String getUserName() {
+        return userName;
+    }
+
+    /**
+     * Getter method for major
+     * @return User's major
+     */
+    public String getMajor() {
         return userName;
     }
 
