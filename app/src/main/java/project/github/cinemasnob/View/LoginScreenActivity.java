@@ -1,4 +1,4 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.View;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import project.github.cinemasnob.R;
+import project.github.cinemasnob.Model.User;
+import project.github.cinemasnob.Controller.UserOpenHelper;
 
 /*
  * Class for the main activity

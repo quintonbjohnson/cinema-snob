@@ -1,4 +1,4 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.Model;
 
 /**
  * Represents a single user
@@ -69,7 +69,7 @@ public class User {
      * Sets the currentUser
      * @param user theCurrentUser
      */
-    static void setCurrentUser(User user) {
+    public static void setCurrentUser(User user) {
         currentUser = user;
     }
 }

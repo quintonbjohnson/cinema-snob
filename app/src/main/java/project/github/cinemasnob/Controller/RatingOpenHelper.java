@@ -1,17 +1,17 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.Controller;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+
+import project.github.cinemasnob.Model.MovieHelper;
+import project.github.cinemasnob.Model.Rating;
+import project.github.cinemasnob.Model.User;
 
 /**
  * Class for the ProfileOpenHelper SQLite database

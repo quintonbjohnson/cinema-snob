@@ -1,10 +1,13 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.Controller;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import project.github.cinemasnob.Model.Profile;
+import project.github.cinemasnob.Model.User;
 
 /**
  * Class for the ProfileOpenHelper SQLite database

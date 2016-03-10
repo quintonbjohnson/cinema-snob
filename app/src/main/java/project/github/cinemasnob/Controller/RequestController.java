@@ -1,4 +1,4 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.Controller;
 
 
 import android.app.Application;
