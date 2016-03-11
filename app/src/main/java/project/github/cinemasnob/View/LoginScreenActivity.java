@@ -54,7 +54,6 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         UserOpenHelper userdb = new UserOpenHelper(context);
         User currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
-        System.out.println(currentUser.getBanStatus());
         // Check if User exists
         if (currentUser != null) {
             if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
