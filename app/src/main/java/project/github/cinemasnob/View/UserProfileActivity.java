@@ -18,8 +18,6 @@ import project.github.cinemasnob.Model.User;
  */
 public class UserProfileActivity extends AppCompatActivity {
 
-    private ProfileOpenHelper profiledb;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Context context = this;
@@ -45,14 +43,13 @@ public class UserProfileActivity extends AppCompatActivity {
         // Get currentUser and profile
         User currentUser = User.getCurrentUser();
         if (currentUser != null) {
-            ProfileOpenHelper profiledb = new ProfileOpenHelper(context);
-            Profile currentProfile = profiledb.getProfile(profiledb, currentUser.getUserName());
+            ProfileOpenHelper profileDB = new ProfileOpenHelper(context);
+            Profile currentProfile =
+                    profileDB.getProfile(profileDB, currentUser.getUserName());
 
             // Set text fields
-            System.out.println("Major:" + currentProfile.getMajor());
-            System.out.println(currentProfile.getInterests());
             nameView.setText(currentUser.getUserName());
-            major.setText(currentProfile.getMajor());
+            major.setText(currentUser.getMajor());
             interests.setText(currentProfile.getInterests());
         }
     }

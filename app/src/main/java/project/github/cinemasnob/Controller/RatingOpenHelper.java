@@ -14,7 +14,7 @@ import project.github.cinemasnob.Model.Rating;
 import project.github.cinemasnob.Model.User;
 
 /**
- * Class for the ProfileOpenHelper SQLite database
+ * Class for the ProfileOpenHelper SQLite database.
  */
 public class RatingOpenHelper extends SQLiteOpenHelper {
 
@@ -33,7 +33,7 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
                     KEY_ID + " TEXT)";
 
     /*
-     * The constructor
+     * The constructor.
      * @param context the context of the activity
      */
     public RatingOpenHelper(Context context) {
@@ -41,106 +41,119 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(MOVIE_TABLE_CREATE);
+    public void onCreate(SQLiteDatabase database) {
+        database.execSQL(MOVIE_TABLE_CREATE);
     }
 
     /**
-     * Put the profile in the database
-     * @param dbhelp the database
+     * Put the profile in the database.
+     * @param dbHelp the database
      * @param name the username of the User
      * @param title the major of the User
      * @param rating the interests of the User
      */
-    public void putRating(RatingOpenHelper dbhelp, String name, String title, float rating, int id) {
-        SQLiteDatabase db = dbhelp.getWritableDatabase();
+    public void putRating(RatingOpenHelper dbHelp, String name,
+                          String title, float rating, int id) {
+        SQLiteDatabase database = dbHelp.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, title);
         values.put(KEY_USERNAME, name);
         values.put(KEY_RATING, Float.toString(rating));
         values.put(KEY_ID, id);
-        long newRowID = db.insert(
+        database.insert(
                 MOVIE_TABLE_NAME,
                 null,
                 values);
     }
 
     /**
-     * Get profile based on given info
-     * @param dbhelp the database
+     * Get profile based on given info.
+     * @param dbHelp the database
      * @param name the userName
      * @param title the title of the movie
      * @return the Profile
      */
-    public Rating getRating(RatingOpenHelper dbhelp, String name, String title) {
-        SQLiteDatabase db = dbhelp.getReadableDatabase();
-        String[] projection = {
-                KEY_TITLE,
-                KEY_USERNAME,
-                KEY_RATING,
-                KEY_ID
-        };
-        String whereClause = KEY_TITLE + "=?" + " AND " + KEY_USERNAME + "=?";
-        String[] whereArgs = new String[]{title, name};
+    public Rating getRating(RatingOpenHelper dbHelp, String name,
+                            String title, String id) {
+        SQLiteDatabase database = dbHelp.getReadableDatabase();
+
+        String whereClause = KEY_TITLE + "=?" + " AND "
+                + KEY_USERNAME + "=?" + " AND "
+                + KEY_ID  + "=?";
+        String[] whereArgs = new String[]{title, name, id};
 
         //Cursor for SQL Database
-        Cursor c = db.query(MOVIE_TABLE_NAME, new String[] {
+        Cursor cursor = database.query(MOVIE_TABLE_NAME, new String[] {
                         KEY_TITLE, KEY_USERNAME, KEY_RATING, KEY_ID},
                 whereClause,
                 whereArgs,
                 null, null, null, null);
 
-        if (!(c.moveToFirst())) {
+        if (!(cursor.moveToFirst())) {
             return null;
         }
 
-        String movieTitle = c.getString(c.getColumnIndexOrThrow(KEY_TITLE));
-        String username = c.getString(c.getColumnIndexOrThrow(KEY_USERNAME));
-        String rating = c.getString(c.getColumnIndexOrThrow(KEY_RATING));
-        int movieId = c.getInt(c.getColumnIndexOrThrow(KEY_ID));
-        return new Rating(username, movieTitle, Float.parseFloat(rating), movieId);
+        String movieTitle =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_TITLE));
+        String username =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_USERNAME));
+        String rating =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_RATING));
+        int movieId =
+                cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID));
+        cursor.close();
+        return new Rating(username,
+                movieTitle,
+                Float.parseFloat(rating),
+                movieId);
     }
 
     /**
-     * Update a profile interests based on given info
-     * @param dbhelp the database
+     * Update a profile interests based on given info.
+     * @param dbHelp the database
      * @param rating the interests
      */
-    public void updateRating(RatingOpenHelper dbhelp, String rating, String title, String name, int id) {
-        SQLiteDatabase db = dbhelp.getReadableDatabase();
+    public void updateRating(RatingOpenHelper dbHelp, String rating,
+                             String title, String name, String movieID) {
+        SQLiteDatabase database = dbHelp.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_RATING, rating);
-        String whereClause = KEY_TITLE + "=?" + " AND " + KEY_USERNAME + "=?";
-        String[] whereArgs = new String[]{title, name};
-        db.update(MOVIE_TABLE_NAME, values, whereClause, whereArgs);
+        String whereClause = KEY_TITLE + "=?" + " AND "
+                + KEY_USERNAME + "=?" + " AND "
+                + KEY_ID + "=?";
+        String[] whereArgs = new String[]{title, name, movieID};
+        database.update(MOVIE_TABLE_NAME, values, whereClause, whereArgs);
     }
 
     /**
-     * Goes through the database and averages the ratings of movies
-     * @param dbhelp the database
+     * Goes through the database and averages the ratings of movies.
+     * @param dbHelp the database
      * @return an ArrayList of MovieHelpers that hold the movie ids with the
      * average rating
      */
-    public ArrayList<MovieHelper> averageOverall(RatingOpenHelper dbhelp) {
-        SQLiteDatabase db = dbhelp.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT Title, Username, Rating, Id FROM Rated ", null);
+    public ArrayList<MovieHelper> averageOverall(RatingOpenHelper dbHelp) {
+        SQLiteDatabase database = dbHelp.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT Title, Username, "
+                + "Rating, Id FROM Rated ", null);
         HashMap<Integer, MovieHelper>  movieHash = new HashMap<>();
-        if (c.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
-                String rating = c.getString(2);
-                String title = c.getString(0);
-                String id = c.getString(3);
+                String rating = cursor.getString(2);
+                String title = cursor.getString(0);
+                String id = cursor.getString(3);
                 int movieID = Integer.parseInt(id);
                 // If the movie hash map doesn't have the ID already, add it
                 if (!(movieHash.containsKey(movieID))) {
-                    MovieHelper movieHelp = new MovieHelper(Integer.parseInt(id), Float.parseFloat(rating), 0, title);
+                    MovieHelper movieHelp =
+                            new MovieHelper(Integer.parseInt(id),
+                                    Float.parseFloat(rating), 0, title);
                     movieHash.put(Integer.parseInt(id), movieHelp);
                 } else if (movieHash.containsKey(movieID)) {
                     // If it does have the ID already, add count and add rating
                     movieHash.get(movieID).addRating(Float.parseFloat(rating));
                     movieHash.get(movieID).setCount(1);
                 }
-            } while (c.moveToNext());
+            } while (cursor.moveToNext());
         }
         ArrayList<MovieHelper> movies = new ArrayList<>();
         // Averaging out ratings
@@ -149,40 +162,36 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
             value.setRating(value.getRating() / totalMovies);
             movies.add(value);
         }
-        c.close();
-        db.close();
+        cursor.close();
+        database.close();
         return movies;
     }
 
     /**
-     * Goes through the database and averages the ratings of movies by major
-     * @param dbhelp the database
+     * Goes through the database and averages the ratings of movies by major.
+     * @param dbHelp the database
      * @return an ArrayList of MovieHelpers that hold the movie ids with the
      * average rating by major
      */
-    public ArrayList<MovieHelper> averageMajor(RatingOpenHelper dbhelp,
-                                               UserOpenHelper userhelp,
+    public ArrayList<MovieHelper> averageMajor(RatingOpenHelper dbHelp,
+                                               UserOpenHelper userHelp,
                                                String major) {
-        SQLiteDatabase ratingdb = dbhelp.getReadableDatabase();
-        Cursor c = ratingdb.rawQuery("SELECT Title, Username, Rating, Id FROM Rated ", null);
+        SQLiteDatabase ratingDB = dbHelp.getReadableDatabase();
+        Cursor cursor = ratingDB.rawQuery("SELECT Title, Username, "
+                + "Rating, Id FROM Rated ", null);
         HashMap<Integer, MovieHelper>  movieHash = new HashMap<>();
-        if (c.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
 
-                String title = c.getString(0);
-                String username = c.getString(1);
-                String rating = c.getString(2);
-                String id = c.getString(3);
-                User currentUser = userhelp.getUser(userhelp, username);
+                String title = cursor.getString(0);
+                String username = cursor.getString(1);
+                String rating = cursor.getString(2);
+                String id = cursor.getString(3);
+                User currentUser = userHelp.getUser(userHelp, username);
                 int movieID = Integer.parseInt(id);
                 // If the movie hash map doesn't have the ID already, add it
                 if (!(movieHash.containsKey(movieID))) {
-                    System.out.println("Current user: " + currentUser.getMajor());
-                    System.out.println("Other user: " + major);
-                    System.out.println(currentUser.getMajor().toLowerCase()
-                            .equals(major.toLowerCase()));
-                    if (currentUser.getMajor().toLowerCase()
-                            .equals(major.toLowerCase())) {
+                    if (currentUser.getMajor().equalsIgnoreCase(major)) {
                         MovieHelper movieHelp = new MovieHelper(
                                 Integer.parseInt(id),
                                 Float.parseFloat(rating),
@@ -192,13 +201,12 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
                     }
                 } else if (movieHash.containsKey(movieID)) {
                     // If it does have the ID already, add count and add rating
-                    if (currentUser.getMajor().toLowerCase()
-                            .equals(major.toLowerCase())) {
+                    if (currentUser.getMajor().equalsIgnoreCase(major)) {
                         movieHash.get(movieID).addRating(Float.parseFloat(rating));
                         movieHash.get(movieID).setCount(1);
                     }
                 }
-            } while (c.moveToNext());
+            } while (cursor.moveToNext());
         }
         ArrayList<MovieHelper> movies = new ArrayList<>();
         // Averaging out ratings
@@ -207,15 +215,15 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
             value.setRating(value.getRating() / totalMovies);
             movies.add(value);
         }
-        c.close();
-        ratingdb.close();
+        cursor.close();
+        ratingDB.close();
         return movies;
     }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        // Overridden method
     }
 }
 

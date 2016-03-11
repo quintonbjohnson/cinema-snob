@@ -10,7 +10,7 @@ import project.github.cinemasnob.Model.Profile;
 import project.github.cinemasnob.Model.User;
 
 /**
- * Class for the ProfileOpenHelper SQLite database
+ * Class for the ProfileOpenHelper SQLite database.
  */
 public class ProfileOpenHelper extends SQLiteOpenHelper {
 
@@ -27,7 +27,7 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
                     KEY_INTERESTS + " TEXT)";
 
     /*
-     * The constructor
+     * The constructor.
      * @param context the context of the activity
      */
     public ProfileOpenHelper(Context context) {
@@ -35,73 +35,72 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(PROFILE_TABLE_CREATE);
+    public void onCreate(SQLiteDatabase database) {
+        database.execSQL(PROFILE_TABLE_CREATE);
     }
 
     /**
-     * Put the profile in the database
-     * @param dbhelp the database
+     * Put the profile in the database.
+     * @param dbHelp the database
      * @param name the username of the User
      * @param major the major of the User
      * @param interests the interests of the User
      */
-    public void putProfile(ProfileOpenHelper dbhelp, String name, String major, String interests ) {
-        SQLiteDatabase db = dbhelp.getWritableDatabase();
+    public void putProfile(ProfileOpenHelper dbHelp, String name,
+                           String major, String interests ) {
+        SQLiteDatabase database = dbHelp.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_USERNAME, name);
         values.put(KEY_MAJOR, major);
         values.put(KEY_INTERESTS, interests);
-        long newRowID = db.insert(
+        database.insert(
                 PROFILE_TABLE_NAME,
                 null,
                 values);
     }
 
     /**
-     * Get profile based on given info
-     * @param dbhelp the database
+     * Get profile based on given info.
+     * @param dbHelp the database
      * @param name the userName
      * @return the Profile
      */
-    public Profile getProfile(ProfileOpenHelper dbhelp, String name) {
-        SQLiteDatabase db = dbhelp.getReadableDatabase();
-        String[] projection = {
-                KEY_USERNAME,
-                KEY_MAJOR,
-                KEY_INTERESTS
-        };
-        String sortOrder = KEY_USERNAME + " DESC";
+    public Profile getProfile(ProfileOpenHelper dbHelp, String name) {
+        SQLiteDatabase database = dbHelp.getReadableDatabase();
 
         //Cursor for SQL Database
-        Cursor c = db.query(PROFILE_TABLE_NAME, new String[] {
+        Cursor cursor = database.query(PROFILE_TABLE_NAME, new String[] {
                         KEY_USERNAME, KEY_MAJOR, KEY_INTERESTS},
                 KEY_USERNAME + "=?",
                 new String[] { name },
                 null, null, null, null);
 
-        if (!(c.moveToFirst())) {
+        if (!(cursor.moveToFirst())) {
             return null;
         }
-        String username = c.getString(c.getColumnIndexOrThrow(KEY_USERNAME));
-        String major = c.getString(c.getColumnIndexOrThrow(KEY_MAJOR));
-        String interests = c.getString(c.getColumnIndexOrThrow(KEY_INTERESTS));
+        String username =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_USERNAME));
+        String major =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_MAJOR));
+        String interests =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_INTERESTS));
+        cursor.close();
         return new Profile(username, major, interests);
     }
 
     /**
-     * Update a profile major based on given info
-     * @param dbhelp the database
+     * Update a profile major based on given info.
+     * @param dbHelp the database
      * @param major the major
      */
-    public void updateMajor(ProfileOpenHelper dbhelp, String major) {
-        SQLiteDatabase db = dbhelp.getReadableDatabase();
+    public void updateMajor(ProfileOpenHelper dbHelp, String major) {
+        SQLiteDatabase database = dbHelp.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_MAJOR, major);
         String selection = KEY_USERNAME + " LIKE ?";
         String[] selectionArgs = {User.getCurrentUser().getUserName()};
 
-        int count = db.update(
+        database.update(
                 PROFILE_TABLE_NAME,
                 values,
                 selection,
@@ -110,18 +109,18 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Update a profile interests based on given info
-     * @param dbhelp the database
+     * Update a profile interests based on given info.
+     * @param dbHelp the database
      * @param interests the interests
      */
-    public void updateInterests(ProfileOpenHelper dbhelp, String interests) {
-        SQLiteDatabase db = dbhelp.getReadableDatabase();
+    public void updateInterests(ProfileOpenHelper dbHelp, String interests) {
+        SQLiteDatabase database = dbHelp.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_INTERESTS, interests);
         String selection = KEY_USERNAME + " LIKE ?";
         String[] selectionArgs = {User.getCurrentUser().getUserName()};
 
-        int count = db.update(
+        database.update(
                 PROFILE_TABLE_NAME,
                 values,
                 selection,
@@ -131,7 +130,7 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        // Overridden method
     }
 }
 

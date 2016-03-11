@@ -8,10 +8,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 /**
- * Controls request queue
+ * Controls request queue.
  */
 public class RequestController extends Application {
-    public static final String TAG = RequestController.class.getSimpleName();
+
+    private static final String TAG = RequestController.class.getSimpleName();
     private RequestQueue rq;
     private static RequestController instance;
 
@@ -22,7 +23,7 @@ public class RequestController extends Application {
     }
 
     /**
-     * Gets the current instance of the application
+     * Gets the current instance of the application.
      * @return RequestController of the current instance
      */
     public static synchronized RequestController getInstance() {
@@ -30,7 +31,7 @@ public class RequestController extends Application {
     }
 
     /**
-     * Get method that returns the request queue
+     * Get method that returns the request queue.
      * @return request queue for calling the API and returning JSON object
      */
     public RequestQueue getRequestQueue() {
@@ -41,7 +42,7 @@ public class RequestController extends Application {
     }
 
     /**
-     * Adds a request to the request queue
+     * Adds a request to the request queue.
      * @param req request to be added to queue
      * @param tag tag name for adding
      * @param <T> any type of request
@@ -52,7 +53,7 @@ public class RequestController extends Application {
     }
 
     /**
-     * Adds a request to the request queue
+     * Adds a request to the request queue.
      * @param req request to be added to queue
      * @param <T> any type of request
      */
@@ -62,8 +63,8 @@ public class RequestController extends Application {
     }
 
     /**
-     * Cancels all pending requests currently in the request queue
-     * @param tag the tag specified will have all requests under this tag removed
+     * Cancels all pending requests currently in the request queue.
+     * @param tag the tag specified will have all requests removed with the tag
      */
     public void cancelPendingRequests(Object tag) {
         if (rq != null) {

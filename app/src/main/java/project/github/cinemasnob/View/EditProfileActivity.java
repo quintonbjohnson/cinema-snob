@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import project.github.cinemasnob.Controller.ProfileOpenHelper;
 import project.github.cinemasnob.R;
@@ -18,6 +19,8 @@ import project.github.cinemasnob.Model.User;
 public class EditProfileActivity extends AppCompatActivity {
 
     private Context context;
+    private EditText majorBox;
+    private EditText interestsBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,11 @@ public class EditProfileActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+        majorBox = (EditText)findViewById(R.id.majorText);
+        interestsBox = (EditText)findViewById(R.id.interestsText);
+        majorBox.setText(User.getCurrentUser().getMajor(),
+                TextView.BufferType.EDITABLE );
 
         Button saveChangesButton = (Button) findViewById(R.id.SaveChanges);
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
@@ -41,8 +49,8 @@ public class EditProfileActivity extends AppCompatActivity {
      * @param v Current view
      */
     public void onSaveButtonClicked(View v) {
-        EditText majorBox = (EditText)findViewById(R.id.majorText);
-        EditText interestsBox = (EditText)findViewById(R.id.interestsText);
+        majorBox = (EditText)findViewById(R.id.majorText);
+        interestsBox = (EditText)findViewById(R.id.interestsText);
 
         String majorData = majorBox.getText().toString();
         String interestsData = interestsBox.getText().toString();

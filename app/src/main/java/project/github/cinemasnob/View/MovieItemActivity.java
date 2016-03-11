@@ -103,7 +103,7 @@ public class MovieItemActivity extends AppCompatActivity {
                     ratingdb = new RatingOpenHelper(context);
                     RatingBar movieRating = (RatingBar) findViewById(R.id.ratingBar2);
                     Rating currentRating = ratingdb.getRating(ratingdb, currentUser.getUserName(),
-                            title);
+                            title, Integer.toString(movieID));
                     if (currentRating != null) {
                         movieRating.setRating(currentRating.getRating());
                     }
@@ -133,13 +133,13 @@ public class MovieItemActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 Rating currentRating = ratingdb.getRating(ratingdb,
-                        currentUser.getUserName(), title);
+                        currentUser.getUserName(), title, Integer.toString(movieID));
                 if ((currentRating) == null) {
                     ratingdb.putRating(ratingdb, currentUser.getUserName(), title, rating, movieID);
                 } else {
                     System.out.println(currentUser.getUserName());
                     ratingdb.updateRating(ratingdb, Float.toString(rating), title,
-                            currentUser.getUserName(), movieID);
+                            currentUser.getUserName(), Integer.toString(movieID));
                 }
             }
         });

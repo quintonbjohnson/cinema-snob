@@ -9,13 +9,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 
-import project.github.cinemasnob.Model.MovieHelper;
 import project.github.cinemasnob.Model.User;
 
 /**
- * Class for the UserOpenHelper SQLite database
+ * Class for the UserOpenHelper SQLite database.
  */
 public class UserOpenHelper extends SQLiteOpenHelper {
 
@@ -35,87 +33,95 @@ public class UserOpenHelper extends SQLiteOpenHelper {
                     KEY_MAJOR + " TEXT, " +
                     KEY_BANNED + " TEXT)";
 
-    /*
-     * The constructor
-     * @param context the context of the activity
+    /**
+     * Constructor
+     * @param context context used to create database.
      */
     public UserOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(USER_TABLE_CREATE);
+    public void onCreate(SQLiteDatabase database) {
+        database.execSQL(USER_TABLE_CREATE);
     }
 
-    /*
-     * Put user in database
-     * @param dbhelp the database helper
-     * @param name the username
-     * @param pass the password
-     * @param email the email
+    /**
+     * Add a User with the given info to the database.
+     * @param dbHelp the database
+     * @param name the username of the User
+     * @param pass the password for the User
+     * @param email the email of the User
+     * @param major the major of the User
+     * @param ban the ban status of the User
      */
-    public void putUser(UserOpenHelper dbhelp, String name, String pass, String email,
+    public void putUser(UserOpenHelper dbHelp, String name,
+                        String pass, String email,
                         String major, boolean ban) {
-        SQLiteDatabase db = dbhelp.getWritableDatabase();
+        SQLiteDatabase database = dbHelp.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_USERNAME, name);
         values.put(KEY_PASSWORD, pass);
         values.put(KEY_EMAIL, email);
         values.put(KEY_MAJOR, major);
         values.put(KEY_BANNED, Boolean.toString(ban));
-        long newRowID = db.insert(
-                        USER_TABLE_NAME,
-                        null,
-                        values);
+        database.insert(
+                USER_TABLE_NAME,
+                null,
+                values);
     }
 
-    /*
-     * Gets user from database used in login
-     * @param dbhelp database helper
-     * @param name username to get user
-     * @return the user
+    /**
+     * Get the User with the given username from the database.
+     * @param dbHelp the database
+     * @param name the username
+     * @return the User
      */
-    public User getUser(UserOpenHelper dbhelp, String name) {
-        SQLiteDatabase db = dbhelp.getReadableDatabase();
-        String sortOrder = KEY_USERNAME + " DESC";
+    public User getUser(UserOpenHelper dbHelp, String name) {
+        SQLiteDatabase database = dbHelp.getReadableDatabase();
 
         //Cursor for SQL Database
-        Cursor c = db.query(USER_TABLE_NAME, new String[] {
+        Cursor cursor = database.query(USER_TABLE_NAME, new String[] {
                 KEY_USERNAME, KEY_PASSWORD, KEY_EMAIL, KEY_MAJOR, KEY_BANNED},
                 KEY_USERNAME + "=?",
                 new String[] { name },
                 null, null, null, null);
 
-        if (!(c.moveToFirst())) {
+        if (!(cursor.moveToFirst())) {
             return null;
         }
-        String username = c.getString(c.getColumnIndexOrThrow(KEY_USERNAME));
-        String password = c.getString(c.getColumnIndexOrThrow(KEY_PASSWORD));
-        String userEmail = c.getString(c.getColumnIndexOrThrow(KEY_EMAIL));
-        String major = c.getString(c.getColumnIndexOrThrow(KEY_MAJOR));
-        String banned = c.getString(c.getColumnIndexOrThrow(KEY_BANNED));
+        String username =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_USERNAME));
+        String password =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_PASSWORD));
+        String userEmail =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_EMAIL));
+        String major =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_MAJOR));
+        String banned =
+                cursor.getString(cursor.getColumnIndexOrThrow(KEY_BANNED));
         Boolean isBanned = Boolean.parseBoolean(banned);
-        c.close();
+        cursor.close();
         return new User(username, password, userEmail, major, isBanned);
     }
 
     /**
-     * Gets the list of usernames from the database
-     * @param dbhelp the database
-     * @return the list of usernames
+     * Gets the list of names from the database.
+     * @param dbHelp the database
+     * @return the list of names
      */
-    public ArrayList<String> getUserList(UserOpenHelper dbhelp) {
-        SQLiteDatabase db = dbhelp.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT Username FROM Registered", null);
+    public ArrayList<String> getUserList(UserOpenHelper dbHelp) {
+        SQLiteDatabase database = dbHelp.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT Username "
+                + "FROM Registered", null);
         ArrayList<String> userList = new ArrayList<>();
-        if (c.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
-                String username = c.getString(0);
+                String username = cursor.getString(0);
                 if (!username.equals("ADMIN")) {
                     userList.add(username);
                 }
-            } while (c.moveToNext());
+            } while (cursor.moveToNext());
         }
         Collections.sort(userList, new Comparator<String>() {
             @Override
@@ -123,33 +129,35 @@ public class UserOpenHelper extends SQLiteOpenHelper {
                 return s1.compareToIgnoreCase(s2);
             }
         });
-        c.close();
-        db.close();
+        cursor.close();
+        database.close();
         return userList;
     }
 
     /**
-     * Update the database to denote that the User with the given username is banned
-     * @param dbhelp the database
+     * Update the database to denote that the
+     * User with the given username is banned.
+     * @param dbHelp the database
      * @param name the username of the User to ban
      */
-    public void setBanStatusOfUser(UserOpenHelper dbhelp, String name, boolean ban) {
-        SQLiteDatabase db = dbhelp.getReadableDatabase();
+    public void setBanStatusOfUser(UserOpenHelper dbHelp,
+                                   String name, boolean ban) {
+        SQLiteDatabase database = dbHelp.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_BANNED, Boolean.toString(ban));
         String whereClause = KEY_USERNAME + "=?";
         String[] whereArgs = new String[]{name};
-        db.update(USER_TABLE_NAME, values, whereClause, whereArgs);
+        database.update(USER_TABLE_NAME, values, whereClause, whereArgs);
     }
 
     /*
-     * On upgrade, not used
+     * On upgrade, not used.
      * @param db
      * @param oldVersion
      * @param newVersion
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        // Overridden method
     }
 }
