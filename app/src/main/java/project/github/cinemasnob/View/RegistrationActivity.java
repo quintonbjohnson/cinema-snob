@@ -69,9 +69,10 @@ public class RegistrationActivity extends AppCompatActivity {
         if (usernameBox.getText().toString().trim().equals("") ||
                 passwordBox.getText().toString().trim().equals("") ||
                 emailBox.getText().toString().trim().equals("") ||
-                !(emailBox.getText().toString().contains("@"))) {
+                !(emailBox.getText().toString().contains("@")) ||
+                majorBox.getText().toString().equals("")) {
             // Invalid entries
-            failedLogin = "Please enter a valid username, password, and email.";
+            failedLogin = "Please enter a valid username, password, email, and major.";
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast fail = Toast.makeText(context, failedLogin, duration);
@@ -90,7 +91,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     usernameBox.getText().toString(),
                     passwordBox.getText().toString(),
                     emailBox.getText().toString(),
-                    majorBox.getText().toString());
+                    majorBox.getText().toString(), false);
             ProfileOpenHelper profiledb = new ProfileOpenHelper(context);
             profiledb.putProfile(profiledb, usernameBox.getText().toString(), "", "");
             Toast.makeText(getBaseContext(), "Successfully registered!", Toast.LENGTH_LONG).show();

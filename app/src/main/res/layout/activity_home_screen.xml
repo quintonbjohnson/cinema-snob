@@ -6,8 +6,7 @@
     android:fitsSystemWindows="true"
     tools:context=".View.HomeScreenActivity">
 
-    <include layout="@layout/content_home_screen"
-        android:id="@+id/logoutButton" />
+    <include layout="@layout/content_home_screen" />
 
 
 </android.support.design.widget.CoordinatorLayout>

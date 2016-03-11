@@ -9,7 +9,15 @@ public class User {
     private String password;
     private String email;
     private String major;
+    private boolean isBanned;
     private static User currentUser;
+
+    /**
+     * No-args constructor for User
+     */
+    public User() {
+
+    }
 
     /**
      * Instantiates the User object
@@ -18,11 +26,12 @@ public class User {
      *
      * @param major Major
      */
-    public User(String name, String password, String email, String major) {
+    public User(String name, String password, String email, String major, boolean isBanned) {
         this.userName = name;
         this.password = password;
         this.email = email;
         this.major = major;
+        this.isBanned = isBanned;
     }
 
     /**
@@ -55,6 +64,14 @@ public class User {
      */
     public String getMajor() {
         return major;
+    }
+
+    /**
+     * Getter method for checking if User is banned
+     * @return if the User is banned
+     */
+    public boolean getBanStatus() {
+        return isBanned;
     }
 
     /**

@@ -66,7 +66,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
 
         // Logout button sends back to login screen
-        Button logout = (Button)findViewById(R.id.logout_button);
+        Button logout = (Button)findViewById(R.id.admin_logout);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

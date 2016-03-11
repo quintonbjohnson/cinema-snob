@@ -122,4 +122,6 @@
     <string name="title_activity_detailed_movie">DetailedMovieActivity</string>
     <string name="title_activity_movie_suggestion">MovieSuggestionActivity
     </string>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="title_activity_user_item">UserItemActivity</string>
 </resources>

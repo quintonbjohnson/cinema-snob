@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="project.github.cinemasnob.View.UserItemActivity"
+    tools:showIn="@layout/activity_user_item"
+    android:background="@color/brightBlue">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Username"
+        android:id="@+id/username_text"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="30dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ban User"
+        android:id="@+id/ban_button"
+        android:background="@color/orange"
+        android:textColor="@color/white"
+        android:layout_marginBottom="54dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/email_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Email"
+        android:id="@+id/email_text"
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/username_text"
+        android:layout_alignStart="@+id/major_text"
+        android:textSize="20dp"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Major"
+        android:id="@+id/major_text"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="56dp"
+        android:layout_below="@+id/email_text"
+        android:layout_toStartOf="@+id/username_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ban Status"
+        android:id="@+id/ban_status"
+        android:textColor="@color/white"
+        android:layout_below="@+id/major_text"
+        android:layout_alignStart="@+id/major_text"
+        android:layout_marginTop="65dp"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unlock User"
+        android:id="@+id/unlock_button"
+        android:background="@color/orange"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/ban_button"
+        android:layout_toEndOf="@+id/username_text" />
+</RelativeLayout>

@@ -54,13 +54,30 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         UserOpenHelper userdb = new UserOpenHelper(context);
         User currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
+        System.out.println(currentUser.getBanStatus());
         // Check if User exists
         if (currentUser != null) {
             if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
-                Intent goToHomeScreen = new Intent(this, HomeScreenActivity.class);
-                User.setCurrentUser(currentUser);
-                startActivity(goToHomeScreen);
-                finish();
+                if (currentUser.getUserName().equals("ADMIN")
+                        && currentUser.getPassword().equals("2340")) {
+                    // Admin case; go to AdminScreen
+                    Intent goToAdminScreen = new Intent(this, AdminActivity.class);
+                    User.setCurrentUser(currentUser);
+                    startActivity(goToAdminScreen);
+                    finish();
+                } else if (currentUser.getBanStatus()) {
+                    CharSequence failedLogin = "You have been banned. " +
+                            "Please contact Cinema Snob administration.";
+                    Context context = getApplicationContext();
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast fail = Toast.makeText(context, failedLogin, duration);
+                    fail.show();
+                } else {
+                    Intent goToHomeScreen = new Intent(this, HomeScreenActivity.class);
+                    User.setCurrentUser(currentUser);
+                    startActivity(goToHomeScreen);
+                    finish();
+                }
             } else {
                 CharSequence failedLogin = "Incorrect Username or Password, try again.";
                 Context context = getApplicationContext();

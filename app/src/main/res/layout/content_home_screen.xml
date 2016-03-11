@@ -21,7 +21,7 @@
         android:background="@color/orange"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/logout_button"
+        android:layout_alignBottom="@+id/admin_logout"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:fontFamily="Helvetica"
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"
-        android:id="@+id/logout_button"
+        android:id="@+id/admin_logout"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@id/suggestion_button"
@@ -147,7 +147,7 @@
         android:src="@mipmap/login_logo"
         android:layout_toStartOf="@+id/searchText"
         android:layout_below="@+id/profile_button"
-        android:layout_alignEnd="@+id/logout_button"
+        android:layout_alignEnd="@+id/admin_logout"
         android:layout_above="@+id/searchMovies"
         android:paddingTop="10dp" />
 
