@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import project.github.cinemasnob.R;
 import project.github.cinemasnob.controller.UserOpenHelper;
@@ -28,7 +29,7 @@ public class AdminActivity extends AppCompatActivity {
 
         final UserOpenHelper userdb = new UserOpenHelper(this);
 
-        ArrayList<String> listOfUsernames = userdb.getUserList(userdb);
+        List<String> listOfUsernames = userdb.getUserList(userdb);
 
         ListView userList = (ListView)findViewById(R.id.user_list);
 

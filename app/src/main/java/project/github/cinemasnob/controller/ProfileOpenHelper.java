@@ -14,19 +14,46 @@ import project.github.cinemasnob.model.User;
  */
 public class ProfileOpenHelper extends SQLiteOpenHelper {
 
+    /**
+     * The version of the database.
+     */
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "Profile";
-    private static final String PROFILE_TABLE_NAME = "Registered";
-    private static final String KEY_USERNAME = "Username";
-    private static final String KEY_INTERESTS = "Interests";
-    private static final String KEY_MAJOR = "Major";
-    private static final String PROFILE_TABLE_CREATE =
-            "CREATE TABLE " + PROFILE_TABLE_NAME + " (" +
-                    KEY_USERNAME + " TEXT, " +
-                    KEY_MAJOR + " TEXT, " +
-                    KEY_INTERESTS + " TEXT)";
 
-    /*
+    /**
+     * The name of the database.
+     */
+    private static final String DATABASE_NAME = "Profile";
+
+    /**
+     * The name of the Table created.
+     */
+    private static final String TABLE_NAME = "Registered";
+
+    /**
+     * The key for a Username.
+     */
+    private static final String KEY_USERNAME = "Username";
+
+    /**
+     * The Interests of the User.
+     */
+    private static final String KEY_INTERESTS = "Interests";
+
+    /**
+     * The Major of the User.
+     */
+    private static final String KEY_MAJOR = "Major";
+
+    /**
+     * Creation of the table.
+     */
+    private static final String TABLE_CREATE =
+            "CREATE TABLE " + TABLE_NAME + " ("
+                    + KEY_USERNAME + " TEXT, "
+                    + KEY_MAJOR + " TEXT, "
+                    + KEY_INTERESTS + " TEXT)";
+
+    /**
      * The constructor.
      * @param context the context of the activity
      */
@@ -36,7 +63,7 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        database.execSQL(PROFILE_TABLE_CREATE);
+        database.execSQL(TABLE_CREATE);
     }
 
     /**
@@ -54,7 +81,7 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
         values.put(KEY_MAJOR, major);
         values.put(KEY_INTERESTS, interests);
         database.insert(
-                PROFILE_TABLE_NAME,
+                TABLE_NAME,
                 null,
                 values);
     }
@@ -69,10 +96,10 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = dbHelp.getReadableDatabase();
 
         //Cursor for SQL Database
-        Cursor cursor = database.query(PROFILE_TABLE_NAME, new String[] {
-                        KEY_USERNAME, KEY_MAJOR, KEY_INTERESTS},
+        Cursor cursor = database.query(TABLE_NAME,
+                new String[] {KEY_USERNAME, KEY_MAJOR, KEY_INTERESTS},
                 KEY_USERNAME + "=?",
-                new String[] { name },
+                new String[] {name},
                 null, null, null, null);
 
         if (!(cursor.moveToFirst())) {
@@ -101,7 +128,7 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {User.getCurrentUser().getUserName()};
 
         database.update(
-                PROFILE_TABLE_NAME,
+                TABLE_NAME,
                 values,
                 selection,
                 selectionArgs
@@ -121,7 +148,7 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {User.getCurrentUser().getUserName()};
 
         database.update(
-                PROFILE_TABLE_NAME,
+                TABLE_NAME,
                 values,
                 selection,
                 selectionArgs
@@ -129,7 +156,8 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase database,
+                          int oldVersion, int newVersion) {
         // Overridden method
     }
 }

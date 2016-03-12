@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 import project.github.cinemasnob.model.User;
 
@@ -17,24 +18,59 @@ import project.github.cinemasnob.model.User;
  */
 public class UserOpenHelper extends SQLiteOpenHelper {
 
+    /**
+     * Version of the database.
+     */
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "Users";
-    private static final String USER_TABLE_NAME = "Registered";
-    private static final String KEY_USERNAME = "Username";
-    private static final String KEY_PASSWORD = "Password";
-    private static final String KEY_EMAIL = "Email";
-    private static final String KEY_MAJOR = "Major";
-    private static final String KEY_BANNED = "Banned";
-    private static final String USER_TABLE_CREATE =
-            "CREATE TABLE " + USER_TABLE_NAME + " (" +
-                    KEY_USERNAME + " TEXT, " +
-                    KEY_PASSWORD + " TEXT, " +
-                    KEY_EMAIL + " TEXT, " +
-                    KEY_MAJOR + " TEXT, " +
-                    KEY_BANNED + " TEXT)";
 
     /**
-     * Constructor
+     * The name of the database.
+     */
+    private static final String DATABASE_NAME = "Users";
+
+    /**
+     * The name of the table created.
+     */
+    private static final String USER_TABLE_NAME = "Registered";
+
+    /**
+     * The Username associated with the User.
+     */
+    private static final String KEY_USERNAME = "Username";
+
+    /**
+     * The Password associated with the User.
+     */
+    private static final String KEY_PASSWORD = "Password";
+
+    /**
+     * The Email associated with the User.
+     */
+    private static final String KEY_EMAIL = "Email";
+
+    /**
+     * The Major associated with the User.
+     */
+    private static final String KEY_MAJOR = "Major";
+
+    /**
+     * The banStatus of the User.
+     */
+    private static final String KEY_BANNED = "Banned";
+
+    /**
+     * Creation of the table.
+     */
+    private static final String USER_TABLE_CREATE =
+            "CREATE TABLE " + USER_TABLE_NAME + " ("
+                    + KEY_USERNAME + " TEXT, "
+                    + KEY_PASSWORD + " TEXT, "
+                    + KEY_EMAIL + " TEXT, "
+                    + KEY_MAJOR + " TEXT, "
+                    + KEY_BANNED + " TEXT)";
+
+    /**
+     * Constructor.
      * @param context context used to create database.
      */
     public UserOpenHelper(Context context) {
@@ -81,10 +117,11 @@ public class UserOpenHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = dbHelp.getReadableDatabase();
 
         //Cursor for SQL Database
-        Cursor cursor = database.query(USER_TABLE_NAME, new String[] {
-                KEY_USERNAME, KEY_PASSWORD, KEY_EMAIL, KEY_MAJOR, KEY_BANNED},
+        Cursor cursor = database.query(USER_TABLE_NAME,
+                new String[] {KEY_USERNAME, KEY_PASSWORD,
+                    KEY_EMAIL, KEY_MAJOR, KEY_BANNED, },
                 KEY_USERNAME + "=?",
-                new String[] { name },
+                new String[] {name},
                 null, null, null, null);
 
         if (!(cursor.moveToFirst())) {
@@ -110,15 +147,15 @@ public class UserOpenHelper extends SQLiteOpenHelper {
      * @param dbHelp the database
      * @return the list of names
      */
-    public ArrayList<String> getUserList(UserOpenHelper dbHelp) {
+    public List<String> getUserList(UserOpenHelper dbHelp) {
         SQLiteDatabase database = dbHelp.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT Username "
                 + "FROM Registered", null);
-        ArrayList<String> userList = new ArrayList<>();
+        List<String> userList = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
                 String username = cursor.getString(0);
-                if (!username.equals("ADMIN")) {
+                if (!"ADMIN".equals(username)) {
                     userList.add(username);
                 }
             } while (cursor.moveToNext());
@@ -139,6 +176,7 @@ public class UserOpenHelper extends SQLiteOpenHelper {
      * User with the given username is banned.
      * @param dbHelp the database
      * @param name the username of the User to ban
+     * @param ban the ban status to set to.
      */
     public void setBanStatusOfUser(UserOpenHelper dbHelp,
                                    String name, boolean ban) {
@@ -157,7 +195,8 @@ public class UserOpenHelper extends SQLiteOpenHelper {
      * @param newVersion
      */
     @Override
-    public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase database,
+                          int oldVersion, int newVersion) {
         // Overridden method
     }
 }

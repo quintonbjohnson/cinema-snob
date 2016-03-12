@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 import project.github.cinemasnob.R;
 import project.github.cinemasnob.controller.RatingOpenHelper;
@@ -55,7 +56,7 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                     }
                 };
                 // Average out movies in the database
-                ArrayList<MovieHelper> movies = ratingdb.averageOverall(ratingdb);
+                List<MovieHelper> movies = ratingdb.averageOverall(ratingdb);
                 // Sort movies from highest to lowest rating
                 Collections.sort(movies, myComparator);
                 Collections.reverse(movies);
@@ -86,7 +87,7 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                     }
                 };
                 // Average out movies in the database
-                ArrayList<MovieHelper> movies = ratingdb.averageMajor(ratingdb,
+                List<MovieHelper> movies = ratingdb.averageMajor(ratingdb,
                         userdb,
                         User.getCurrentUser().getMajor());
                 // Sort movies from highest to lowest rating

@@ -12,9 +12,21 @@ import com.android.volley.toolbox.Volley;
  */
 public class RequestController extends Application {
 
+    /**
+     * TAG of the request.
+     */
     private static final String TAG = RequestController.class.getSimpleName();
-    private RequestQueue requestQueue;
+
+    /**
+     * The RequestController.
+     */
     private static RequestController instance;
+
+    /**
+     * Queue made for requests.
+     */
+    private static RequestQueue requestQueue;
+
 
     @Override
     public void onCreate() {
@@ -35,10 +47,10 @@ public class RequestController extends Application {
      * @return request queue for calling the API and returning JSON object
      */
     public RequestQueue getRequestQueue() {
-        if (this.requestQueue == null) {
-            this.requestQueue = Volley.newRequestQueue(getApplicationContext());
+        if (requestQueue == null) {
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-        return this.requestQueue;
+        return requestQueue;
     }
 
     /**
@@ -67,8 +79,8 @@ public class RequestController extends Application {
      * @param tag the tag specified will have all requests removed with the tag
      */
     public void cancelPendingRequests(Object tag) {
-        if (this.requestQueue != null) {
-            this.requestQueue.cancelAll(tag);
+        if (requestQueue != null) {
+            requestQueue.cancelAll(tag);
         }
     }
 }
