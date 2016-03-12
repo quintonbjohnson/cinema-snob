@@ -1,4 +1,4 @@
-package project.github.cinemasnob.Model;
+package project.github.cinemasnob;
 
 /**
  * Represent a rating object

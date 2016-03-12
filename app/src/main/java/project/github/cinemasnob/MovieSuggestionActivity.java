@@ -1,4 +1,4 @@
-package project.github.cinemasnob.View;
+package project.github.cinemasnob;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,12 +15,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-
-import project.github.cinemasnob.Model.MovieHelper;
-import project.github.cinemasnob.R;
-import project.github.cinemasnob.Controller.RatingOpenHelper;
-import project.github.cinemasnob.Model.User;
-import project.github.cinemasnob.Controller.UserOpenHelper;
 
 /**
  * Movie suggestions

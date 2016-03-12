@@ -1,4 +1,4 @@
-package project.github.cinemasnob.Controller;
+package project.github.cinemasnob;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,8 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
-import project.github.cinemasnob.Model.User;
 
 /**
  * Class for the UserOpenHelper SQLite database.
@@ -125,8 +123,8 @@ public class UserOpenHelper extends SQLiteOpenHelper {
         }
         Collections.sort(userList, new Comparator<String>() {
             @Override
-            public int compare(String s1, String s2) {
-                return s1.compareToIgnoreCase(s2);
+            public int compare(String string1, String string2) {
+                return string1.compareToIgnoreCase(string2);
             }
         });
         cursor.close();
@@ -157,7 +155,7 @@ public class UserOpenHelper extends SQLiteOpenHelper {
      * @param newVersion
      */
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
         // Overridden method
     }
 }

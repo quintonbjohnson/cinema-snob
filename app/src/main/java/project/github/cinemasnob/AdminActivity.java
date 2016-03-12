@@ -1,4 +1,4 @@
-package project.github.cinemasnob.View;
+package project.github.cinemasnob;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import project.github.cinemasnob.Controller.UserOpenHelper;
-import project.github.cinemasnob.Model.User;
-import project.github.cinemasnob.R;
 
 
 /**

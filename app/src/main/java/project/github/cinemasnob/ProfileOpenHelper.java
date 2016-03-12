@@ -1,13 +1,10 @@
-package project.github.cinemasnob.Controller;
+package project.github.cinemasnob;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import project.github.cinemasnob.Model.Profile;
-import project.github.cinemasnob.Model.User;
 
 /**
  * Class for the ProfileOpenHelper SQLite database.
@@ -47,7 +44,7 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
      * @param interests the interests of the User
      */
     public void putProfile(ProfileOpenHelper dbHelp, String name,
-                           String major, String interests ) {
+                           String major, String interests) {
         SQLiteDatabase database = dbHelp.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_USERNAME, name);
@@ -129,7 +126,7 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
         // Overridden method
     }
 }

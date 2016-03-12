@@ -1,4 +1,4 @@
-package project.github.cinemasnob.Controller;
+package project.github.cinemasnob;
 
 
 import android.app.Application;
@@ -13,7 +13,7 @@ import com.android.volley.toolbox.Volley;
 public class RequestController extends Application {
 
     private static final String TAG = RequestController.class.getSimpleName();
-    private RequestQueue rq;
+    private RequestQueue requestQueue;
     private static RequestController instance;
 
     @Override
@@ -35,10 +35,10 @@ public class RequestController extends Application {
      * @return request queue for calling the API and returning JSON object
      */
     public RequestQueue getRequestQueue() {
-        if (rq == null) {
-            rq = Volley.newRequestQueue(getApplicationContext());
+        if (this.requestQueue == null) {
+            this.requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-        return rq;
+        return this.requestQueue;
     }
 
     /**
@@ -49,7 +49,7 @@ public class RequestController extends Application {
      */
     public <T> void addToRequestQueue(Request<T> req, String tag) {
         req.setTag(TAG);
-        getRequestQueue().add(req);
+        this.getRequestQueue().add(req);
     }
 
     /**
@@ -59,7 +59,7 @@ public class RequestController extends Application {
      */
     public <T> void addToRequestQueue(Request<T> req) {
         req.getTag();
-        getRequestQueue().add(req);
+        this.getRequestQueue().add(req);
     }
 
     /**
@@ -67,8 +67,8 @@ public class RequestController extends Application {
      * @param tag the tag specified will have all requests removed with the tag
      */
     public void cancelPendingRequests(Object tag) {
-        if (rq != null) {
-            rq.cancelAll(tag);
+        if (this.requestQueue != null) {
+            this.requestQueue.cancelAll(tag);
         }
     }
 }

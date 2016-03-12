@@ -1,4 +1,4 @@
-package project.github.cinemasnob.Controller;
+package project.github.cinemasnob;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,10 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import project.github.cinemasnob.Model.MovieHelper;
-import project.github.cinemasnob.Model.Rating;
-import project.github.cinemasnob.Model.User;
 
 /**
  * Class for the ProfileOpenHelper SQLite database.
@@ -53,13 +49,13 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
      * @param rating the interests of the User
      */
     public void putRating(RatingOpenHelper dbHelp, String name,
-                          String title, float rating, int id) {
+                          String title, float rating, int movieID) {
         SQLiteDatabase database = dbHelp.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, title);
         values.put(KEY_USERNAME, name);
         values.put(KEY_RATING, Float.toString(rating));
-        values.put(KEY_ID, id);
+        values.put(KEY_ID, movieID);
         database.insert(
                 MOVIE_TABLE_NAME,
                 null,
@@ -74,13 +70,13 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
      * @return the Profile
      */
     public Rating getRating(RatingOpenHelper dbHelp, String name,
-                            String title, String id) {
+                            String title, String movieID) {
         SQLiteDatabase database = dbHelp.getReadableDatabase();
 
         String whereClause = KEY_TITLE + "=?" + " AND "
                 + KEY_USERNAME + "=?" + " AND "
                 + KEY_ID  + "=?";
-        String[] whereArgs = new String[]{title, name, id};
+        String[] whereArgs = new String[]{title, name, movieID};
 
         //Cursor for SQL Database
         Cursor cursor = database.query(MOVIE_TABLE_NAME, new String[] {
@@ -140,14 +136,14 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
             do {
                 String rating = cursor.getString(2);
                 String title = cursor.getString(0);
-                String id = cursor.getString(3);
-                int movieID = Integer.parseInt(id);
+                String stringID = cursor.getString(3);
+                int movieID = Integer.parseInt(stringID);
                 // If the movie hash map doesn't have the ID already, add it
                 if (!(movieHash.containsKey(movieID))) {
                     MovieHelper movieHelp =
-                            new MovieHelper(Integer.parseInt(id),
+                            new MovieHelper(Integer.parseInt(stringID),
                                     Float.parseFloat(rating), 0, title);
-                    movieHash.put(Integer.parseInt(id), movieHelp);
+                    movieHash.put(Integer.parseInt(stringID), movieHelp);
                 } else if (movieHash.containsKey(movieID)) {
                     // If it does have the ID already, add count and add rating
                     movieHash.get(movieID).addRating(Float.parseFloat(rating));
@@ -186,18 +182,18 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
                 String title = cursor.getString(0);
                 String username = cursor.getString(1);
                 String rating = cursor.getString(2);
-                String id = cursor.getString(3);
+                String stringID = cursor.getString(3);
                 User currentUser = userHelp.getUser(userHelp, username);
-                int movieID = Integer.parseInt(id);
+                int movieID = Integer.parseInt(stringID);
                 // If the movie hash map doesn't have the ID already, add it
                 if (!(movieHash.containsKey(movieID))) {
                     if (currentUser.getMajor().equalsIgnoreCase(major)) {
                         MovieHelper movieHelp = new MovieHelper(
-                                Integer.parseInt(id),
+                                Integer.parseInt(stringID),
                                 Float.parseFloat(rating),
                                 0,
                                 title);
-                        movieHash.put(Integer.parseInt(id), movieHelp);
+                        movieHash.put(Integer.parseInt(stringID), movieHelp);
                     }
                 } else if (movieHash.containsKey(movieID)) {
                     // If it does have the ID already, add count and add rating
@@ -222,7 +218,7 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
 
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
         // Overridden method
     }
 }

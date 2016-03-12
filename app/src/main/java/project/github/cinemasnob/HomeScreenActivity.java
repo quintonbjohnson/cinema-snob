@@ -1,4 +1,4 @@
-package project.github.cinemasnob.View;
+package project.github.cinemasnob;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,11 +25,6 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
-
-import project.github.cinemasnob.Model.Movie;
-import project.github.cinemasnob.Model.MovieList;
-import project.github.cinemasnob.R;
-import project.github.cinemasnob.Controller.RequestController;
 
 /*
  * Home Screen

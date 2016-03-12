@@ -1,4 +1,4 @@
-package project.github.cinemasnob.Model;
+package project.github.cinemasnob;
 
 import java.util.ArrayList;
 

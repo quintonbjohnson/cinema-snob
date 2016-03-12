@@ -9,51 +9,51 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".Controller.RequestController"
+        android:name=".RequestController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".View.LoginScreenActivity"
+            android:name=".LoginScreenActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.HomeScreenActivity"
+            android:name=".HomeScreenActivity"
             android:label="@string/title_activity_home_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.RegistrationActivity"
+            android:name=".RegistrationActivity"
             android:label="@string/title_activity_create_profile"
-            android:parentActivityName=".View.LoginScreenActivity"
+            android:parentActivityName=".LoginScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".View.LoginScreenActivity" />
+                android:value=".LoginScreenActivity" />
         </activity>
         <activity
-            android:name=".View.UserProfileActivity"
+            android:name=".UserProfileActivity"
             android:label="@string/title_activity_user_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.EditProfileActivity"
+            android:name=".EditProfileActivity"
             android:label="@string/title_activity_edit_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.MovieItemActivity"
+            android:name=".MovieItemActivity"
             android:label="@string/title_activity_movie_item"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.MovieSuggestionActivity"
+            android:name=".MovieSuggestionActivity"
             android:label="@string/title_activity_movie_suggestion"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.AdminActivity"
+            android:name=".AdminActivity"
             android:label="@string/title_activity_admin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.UserItemActivity"
+            android:name=".UserItemActivity"
             android:label="@string/title_activity_user_item"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
