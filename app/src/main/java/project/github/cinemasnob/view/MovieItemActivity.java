@@ -1,4 +1,4 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,12 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import project.github.cinemasnob.R;
+import project.github.cinemasnob.controller.RatingOpenHelper;
+import project.github.cinemasnob.controller.RequestController;
+import project.github.cinemasnob.model.Rating;
+import project.github.cinemasnob.model.User;
 
 public class MovieItemActivity extends AppCompatActivity {
 

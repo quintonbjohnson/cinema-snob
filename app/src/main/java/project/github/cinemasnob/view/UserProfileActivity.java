@@ -1,4 +1,4 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.content.Context;
+
+import project.github.cinemasnob.R;
+import project.github.cinemasnob.controller.ProfileOpenHelper;
+import project.github.cinemasnob.model.Profile;
+import project.github.cinemasnob.model.User;
 
 /*
  * User profile

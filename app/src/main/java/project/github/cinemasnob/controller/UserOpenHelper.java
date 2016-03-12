@@ -1,4 +1,4 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.controller;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
+import project.github.cinemasnob.model.User;
 
 /**
  * Class for the UserOpenHelper SQLite database.

@@ -1,4 +1,4 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.model;
 
 /**
  * Movie helper for averaging ratings

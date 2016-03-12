@@ -1,4 +1,4 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.controller;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import project.github.cinemasnob.model.MovieHelper;
+import project.github.cinemasnob.model.Rating;
+import project.github.cinemasnob.model.User;
 
 /**
  * Class for the ProfileOpenHelper SQLite database.

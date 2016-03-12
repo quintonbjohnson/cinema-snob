@@ -1,4 +1,4 @@
-package project.github.cinemasnob;
+package project.github.cinemasnob.model;
 
 /**
  * Created by Maxwell on 2/21/2016.
