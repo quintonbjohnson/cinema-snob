@@ -27,10 +27,9 @@ import project.github.cinemasnob.model.User;
 
 public class MovieItemActivity extends AppCompatActivity {
 
-    public String title = "";
-    public String actors = "";
-    public String genre = "";
-    public String synopsis = "";
+    private String title = "";
+    private String actors = "";
+    private String genre = "";
     private Context context;
     private RatingOpenHelper ratingdb;
     private User currentUser;
@@ -47,9 +46,10 @@ public class MovieItemActivity extends AppCompatActivity {
         final TextView titleText = (TextView) findViewById(R.id.title_text);
         final TextView actorText = (TextView) findViewById(R.id.actorsText);
         final TextView genreText = (TextView) findViewById(R.id.genreText);
-        final TextView ratingText = (TextView) findViewById(R.id.rtRatingText);
-        final TextView synopsisText = (TextView) findViewById(R.id.synopsisText);
-        final ImageView profileView = (ImageView) findViewById(R.id.profilePicture);
+        //final TextView ratingText = (TextView) findViewById(R.id.rtRatingText);
+        //final TextView mpaaRatingText = (TextView) findViewById(R.id.mpaaRating);
+        //final TextView synopsisText = (TextView) findViewById(R.id.synopsisText);
+        //final ImageView profileView = (ImageView) findViewById(R.id.profilePicture);
 
         Intent i = getIntent();
 
@@ -96,6 +96,7 @@ public class MovieItemActivity extends AppCompatActivity {
                     //titleText.setText(synopsis);
                     //rating = movie.getString("rating");
                     //titleText.setText(rating);
+                    //mpaaRatingText.setText(response.getString("mpaa_rating"));
 
                     //Bitmap myBitmap = BitmapFactory.decodeFile(movie.getJSONObject("posters").getString("profile"));
                     //profileView.setImageBitmap(myBitmap);

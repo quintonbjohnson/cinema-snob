@@ -39,7 +39,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     private static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
     private static final int MOVIE_PAGE_LIMIT = 10;
     private ListView movieList;
-    private HashMap<String, Integer> movieIds = new HashMap<String, Integer>();
+    private HashMap<String, Integer> movieIds = new HashMap<>();
     private EditText searchBox;
 
     @Override
@@ -109,7 +109,6 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 movieList = (ListView)findViewById(R.id.movieList);
-                final String movieSearchString = "Recent Movies";
                 final MovieList listOfMovies = new MovieList();
                 String url = "";
                 try {
@@ -128,7 +127,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                         try {
                             JSONArray movies = response.getJSONArray("movies");
                             //one single movie
-                            JSONObject movie = null;
+                            JSONObject movie;
                             //Test block to see how many movies
                             // there are that are returned in the JSON object
                             for (int i = 0; i < movies.length(); i++) {
@@ -138,12 +137,12 @@ public class HomeScreenActivity extends AppCompatActivity {
                                         movie.getString("year"),
                                         movie.getString("mpaa_rating"), movie.getString("id"));
                                 listOfMovies.addMovie(newMovie);
-                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
+                                movieIds.put(movie.getString("title"), Integer.parseInt(movie.getString("id")));
                                 //will print out all the titles of the movies
                                 // that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));
                             }
-                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                                     HomeScreenActivity.this,
                                     android.R.layout.simple_list_item_1,
                                     listOfMovies.getTitleList());
@@ -172,7 +171,6 @@ public class HomeScreenActivity extends AppCompatActivity {
         recentDVD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String movieSearchString = "Recent Movies";
                 final MovieList listOfMovies = new MovieList();
                 String url = "";
                 try {
@@ -191,7 +189,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                         try {
                             JSONArray movies = response.getJSONArray("movies");
                             // One single movie
-                            JSONObject movie = null;
+                            JSONObject movie;
                             // Iterating through JSON objects
                             for (int i = 0; i < movies.length(); i++) {
                                 movie = movies.getJSONObject(i);
@@ -200,10 +198,10 @@ public class HomeScreenActivity extends AppCompatActivity {
                                         movie.getString("year"),
                                         movie.getString("mpaa_rating"), movie.getString("id"));
                                 listOfMovies.addMovie(newMovie);
-                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
+                                movieIds.put(movie.getString("title"), Integer.parseInt(movie.getString("id")));
 
                             }
-                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(HomeScreenActivity.this,
+                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(HomeScreenActivity.this,
                                     android.R.layout.simple_list_item_1,
                                     listOfMovies.getTitleList());
                             movieList.setAdapter(arrayAdapter);
@@ -256,7 +254,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                         try {
                             JSONArray movies = response.getJSONArray("movies");
                             // One single movie
-                            JSONObject movie = null;
+                            JSONObject movie;
                             // Test block to see how many movies there are
                             // that are returned in the JSON object
                             for (int i = 0; i < movies.length(); i++) {
@@ -265,13 +263,13 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 Movie newMovie = new Movie(movie.getString("title"),
                                         movie.getString("year"), movie.getString("mpaa_rating"), movie.getString("id"));
                                 listOfMovies.addMovie(newMovie);
-                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
+                                movieIds.put(movie.getString("title"), Integer.parseInt(movie.getString("id")));
                                 // Will print out all the titles of the movies
                                 // that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));
                             }
                             ArrayAdapter<String> arrayAdapter =
-                                    new ArrayAdapter<String>(HomeScreenActivity.this,
+                                    new ArrayAdapter<>(HomeScreenActivity.this,
                                             android.R.layout.simple_list_item_1,
                                             listOfMovies.getTitleList());
                             movieList.setAdapter(arrayAdapter);
