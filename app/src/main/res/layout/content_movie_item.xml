@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".view.MovieItemActivity"
+    tools:context="project.github.cinemasnob.MovieItemActivity"
     tools:showIn="@layout/activity_movie_item"
     android:background="@color/brightBlue">
 
@@ -60,17 +60,16 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Rating"
         android:id="@+id/textView3"
+        android:layout_below="@+id/actorsText"
+        android:layout_alignStart="@+id/textView2"
         android:paddingTop="10dp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/textView10"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="124dp" />
+        android:textColor="@color/white" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/mpaaRating"
+        android:id="@+id/textView4"
         android:layout_below="@+id/textView3"
         android:layout_alignStart="@+id/actorsText"
         android:paddingTop="5dp"
@@ -125,9 +124,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ratingBar2"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/mpaaRating"
-        android:layout_marginBottom="32dp" />
+        android:layout_below="@+id/textView10"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
