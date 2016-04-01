@@ -5,17 +5,23 @@ package project.github.cinemasnob.model;
  */
 public class MovieHelper {
 
-    private int id;
+    private final int id;
     private float rating;
     private int count;
-    private String title;
+    private final String title;
 
+    /**
+     *
+     * @param id the movie id
+     * @param rating the movie rating
+     * @param count the number of the same movies
+     * @param title the movie title
+     */
     public MovieHelper(int id, float rating, int count, String title) {
         this.rating = rating;
         this.id = id;
-        this.count = 1;
         this.title = title;
-
+        this.count = count;
     }
 
     /**

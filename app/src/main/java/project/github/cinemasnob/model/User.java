@@ -20,11 +20,12 @@ public class User {
     }
 
     /**
-     * Instantiates the User object
-     * @param name Username
-     * @param password Password
-     *
-     * @param major Major
+     * Constructor for user class
+     * @param name the name
+     * @param password the password
+     * @param email the email
+     * @param major the major
+     * @param isBanned the ban status
      */
     public User(String name, String password, String email, String major, boolean isBanned) {
         this.userName = name;

@@ -1,6 +1,7 @@
 package project.github.cinemasnob.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Maxwell on 2/21/2016.
@@ -8,29 +9,36 @@ import java.util.ArrayList;
  */
 public class MovieList {
 
-    private ArrayList<Movie> movieList;
+    /**
+     * list of movies
+     */
+    private final List<String> movieList;
 
+    /**
+     * Constructor for MovieList
+     */
     public MovieList() {
-        movieList = new ArrayList<Movie>();
+        movieList = new ArrayList<>();
     }
 
     /**
      * Add movie to movie list
-     * @param m
+     * @param t the movie title
      */
-    public void addMovie(Movie m) {
-        movieList.add(m);
+    public void addTitle(String t) {
+        movieList.add(t);
     }
 
     /**
      * get titles of all the movies in the list
      * @return arrayList of the titles of all the movies
      */
-    public ArrayList<String> getTitleList() {
-        ArrayList<String> titles = new ArrayList<String>();
-        for (int i = 0; i < movieList.size(); i++) {
-            titles.add(movieList.get(i).getTitle());
-        }
-        return titles;
+    public List<String> getTitleList() {
+//        final List<String> titles = new ArrayList<>();
+//        for (int i = 0; i < movieList.size(); i++) {
+//            titles.add(movieList.get(i).getTitle());
+//        }
+//        return titles;
+        return movieList;
     }
 }
