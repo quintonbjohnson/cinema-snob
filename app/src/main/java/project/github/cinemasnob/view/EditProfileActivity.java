@@ -48,7 +48,7 @@ public class EditProfileActivity extends AppCompatActivity {
      * response
      * @param v Current view
      */
-    public void onSaveButtonClicked(View v) {
+    private void onSaveButtonClicked(View v) {
         majorBox = (EditText)findViewById(R.id.majorText);
         interestsBox = (EditText)findViewById(R.id.interestsText);
 
@@ -56,7 +56,6 @@ public class EditProfileActivity extends AppCompatActivity {
         String interestsData = interestsBox.getText().toString();
 
         // Get currentUser and update database info
-        User currentUser = User.getCurrentUser();
         ProfileOpenHelper profiledb = new ProfileOpenHelper(context);
         profiledb.updateMajor(profiledb, majorData);
         profiledb.updateInterests(profiledb, interestsData);

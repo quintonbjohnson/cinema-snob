@@ -33,7 +33,7 @@ public class AdminActivity extends AppCompatActivity {
         ListView userList = (ListView)findViewById(R.id.user_list);
 
         // Populate the ListView
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 AdminActivity.this,
                 android.R.layout.simple_list_item_1,
                 listOfUsernames);

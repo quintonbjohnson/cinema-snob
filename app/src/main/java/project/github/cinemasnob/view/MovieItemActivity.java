@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.RatingBar;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -92,15 +91,8 @@ public class MovieItemActivity extends AppCompatActivity {
                     genreText.setText(genre);
 
                     //criticScore = movie.getString("critics_score");
-                    synopsis = response.getString("synopsis");
-                    //titleText.setText(synopsis);
-                    //rating = movie.getString("rating");
-                    //titleText.setText(rating);
-                    //mpaaRatingText.setText(response.getString("mpaa_rating"));
+                    //synopsis = response.getString("synopsis");
 
-                    //Bitmap myBitmap = BitmapFactory.decodeFile(movie.getJSONObject("posters").getString("profile"));
-                    //profileView.setImageBitmap(myBitmap);
-                    //profileView.setImageIcon();
                     ratingdb = new RatingOpenHelper(context);
                     RatingBar movieRating = (RatingBar) findViewById(R.id.ratingBar2);
                     Rating currentRating = ratingdb.getRating(ratingdb, currentUser.getUserName(),
