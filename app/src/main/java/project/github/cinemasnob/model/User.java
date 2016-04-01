@@ -5,12 +5,35 @@ package project.github.cinemasnob.model;
  */
 public class User {
 
-    private String userName;
-    private String password;
-    private String email;
-    private String major;
-    private boolean isBanned;
-    private static User currentUser;
+    /**
+     * username
+     */
+    private String pUserName;
+
+    /**
+     * password
+     */
+    private String pPassword;
+
+    /**
+     * email
+     */
+    private String pEmail;
+
+    /**
+     * major
+     */
+    private String pMajor;
+
+    /**
+     * ban status
+     */
+    private boolean pIsBanned;
+
+    /**
+     * current user
+     */
+    private static User pCurrentUser;
 
     /**
      * No-args constructor for User
@@ -28,11 +51,11 @@ public class User {
      * @param isBanned the ban status
      */
     public User(String name, String password, String email, String major, boolean isBanned) {
-        this.userName = name;
-        this.password = password;
-        this.email = email;
-        this.major = major;
-        this.isBanned = isBanned;
+        pUserName = name;
+        pPassword = password;
+        pEmail = email;
+        pMajor = major;
+        pIsBanned = isBanned;
     }
 
     /**
@@ -40,7 +63,7 @@ public class User {
      * @return User's password
      */
     public String getPassword() {
-        return password;
+        return pPassword;
     }
 
     /**
@@ -48,7 +71,7 @@ public class User {
      * @return User's username
      */
     public String getUserName() {
-        return userName;
+        return pUserName;
     }
 
     /**
@@ -56,7 +79,7 @@ public class User {
      * @return User's email
      */
     public String getEmail() {
-        return email;
+        return pEmail;
     }
 
     /**
@@ -64,7 +87,7 @@ public class User {
      * @return User's major
      */
     public String getMajor() {
-        return major;
+        return pMajor;
     }
 
     /**
@@ -72,7 +95,7 @@ public class User {
      * @return if the User is banned
      */
     public boolean getBanStatus() {
-        return isBanned;
+        return pIsBanned;
     }
 
     /**
@@ -80,7 +103,7 @@ public class User {
      * @return the currentUser
      */
     public static User getCurrentUser() {
-        return currentUser;
+        return pCurrentUser;
     }
 
     /**
@@ -88,6 +111,6 @@ public class User {
      * @param user theCurrentUser
      */
     public static void setCurrentUser(User user) {
-        currentUser = user;
+        pCurrentUser = user;
     }
 }

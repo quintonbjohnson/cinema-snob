@@ -5,8 +5,19 @@ package project.github.cinemasnob.model;
  */
 public class Profile {
 
+    /**
+     * interests of user
+     */
     private final String interests;
+
+    /**
+     * major of user
+     */
     private final String major;
+
+    /**
+     * username of user
+     */
     private final String userName;
 
     /**

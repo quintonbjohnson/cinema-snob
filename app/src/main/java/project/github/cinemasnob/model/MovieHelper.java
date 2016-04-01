@@ -5,10 +5,25 @@ package project.github.cinemasnob.model;
  */
 public class MovieHelper {
 
-    private final int id;
-    private float rating;
-    private int count;
-    private final String title;
+    /**
+     * id of the movie
+     */
+    private final int pId;
+
+    /**
+     * rating of the movie
+     */
+    private float pRating;
+
+    /**
+     * number of times same movie has been rated
+     */
+    private int pCount;
+
+    /**
+     * title of the movie
+     */
+    private final String pTitle;
 
     /**
      *
@@ -18,10 +33,10 @@ public class MovieHelper {
      * @param title the movie title
      */
     public MovieHelper(int id, float rating, int count, String title) {
-        this.rating = rating;
-        this.id = id;
-        this.title = title;
-        this.count = count;
+        pRating = rating;
+        pId = id;
+        pTitle = title;
+        pCount = count;
     }
 
     /**
@@ -30,7 +45,7 @@ public class MovieHelper {
      * @return the ID
      */
     public int getId() {
-        return id;
+        return pId;
     }
 
     /**
@@ -39,7 +54,7 @@ public class MovieHelper {
      * @return the rating
      */
     public float getRating() {
-        return rating;
+        return pRating;
     }
 
     /**
@@ -48,7 +63,7 @@ public class MovieHelper {
      * @return the count
      */
     public int getCount() {
-        return count;
+        return pCount;
     }
 
     /**
@@ -57,7 +72,7 @@ public class MovieHelper {
      * @return the title
      */
     public String getTitle() {
-        return title;
+        return pTitle;
     }
 
     /**
@@ -66,7 +81,7 @@ public class MovieHelper {
      * @param extra the amount to add
      */
     public void setCount(int extra) {
-        count = this.count + extra;
+        pCount = pCount + extra;
     }
 
     /**
@@ -75,7 +90,7 @@ public class MovieHelper {
      * @param rating the amount to add
      */
     public void addRating(float rating) {
-        this.rating = this.rating + rating;
+        pRating = pRating + rating;
     }
 
     /**
@@ -84,7 +99,7 @@ public class MovieHelper {
      * @param rating the rating to set to
      */
     public void setRating(float rating) {
-        this.rating = rating;
+        pRating = rating;
     }
 }
 

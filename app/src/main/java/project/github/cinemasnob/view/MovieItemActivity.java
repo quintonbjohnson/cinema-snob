@@ -92,7 +92,7 @@ public class MovieItemActivity extends AppCompatActivity {
                     genreText.setText(genre);
 
                     //criticScore = movie.getString("critics_score");
-                    synopsis = response.getString("synopsis");
+//                    synopsis = response.getString("synopsis");
                     //titleText.setText(synopsis);
                     //rating = movie.getString("rating");
                     //titleText.setText(rating);

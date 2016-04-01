@@ -5,10 +5,25 @@ package project.github.cinemasnob.model;
  */
 public class Rating {
 
-    private final String username;
-    private final String movieTitle;
-    private final float rating;
-    private final int id;
+    /**
+     * username associated with the rating
+     */
+    private final String pUsername;
+
+    /**
+     * movie title associated with the rating
+     */
+    private final String pMovieTitle;
+
+    /**
+     * rating of the movie
+     */
+    private final float pRating;
+
+    /**
+     * id of the movie
+     */
+    private final int pId;
 
     /**
      * Constructor for rating class
@@ -18,10 +33,10 @@ public class Rating {
      * @param id the movie id
      */
     public Rating(String username, String movieTitle, float rating, int id) {
-        this.username = username;
-        this.movieTitle = movieTitle;
-        this.rating = rating;
-        this.id = id;
+        pUsername = username;
+        pMovieTitle = movieTitle;
+        pRating = rating;
+        pId = id;
     }
 
     /**
@@ -29,7 +44,7 @@ public class Rating {
      * @return rating
      */
     public String getUsername() {
-        return username;
+        return pUsername;
     }
 
     /**
@@ -37,7 +52,7 @@ public class Rating {
      * @return movieTitle
      */
     public String getMovieTitle() {
-        return movieTitle;
+        return pMovieTitle;
     }
 
     /**
@@ -45,7 +60,7 @@ public class Rating {
      * @return rating
      */
     public float getRating() {
-        return rating;
+        return pRating;
     }
 
     /**
@@ -53,6 +68,6 @@ public class Rating {
      * @return Movie's id
      */
     public int getId() {
-        return id;
+        return pId;
     }
 }
