@@ -5,9 +5,20 @@ package project.github.cinemasnob.model;
  */
 public class Profile {
 
-    private String interests;
-    private String major;
-    private String userName;
+    /**
+     * interests of user
+     */
+    private final String interests;
+
+    /**
+     * major of user
+     */
+    private final String major;
+
+    /**
+     * username of user
+     */
+    private final String userName;
 
     /**
      * Instantiates the Profile object
@@ -37,6 +48,10 @@ public class Profile {
         return interests;
     }
 
+    /**
+     * getter method for username
+     * @return User's username
+     */
     public String getUsername() {
         return userName;
     }

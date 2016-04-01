@@ -28,7 +28,7 @@ import java.util.HashMap;
 
 import project.github.cinemasnob.R;
 import project.github.cinemasnob.controller.RequestController;
-import project.github.cinemasnob.model.Movie;
+//import project.github.cinemasnob.model.Movie;
 import project.github.cinemasnob.model.MovieList;
 
 /*
@@ -133,11 +133,12 @@ public class HomeScreenActivity extends AppCompatActivity {
                             for (int i = 0; i < movies.length(); i++) {
                                 movie = movies.getJSONObject(i);
                                 //create a new movie
-                                Movie newMovie = new Movie(movie.getString("title"),
-                                        movie.getString("year"),
-                                        movie.getString("mpaa_rating"), movie.getString("id"));
-                                listOfMovies.addMovie(newMovie);
-                                movieIds.put(movie.getString("title"), Integer.parseInt(movie.getString("id")));
+//                                Movie newMovie = new Movie(movie.getString("title"),
+//                                        movie.getString("year"),
+//                                        movie.getString("mpaa_rating"), movie.getString("id"));
+                                listOfMovies.addTitle(movie.getString("title"));
+                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
+//                                movieIds.put(newMovie.getTitle(), (Integer) Integer.parseInt(newMovie.getID()));
                                 //will print out all the titles of the movies
                                 // that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));
@@ -194,12 +195,12 @@ public class HomeScreenActivity extends AppCompatActivity {
                             for (int i = 0; i < movies.length(); i++) {
                                 movie = movies.getJSONObject(i);
                                 // Create a new movie
-                                Movie newMovie = new Movie(movie.getString("title"),
-                                        movie.getString("year"),
-                                        movie.getString("mpaa_rating"), movie.getString("id"));
-                                listOfMovies.addMovie(newMovie);
-                                movieIds.put(movie.getString("title"), Integer.parseInt(movie.getString("id")));
-
+//                                Movie newMovie = new Movie(movie.getString("title"),
+//                                        movie.getString("year"),
+//                                        movie.getString("mpaa_rating"), movie.getString("id"));
+                                listOfMovies.addTitle(movie.getString("title"));
+                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
+//                                movieIds.put(newMovie.getTitle(), (Integer) Integer.parseInt(newMovie.getID()));
                             }
                             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(HomeScreenActivity.this,
                                     android.R.layout.simple_list_item_1,
@@ -260,10 +261,11 @@ public class HomeScreenActivity extends AppCompatActivity {
                             for (int i = 0; i < movies.length(); i++) {
                                 movie = movies.getJSONObject(i);
                                 // Create a new movie
-                                Movie newMovie = new Movie(movie.getString("title"),
-                                        movie.getString("year"), movie.getString("mpaa_rating"), movie.getString("id"));
-                                listOfMovies.addMovie(newMovie);
-                                movieIds.put(movie.getString("title"), Integer.parseInt(movie.getString("id")));
+//                                Movie newMovie = new Movie(movie.getString("title"),
+//                                        movie.getString("year"), movie.getString("mpaa_rating"), movie.getString("id"));
+                                listOfMovies.addTitle(movie.getString("title"));
+                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
+//                                movieIds.put(newMovie.getTitle(), (Integer) Integer.parseInt(newMovie.getID()));
                                 // Will print out all the titles of the movies
                                 // that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));

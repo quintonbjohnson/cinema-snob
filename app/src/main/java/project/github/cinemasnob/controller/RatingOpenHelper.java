@@ -233,8 +233,7 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
                         && currentUser.getMajor().equalsIgnoreCase(major)) {
                     MovieHelper movieHelp = new MovieHelper(
                             Integer.parseInt(stringID),
-                            Float.parseFloat(rating),
-                            0,
+                            Float.parseFloat(rating), 0,
                             title);
                     movieHash.put(Integer.parseInt(stringID), movieHelp);
                 } else if (movieHash.containsKey(movieID)
