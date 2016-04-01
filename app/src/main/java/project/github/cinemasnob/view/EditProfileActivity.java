@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import project.github.cinemasnob.R;
@@ -21,6 +23,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private Context context;
     private EditText majorBox;
     private EditText interestsBox;
+    private Spinner sItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +32,17 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        majorBox = (EditText)findViewById(R.id.majorText);
+        String[] spinnerArray = {"Computer Science",
+                "Industrial Design", "Engineering", "Business"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        adapter.setDropDownViewResource(android.R.layout.
+                simple_spinner_dropdown_item);
+        sItems = (Spinner) findViewById(R.id.edit_major_spinner);
+        sItems.setAdapter(adapter);
+
         interestsBox = (EditText)findViewById(R.id.interestsText);
-        majorBox.setText(User.getCurrentUser().getMajor(),
-                TextView.BufferType.EDITABLE );
 
         Button saveChangesButton = (Button) findViewById(R.id.SaveChanges);
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
@@ -40,25 +50,24 @@ public class EditProfileActivity extends AppCompatActivity {
                 onSaveButtonClicked(view);
             }
         });
-
     }
 
     /**
-     * Method called when 'Login' button is clicked, handles login request and does appropriate
+     * Method called when 'Login' button is clicked,
+     * handles login request and does appropriate
      * response
      * @param v Current view
      */
     private void onSaveButtonClicked(View v) {
-        majorBox = (EditText)findViewById(R.id.majorText);
-        interestsBox = (EditText)findViewById(R.id.interestsText);
 
-        String majorData = majorBox.getText().toString();
+
+        String majorData = sItems.getSelectedItem().toString();
         String interestsData = interestsBox.getText().toString();
 
         // Get currentUser and update database info
-        ProfileOpenHelper profiledb = new ProfileOpenHelper(context);
-        profiledb.updateMajor(profiledb, majorData);
-        profiledb.updateInterests(profiledb, interestsData);
+        ProfileOpenHelper profileDB = new ProfileOpenHelper(context);
+        profileDB.updateMajor(profileDB, majorData);
+        profileDB.updateInterests(profileDB, interestsData);
 
         // Go back to ProfileActivity
         Intent goToProfile = new Intent(this, UserProfileActivity.class);
