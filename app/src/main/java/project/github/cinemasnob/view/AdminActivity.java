@@ -17,7 +17,7 @@ import project.github.cinemasnob.controller.UserOpenHelper;
 
 
 /**
- * Admin home screen for seeing a list of Users
+ * Admin home screen for seeing a list of Users.
  */
 public class AdminActivity extends AppCompatActivity {
 
@@ -26,17 +26,17 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        final UserOpenHelper userdb = new UserOpenHelper(this);
+        final UserOpenHelper userDB = new UserOpenHelper(this);
 
-        List<String> listOfUsernames = userdb.getUserList(userdb);
+        List<String> listOfNames = userDB.getUserList(userDB);
 
-        ListView userList = (ListView)findViewById(R.id.user_list);
+        ListView userList = (ListView) findViewById(R.id.user_list);
 
         // Populate the ListView
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 AdminActivity.this,
                 android.R.layout.simple_list_item_1,
-                listOfUsernames);
+                listOfNames);
         userList.setAdapter(arrayAdapter);
 
         // When User taps on a movie item, send him or her
@@ -56,7 +56,7 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
-        Button logout = (Button)findViewById(R.id.admin_logout);
+        Button logout = (Button) findViewById(R.id.admin_logout);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

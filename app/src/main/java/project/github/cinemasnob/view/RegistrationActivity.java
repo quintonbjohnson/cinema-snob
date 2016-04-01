@@ -29,23 +29,22 @@ public class RegistrationActivity extends AppCompatActivity {
         Button submitRegister = (Button) findViewById(R.id.submit_register);
         submitRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                onRegisterButtonClicked(view);
+                onRegisterButtonClicked();
             }
         });
 
         Button cancelRegister = (Button) findViewById(R.id.cancel_register);
         cancelRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                onCancelRegisterClicked(view);
+                onCancelRegisterClicked();
             }
         });
     }
 
     /**
      * Takes place when 'Cancel' button is clicked, sends user to login screen
-     * @param view The current view
      */
-    public void onCancelRegisterClicked(View view) {
+    private void onCancelRegisterClicked() {
         Intent goToMainActivity = new Intent(this, LoginScreenActivity.class);
         startActivity(goToMainActivity);
         finish();
@@ -54,16 +53,15 @@ public class RegistrationActivity extends AppCompatActivity {
     /**
      * Takes place when 'Register' button is clicked, add User to database
      * if username and email are not taken
-     * @param view The current view
      */
-    public void onRegisterButtonClicked(View view) {
+    private void onRegisterButtonClicked() {
         EditText usernameBox = (EditText)findViewById(R.id.register_username);
         EditText passwordBox = (EditText)findViewById(R.id.register_password);
         EditText emailBox = (EditText)findViewById(R.id.register_email);
         EditText majorBox = (EditText)findViewById(R.id.register_major);
 
-        UserOpenHelper userdb = new UserOpenHelper(context);
-        User checkUser = userdb.getUser(userdb, usernameBox.getText().toString());
+        UserOpenHelper userDB = new UserOpenHelper(context);
+        User checkUser = userDB.getUser(userDB, usernameBox.getText().toString());
 
         CharSequence failedLogin;
         if (usernameBox.getText().toString().trim().equals("") ||
@@ -86,8 +84,8 @@ public class RegistrationActivity extends AppCompatActivity {
             fail.show();
         } else {
             // RegistrationActivity works
-            userdb = new UserOpenHelper(context);
-            userdb.putUser(userdb,
+            userDB = new UserOpenHelper(context);
+            userDB.putUser(userDB,
                     usernameBox.getText().toString(),
                     passwordBox.getText().toString(),
                     emailBox.getText().toString(),

@@ -50,7 +50,8 @@ public class User {
      * @param major the major
      * @param isBanned the ban status
      */
-    public User(String name, String password, String email, String major, boolean isBanned) {
+    public User(String name, String password, String email,
+                String major, boolean isBanned) {
         pUserName = name;
         pPassword = password;
         pEmail = email;

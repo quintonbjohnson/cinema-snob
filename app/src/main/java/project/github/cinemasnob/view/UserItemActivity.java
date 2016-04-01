@@ -32,9 +32,9 @@ public class UserItemActivity extends AppCompatActivity {
         Intent i = getIntent();
 
         // Get extras and find User in database
-        final UserOpenHelper userdb = new UserOpenHelper(this);
+        final UserOpenHelper userDB = new UserOpenHelper(this);
         final String username = i.getStringExtra("User");
-        final User thisItemUser = userdb.getUser(userdb, username);
+        final User thisItemUser = userDB.getUser(userDB, username);
 
         // Set TextViews with appropriate User info
         usernameText.setText(thisItemUser.getUserName());
@@ -48,7 +48,7 @@ public class UserItemActivity extends AppCompatActivity {
         banButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userdb.setBanStatusOfUser(userdb, username, true);
+                userDB.setBanStatusOfUser(userDB, username, true);
                 String stringBan = "Ban Status: " + Boolean.toString(thisItemUser.getBanStatus());
                 banStatus.setText(stringBan);
                 CharSequence banSuccessful = "User has been banned.";
@@ -65,7 +65,7 @@ public class UserItemActivity extends AppCompatActivity {
         unlockButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userdb.setBanStatusOfUser(userdb, username, false);
+                userDB.setBanStatusOfUser(userDB, username, false);
                 String stringBan = "Ban Status: " + Boolean.toString(thisItemUser.getBanStatus());
                 banStatus.setText(stringBan);
                 CharSequence unlockSuccessful = "User has been unlocked.";

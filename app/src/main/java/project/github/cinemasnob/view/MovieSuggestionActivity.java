@@ -28,24 +28,24 @@ import project.github.cinemasnob.model.User;
  */
 public class MovieSuggestionActivity extends AppCompatActivity {
 
-    private RatingOpenHelper ratingdb;
-    private UserOpenHelper userdb;
+    private RatingOpenHelper ratingDB;
+    private UserOpenHelper userDB;
     private ListView sortedMovieList;
-    private HashMap<String, Integer> movieIds = new HashMap<String, Integer>();
+    private final HashMap<String, Integer> movieIds = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_suggestion);
         Context context = this;
-        sortedMovieList = (ListView)findViewById(R.id.sorted_movies);
+        this.sortedMovieList = (ListView) findViewById(R.id.sorted_movies);
 
         // Instantiate databases
-        ratingdb = new RatingOpenHelper(context);
-        userdb = new UserOpenHelper(context);
+        ratingDB = new RatingOpenHelper(context);
+        userDB = new UserOpenHelper(context);
 
         // Sort overall movies
-        Button overallButton = (Button)findViewById(R.id.overall_button);
+        Button overallButton = (Button) findViewById(R.id.overall_button);
 
         overallButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -56,18 +56,18 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                     }
                 };
                 // Average out movies in the database
-                List<MovieHelper> movies = ratingdb.averageOverall(ratingdb);
+                List<MovieHelper> movies = ratingDB.averageOverall(ratingDB);
                 // Sort movies from highest to lowest rating
                 Collections.sort(movies, myComparator);
                 Collections.reverse(movies);
-                ArrayList<String> titles = new ArrayList<String>();
+                ArrayList<String> titles = new ArrayList<>();
                 for (MovieHelper help : movies) {
                     titles.add(help.getTitle());
                     movieIds.put(help.getTitle(), help.getId());
                 }
 
                 // Populate the ListView
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                         MovieSuggestionActivity.this,
                         android.R.layout.simple_list_item_1,
                         titles);
@@ -76,7 +76,7 @@ public class MovieSuggestionActivity extends AppCompatActivity {
         });
 
         // Sort overall ratings by major
-        Button majorButton = (Button)findViewById(R.id.major_button);
+        Button majorButton = (Button) findViewById(R.id.major_button);
 
         majorButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -87,20 +87,20 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                     }
                 };
                 // Average out movies in the database
-                List<MovieHelper> movies = ratingdb.averageMajor(ratingdb,
-                        userdb,
+                List<MovieHelper> movies = ratingDB.averageMajor(ratingDB,
+                        userDB,
                         User.getCurrentUser().getMajor());
                 // Sort movies from highest to lowest rating
                 Collections.sort(movies, myComparator);
                 Collections.reverse(movies);
-                ArrayList<String> titles = new ArrayList<String>();
+                ArrayList<String> titles = new ArrayList<>();
                 for (MovieHelper help : movies) {
                     titles.add(help.getTitle());
                     movieIds.put(help.getTitle(), help.getId());
                 }
 
                 // Populate the ListView
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                         MovieSuggestionActivity.this,
                         android.R.layout.simple_list_item_1,
                         titles);
@@ -126,7 +126,5 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                 startActivity(goToMovieItem);
             }
         });
-
-
     }
 }
