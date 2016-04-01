@@ -18,12 +18,12 @@
         android:background="@color/orange"
         android:enabled="true"
         android:fontFamily="Helvetica"
-        android:layout_marginTop="60dp"
-        android:layout_below="@+id/register_password"
-        android:layout_alignEnd="@+id/register_password"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:layout_below="@+id/major_spinner"
+        android:layout_alignEnd="@+id/register_password"
+        android:layout_marginTop="60dp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,11 +32,11 @@
         android:background="@color/orange"
         android:enabled="true"
         android:fontFamily="Helvetica"
-        android:layout_alignTop="@+id/submit_register"
-        android:layout_alignStart="@+id/register_password"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/submit_register"
+        android:layout_alignStart="@+id/register_password"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -101,19 +101,11 @@
         android:textIsSelectable="false"
         android:textSize="30dp" />
 
-    <EditText
+    <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/register_major"
+        android:id="@+id/major_spinner"
         android:layout_below="@+id/register_password"
-        android:hint="Major"
-        android:layout_alignStart="@+id/register_password"
-        android:layout_alignEnd="@+id/submit_register"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:fontFamily="Helvetica"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:backgroundTint="@color/white"/>
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
