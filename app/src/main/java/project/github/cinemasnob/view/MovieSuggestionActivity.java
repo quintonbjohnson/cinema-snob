@@ -55,22 +55,17 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                         return (int) ((int) lhs.getRating() - rhs.getRating());
                     }
                 };
-                // Average out movies in the database
-                List<MovieHelper> movies = ratingDB.averageOverall(ratingDB);
-                // Sort movies from highest to lowest rating
-                Collections.sort(movies, myComparator);
+                List<MovieHelper> movies = ratingDB.averageOverall(ratingDB); // Average out movies in the database
+                Collections.sort(movies, myComparator); // Sort movies from highest to lowest rating
                 Collections.reverse(movies);
                 ArrayList<String> titles = new ArrayList<>();
                 for (MovieHelper help : movies) {
                     titles.add(help.getTitle());
                     movieIds.put(help.getTitle(), help.getId());
                 }
-
-                // Populate the ListView
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>( // Populate the ListView
                         MovieSuggestionActivity.this,
-                        android.R.layout.simple_list_item_1,
-                        titles);
+                        android.R.layout.simple_list_item_1, titles);
                 sortedMovieList.setAdapter(arrayAdapter);
             }
         });
@@ -98,7 +93,6 @@ public class MovieSuggestionActivity extends AppCompatActivity {
                     titles.add(help.getTitle());
                     movieIds.put(help.getTitle(), help.getId());
                 }
-
                 // Populate the ListView
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                         MovieSuggestionActivity.this,

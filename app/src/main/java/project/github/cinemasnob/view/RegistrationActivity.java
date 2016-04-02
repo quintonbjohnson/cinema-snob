@@ -11,9 +11,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import project.github.cinemasnob.R;
 import project.github.cinemasnob.controller.ProfileOpenHelper;
 import project.github.cinemasnob.controller.UserOpenHelper;
@@ -82,9 +79,10 @@ public class RegistrationActivity extends AppCompatActivity {
                 usernameBox.getText().toString());
 
         CharSequence failedLogin;
-        if (usernameBox.getText().toString().trim().equals("") ||
-                passwordBox.getText().toString().trim().equals("") ||
-                emailBox.getText().toString().trim().equals("") ||
+        String blank = "";
+        if (usernameBox.getText().toString().trim().equals(blank) ||
+                passwordBox.getText().toString().trim().equals(blank) ||
+                emailBox.getText().toString().trim().equals(blank) ||
                 !(emailBox.getText().toString().contains("@"))) {
             // Invalid entries
             failedLogin = "Please enter a valid username, " +
