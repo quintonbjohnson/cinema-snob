@@ -86,10 +86,13 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
      * @param rating the interests of the User
      * @param movieID the id of the Movie
      */
-    public void putRating(RatingOpenHelper dbHelp, String name,
+    public boolean putRating(RatingOpenHelper dbHelp, String name,
                           String title, float rating, int movieID) {
         SQLiteDatabase database = dbHelp.getWritableDatabase();
         ContentValues values = new ContentValues();
+        if (name == null || title == null || movieID == 0) {
+            return false;
+        }
         values.put(KEY_TITLE, title);
         values.put(KEY_USERNAME, name);
         values.put(KEY_RATING, Float.toString(rating));
@@ -98,6 +101,7 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
                 MOVIE_TABLE_NAME,
                 null,
                 values);
+        return true;
     }
 
     /**
