@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLOutput;
+
 import project.github.cinemasnob.R;
 import project.github.cinemasnob.controller.RatingOpenHelper;
 import project.github.cinemasnob.controller.RequestController;
@@ -33,6 +35,7 @@ public class MovieItemActivity extends AppCompatActivity {
     private Context context;
     private RatingOpenHelper ratingdb;
     private User currentUser;
+    private int movieID;
 
 
     private static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
@@ -54,7 +57,7 @@ public class MovieItemActivity extends AppCompatActivity {
         Intent i = getIntent();
 
         // Getting attached intent data from first element
-        final int movieID = i.getIntExtra("ID", 0);
+        movieID = i.getIntExtra("ID", 0);
         String url = "";
         try {
             url = "http://api.rottentomatoes.com/api/public/v1.0/movies/"
@@ -133,16 +136,22 @@ public class MovieItemActivity extends AppCompatActivity {
             // Called when the user swipes the RatingBar
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                Rating currentRating = ratingdb.getRating(ratingdb,
-                        currentUser.getUserName(), title, Integer.toString(movieID));
-                if ((currentRating) == null) {
-                    ratingdb.putRating(ratingdb, currentUser.getUserName(), title, rating, movieID);
-                } else {
-                    System.out.println(currentUser.getUserName());
-                    ratingdb.updateRating(ratingdb, Float.toString(rating), title,
-                            currentUser.getUserName(), Integer.toString(movieID));
-                }
+                onRatingBarChanged(rating);
             }
         });
+    }
+
+    public void onRatingBarChanged(float rating) {
+        Rating currentRating = ratingdb.getRating(ratingdb,
+                currentUser.getUserName(), title,
+                Integer.toString(movieID));
+        if ((currentRating) == null) {
+            ratingdb.putRating(ratingdb,
+                    currentUser.getUserName(),
+                    title, rating, movieID);
+        } else {
+            ratingdb.updateRating(ratingdb, Float.toString(rating), title,
+                    currentUser.getUserName(), Integer.toString(movieID));
+        }
     }
 }
