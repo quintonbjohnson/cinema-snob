@@ -27,16 +27,16 @@ public class MovieHelper {
 
     /**
      * The MovieHelper constructor.
-     * @param id the movie id
+     * @param movieID the movie id
      * @param rating the movie rating
      * @param count the number of the same movies
      * @param title the movie title
      */
-    public MovieHelper(int id, float rating, int count, String title) {
-        pRating = rating;
-        pId = id;
-        pTitle = title;
-        pCount = count;
+    public MovieHelper(int movieID, float rating, int count, String title) {
+        this.pRating = rating;
+        this.pId = movieID;
+        this.pTitle = title;
+        this.pCount = count;
     }
 
     /**
