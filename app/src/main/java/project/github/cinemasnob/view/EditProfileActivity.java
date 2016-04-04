@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import project.github.cinemasnob.R;
 import project.github.cinemasnob.controller.ProfileOpenHelper;
-import project.github.cinemasnob.model.User;
 
 /**
  * Activity to EditProfile
