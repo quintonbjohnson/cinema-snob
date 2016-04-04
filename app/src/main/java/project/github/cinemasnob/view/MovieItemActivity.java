@@ -99,8 +99,6 @@ public class MovieItemActivity extends AppCompatActivity {
                     //Getting actors
                     JSONArray actorsArray =
                             response.getJSONArray("abridged_cast");
-                    //actors =
-                    // actorsArray.getJSONObject(0).getString("name") + ", ";
                     for (int i = 0; i < actorsArray.length(); i++) {
                         actors = actors
                                 + actorsArray.getJSONObject(i)
