@@ -57,7 +57,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                 String title = ((TextView) view).getText().toString();
                 int movieID = movieIds.get(title);
                 // Launching new Activity on selecting single List Item
-                Intent i = new Intent(getApplicationContext(), MovieItemActivity.class);
+                Intent i = new Intent(getApplicationContext(),
+                        MovieItemActivity.class);
                 // sending data to new activity
                 i.putExtra("ID", movieID);
                 startActivity(i);

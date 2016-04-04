@@ -44,23 +44,29 @@ public class LoginScreenActivity extends AppCompatActivity {
     }
 
     /**
-     * Method called when 'Login' button is clicked, handles login request and does appropriate
+     * Method called when 'Login' button is clicked,
+     * handles login request and does appropriate
      * response
      * @param v Current view
      */
     public void onLoginButtonClicked(View v) {
-        EditText usernameBox = (EditText)findViewById(R.id.login_username_entry);
-        EditText passwordBox = (EditText)findViewById(R.id.login_password_entry);
+        EditText usernameBox =
+                (EditText)findViewById(R.id.login_username_entry);
+        EditText passwordBox =
+                (EditText)findViewById(R.id.login_password_entry);
 
         UserOpenHelper userdb = new UserOpenHelper(context);
-        User currentUser = userdb.getUser(userdb, usernameBox.getText().toString());
+        User currentUser = userdb.getUser(userdb,
+                usernameBox.getText().toString());
         // Check if User exists
         if (currentUser != null) {
-            if (passwordBox.getText().toString().equals(currentUser.getPassword())) {
+            if (passwordBox.getText().toString()
+                    .equals(currentUser.getPassword())) {
                 if (currentUser.getUserName().equals("ADMIN")
                         && currentUser.getPassword().equals("2340")) {
                     // Admin case; go to AdminScreen
-                    Intent goToAdminScreen = new Intent(this, AdminActivity.class);
+                    Intent goToAdminScreen =
+                            new Intent(this, AdminActivity.class);
                     User.setCurrentUser(currentUser);
                     startActivity(goToAdminScreen);
                     finish();
@@ -72,13 +78,15 @@ public class LoginScreenActivity extends AppCompatActivity {
                     Toast fail = Toast.makeText(context, failedLogin, duration);
                     fail.show();
                 } else {
-                    Intent goToHomeScreen = new Intent(this, HomeScreenActivity.class);
+                    Intent goToHomeScreen = new Intent(this,
+                            HomeScreenActivity.class);
                     User.setCurrentUser(currentUser);
                     startActivity(goToHomeScreen);
                     finish();
                 }
             } else {
-                CharSequence failedLogin = "Incorrect Username or Password, try again.";
+                CharSequence failedLogin =
+                        "Incorrect Username or Password, try again.";
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;
                 Toast fail = Toast.makeText(context, failedLogin, duration);
@@ -94,7 +102,8 @@ public class LoginScreenActivity extends AppCompatActivity {
     }
 
     /**
-     * Called when 'Register' button is pressed, send user to RegistrationActivity
+     * Called when 'Register' button is pressed,
+     * send user to RegistrationActivity.
      * @param v Current view
      */
     public void onNewUserButtonClicked(View v) {

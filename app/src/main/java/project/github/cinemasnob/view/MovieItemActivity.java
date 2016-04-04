@@ -49,10 +49,6 @@ public class MovieItemActivity extends AppCompatActivity {
         final TextView titleText = (TextView) findViewById(R.id.title_text);
         final TextView actorText = (TextView) findViewById(R.id.actorsText);
         final TextView genreText = (TextView) findViewById(R.id.genreText);
-        //final TextView ratingText = (TextView) findViewById(R.id.rtRatingText);
-        //final TextView mpaaRatingText = (TextView) findViewById(R.id.mpaaRating);
-        //final TextView synopsisText = (TextView) findViewById(R.id.synopsisText);
-        //final ImageView profileView = (ImageView) findViewById(R.id.profilePicture);
 
         Intent i = getIntent();
 
@@ -77,10 +73,14 @@ public class MovieItemActivity extends AppCompatActivity {
                     title = response.getString("title");
                     titleText.setText(title);
                     //Getting actors
-                    JSONArray actorsArray = response.getJSONArray("abridged_cast");
-                    //actors = actorsArray.getJSONObject(0).getString("name") + ", ";
+                    JSONArray actorsArray =
+                            response.getJSONArray("abridged_cast");
+                    //actors =
+                    // actorsArray.getJSONObject(0).getString("name") + ", ";
                     for (int i = 0; i < actorsArray.length(); i++) {
-                        actors = actors + actorsArray.getJSONObject(i).getString("name");
+                        actors = actors
+                                + actorsArray.getJSONObject(i)
+                                .getString("name");
                         if (i != actorsArray.length() - 1)
                             actors = actors + ", ";
                     }
@@ -94,19 +94,12 @@ public class MovieItemActivity extends AppCompatActivity {
                     }
                     genreText.setText(genre);
 
-                    //criticScore = movie.getString("critics_score");
-//                    synopsis = response.getString("synopsis");
-                    //titleText.setText(synopsis);
-                    //rating = movie.getString("rating");
-                    //titleText.setText(rating);
-                    //mpaaRatingText.setText(response.getString("mpaa_rating"));
-
-                    //Bitmap myBitmap = BitmapFactory.decodeFile(movie.getJSONObject("posters").getString("profile"));
-                    //profileView.setImageBitmap(myBitmap);
-                    //profileView.setImageIcon();
                     ratingdb = new RatingOpenHelper(context);
-                    RatingBar movieRating = (RatingBar) findViewById(R.id.ratingBar2);
-                    Rating currentRating = ratingdb.getRating(ratingdb, currentUser.getUserName(),
+                    RatingBar movieRating =
+                            (RatingBar) findViewById(R.id.ratingBar2);
+                    Rating currentRating =
+                            ratingdb.getRating(ratingdb,
+                                    currentUser.getUserName(),
                             title, Integer.toString(movieID));
                     if (currentRating != null) {
                         movieRating.setRating(currentRating.getRating());
@@ -114,7 +107,8 @@ public class MovieItemActivity extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(),
+                    Toast.makeText(getApplicationContext(),
+                            "Error: " + e.getMessage(),
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -131,7 +125,8 @@ public class MovieItemActivity extends AppCompatActivity {
 
 
         RatingBar movieRating = (RatingBar) findViewById(R.id.ratingBar2);
-        movieRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        movieRating.
+                setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 
             // Called when the user swipes the RatingBar
             @Override
