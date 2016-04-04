@@ -1,32 +1,32 @@
 package project.github.cinemasnob.model;
 
 /**
- * Movie helper for averaging ratings
+ * Movie helper for averaging ratings.
  */
 public class MovieHelper {
 
     /**
-     * id of the movie
+     * ID of the Movie.
      */
     private final int pId;
 
     /**
-     * rating of the movie
+     * Rating of the Movie.
      */
     private float pRating;
 
     /**
-     * number of times same movie has been rated
+     * Number of times same Movie has been rated.
      */
     private int pCount;
 
     /**
-     * title of the movie
+     * Title of the Movie.
      */
     private final String pTitle;
 
     /**
-     *
+     * The MovieHelper constructor.
      * @param id the movie id
      * @param rating the movie rating
      * @param count the number of the same movies
@@ -40,8 +40,7 @@ public class MovieHelper {
     }
 
     /**
-     * Get the movie ID
-     *
+     * Get the Movie ID.
      * @return the ID
      */
     public int getId() {
@@ -49,8 +48,7 @@ public class MovieHelper {
     }
 
     /**
-     * Get the movie rating
-     *
+     * Get the Movie rating.
      * @return the rating
      */
     public float getRating() {
@@ -58,8 +56,7 @@ public class MovieHelper {
     }
 
     /**
-     * Get the movie count
-     *
+     * Get the Movie count.
      * @return the count
      */
     public int getCount() {
@@ -67,7 +64,7 @@ public class MovieHelper {
     }
 
     /**
-     * Get the movie title
+     * Get the Movie title.
      *
      * @return the title
      */
@@ -76,7 +73,7 @@ public class MovieHelper {
     }
 
     /**
-     * Increment count
+     * Increment count.
      *
      * @param extra the amount to add
      */
@@ -85,7 +82,7 @@ public class MovieHelper {
     }
 
     /**
-     * Add to rating
+     * Add to Rating.
      *
      * @param rating the amount to add
      */
@@ -94,7 +91,7 @@ public class MovieHelper {
     }
 
     /**
-     * Set the rating
+     * Set the Rating.
      *
      * @param rating the rating to set to
      */

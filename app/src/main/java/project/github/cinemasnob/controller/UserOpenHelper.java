@@ -108,6 +108,22 @@ public class UserOpenHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * Updates the major of a User with the given username.
+     * @param dbHelp the database
+     * @param name the username of the User to update
+     * @param major the major to update with
+     */
+    public void updateMajor(UserOpenHelper dbHelp,
+                            String name, String major) {
+        SQLiteDatabase database = dbHelp.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_MAJOR, major);
+        String whereClause = KEY_USERNAME + "=?";
+        String[] whereArgs = new String[]{name};
+        database.update(USER_TABLE_NAME, values, whereClause, whereArgs);
+    }
+
+    /**
      * Get the User with the given username from the database.
      * @param dbHelp the database
      * @param name the username

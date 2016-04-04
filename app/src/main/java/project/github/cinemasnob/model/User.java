@@ -1,49 +1,49 @@
 package project.github.cinemasnob.model;
 
 /**
- * Represents a single user
+ * Represents a single user.
  */
 public class User {
 
     /**
-     * username
+     * Username of the User.
      */
     private String pUserName;
 
     /**
-     * password
+     * Password of the User.
      */
     private String pPassword;
 
     /**
-     * email
+     * Email of the User.
      */
     private String pEmail;
 
     /**
-     * major
+     * Major of the User.
      */
     private String pMajor;
 
     /**
-     * ban status
+     * Ban status of the User.
      */
     private boolean pIsBanned;
 
     /**
-     * current user
+     * Current User.
      */
     private static User pCurrentUser;
 
     /**
-     * No-args constructor for User
+     * No-args constructor for User.
      */
     public User() {
 
     }
 
     /**
-     * Constructor for user class
+     * Constructor for user class.
      * @param name the name
      * @param password the password
      * @param email the email
@@ -60,7 +60,7 @@ public class User {
     }
 
     /**
-     * Getter method for password
+     * Getter method for password.
      * @return User's password
      */
     public String getPassword() {
@@ -68,7 +68,7 @@ public class User {
     }
 
     /**
-     * Getter method for username
+     * Getter method for username.
      * @return User's username
      */
     public String getUserName() {
@@ -76,7 +76,7 @@ public class User {
     }
 
     /**
-     * Getter method for email
+     * Getter method for email.
      * @return User's email
      */
     public String getEmail() {
@@ -84,7 +84,7 @@ public class User {
     }
 
     /**
-     * Getter method for major
+     * Getter method for major.
      * @return User's major
      */
     public String getMajor() {
@@ -92,7 +92,7 @@ public class User {
     }
 
     /**
-     * Getter method for checking if User is banned
+     * Getter method for checking if User is banned.
      * @return if the User is banned
      */
     public boolean getBanStatus() {
@@ -100,7 +100,7 @@ public class User {
     }
 
     /**
-     * Gets the currentUser
+     * Gets the currentUser.
      * @return the currentUser
      */
     public static User getCurrentUser() {
@@ -108,10 +108,18 @@ public class User {
     }
 
     /**
-     * Sets the currentUser
+     * Sets the currentUser.
      * @param user theCurrentUser
      */
     public static void setCurrentUser(User user) {
         pCurrentUser = user;
+    }
+
+    /**
+     * Sets the User major.
+     * @param major the new major of the User
+     */
+    public void setMajor(String major) {
+        pMajor = major;
     }
 }

@@ -9,9 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import project.github.cinemasnob.R;
 import project.github.cinemasnob.controller.ProfileOpenHelper;
+import project.github.cinemasnob.model.User;
 
 /**
  * Activity to EditProfile
@@ -19,6 +21,7 @@ import project.github.cinemasnob.controller.ProfileOpenHelper;
 public class EditProfileActivity extends AppCompatActivity {
 
     private Context context;
+    private EditText majorBox;
     private EditText interestsBox;
     private Spinner sItems;
 
@@ -44,7 +47,7 @@ public class EditProfileActivity extends AppCompatActivity {
         Button saveChangesButton = (Button) findViewById(R.id.SaveChanges);
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                onSaveButtonClicked();
+                onSaveButtonClicked(view);
             }
         });
     }
@@ -53,8 +56,9 @@ public class EditProfileActivity extends AppCompatActivity {
      * Method called when 'Login' button is clicked,
      * handles login request and does appropriate
      * response
+     * @param v Current view
      */
-    private void onSaveButtonClicked() {
+    private void onSaveButtonClicked(View v) {
 
 
         String majorData = sItems.getSelectedItem().toString();

@@ -28,9 +28,21 @@ import project.github.cinemasnob.model.User;
  */
 public class MovieSuggestionActivity extends AppCompatActivity {
 
+    /**
+     * opens ratings database
+     */
     private RatingOpenHelper ratingDB;
+    /**
+     * opens user database
+     */
     private UserOpenHelper userDB;
+    /**
+     * list of movies in order put into a ListView
+     */
     private ListView sortedMovieList;
+    /**
+     * map of movie titles and id numbers
+     */
     private final HashMap<String, Integer> movieIds = new HashMap<>();
 
     @Override
