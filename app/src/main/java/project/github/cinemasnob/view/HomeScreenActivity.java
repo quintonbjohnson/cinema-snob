@@ -47,7 +47,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        //Creating a listerner for clicking the listview
+        //Creating a listener for clicking the listview
         movieList = (ListView)findViewById(R.id.movieList);
         movieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
@@ -137,8 +137,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 //                                        movie.getString("year"),
 //                                        movie.getString("mpaa_rating"), movie.getString("id"));
                                 listOfMovies.addTitle(movie.getString("title"));
-                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
-//                                movieIds.put(newMovie.getTitle(), (Integer) Integer.parseInt(newMovie.getID()));
+                                movieIds.put(movie.getString("title"), Integer.parseInt(movie.getString("id")));
                                 //will print out all the titles of the movies
                                 // that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));
@@ -196,7 +195,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 movie = movies.getJSONObject(i);
                                 // Create a new movie
                                 listOfMovies.addTitle(movie.getString("title"));
-                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
+                                movieIds.put(movie.getString("title"), Integer.parseInt(movie.getString("id")));
                             }
                             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(HomeScreenActivity.this,
                                     android.R.layout.simple_list_item_1,
@@ -258,7 +257,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 movie = movies.getJSONObject(i);
                                 // Create a new movie
                                 listOfMovies.addTitle(movie.getString("title"));
-                                movieIds.put(movie.getString("title"), (Integer) Integer.parseInt(movie.getString("id")));
+                                movieIds.put(movie.getString("title"), Integer.parseInt(movie.getString("id")));
                                 // Will print out all the titles of the movies
                                 // that were returned from the REST call search
                                 Log.d("Movie Object: ", listOfMovies.getTitleList().get(i));

@@ -30,7 +30,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         Button submitLogin = (Button) findViewById(R.id.submit_login);
         submitLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                onLoginButtonClicked(view);
+                onLoginButtonClicked();
             }
         });
 
@@ -38,7 +38,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         Button registerNewUser = (Button) findViewById(R.id.register);
         registerNewUser.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                onNewUserButtonClicked(view);
+                onNewUserButtonClicked();
             }
         });
     }
@@ -46,9 +46,8 @@ public class LoginScreenActivity extends AppCompatActivity {
     /**
      * Method called when 'Login' button is clicked, handles login request and does appropriate
      * response
-     * @param v Current view
      */
-    public void onLoginButtonClicked(View v) {
+    public void onLoginButtonClicked() {
         EditText usernameBox = (EditText)findViewById(R.id.login_username_entry);
         EditText passwordBox = (EditText)findViewById(R.id.login_password_entry);
 
@@ -95,9 +94,8 @@ public class LoginScreenActivity extends AppCompatActivity {
 
     /**
      * Called when 'Register' button is pressed, send user to RegistrationActivity
-     * @param v Current view
      */
-    public void onNewUserButtonClicked(View v) {
+    public void onNewUserButtonClicked() {
         Intent goToCreateProfile = new Intent(this, RegistrationActivity.class);
         startActivity(goToCreateProfile);
         finish();
