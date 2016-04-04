@@ -43,8 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-        String[] spinnerArray = {"Computer Science",
-                "Industrial Design", "Engineering", "Business"};
+        String[] spinnerArray = {"Computer Science", "Industrial Design", "Engineering", "Business"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
