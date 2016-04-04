@@ -91,11 +91,17 @@ public class UserOpenHelper extends SQLiteOpenHelper {
      * @param major the major of the User
      * @param ban the ban status of the User
      */
-    public void putUser(UserOpenHelper dbHelp, String name,
+    public boolean putUser(UserOpenHelper dbHelp, String name,
                         String pass, String email,
                         String major, boolean ban) {
         SQLiteDatabase database = dbHelp.getWritableDatabase();
         ContentValues values = new ContentValues();
+        if (name == null || pass == null || email == null) {
+            return false;
+        }
+        if (name.equals("") || pass.equals("") || email.equals("")) {
+            return false;
+        }
         values.put(KEY_USERNAME, name);
         values.put(KEY_PASSWORD, pass);
         values.put(KEY_EMAIL, email);
@@ -105,6 +111,7 @@ public class UserOpenHelper extends SQLiteOpenHelper {
                 USER_TABLE_NAME,
                 null,
                 values);
+        return true;
     }
 
     /**

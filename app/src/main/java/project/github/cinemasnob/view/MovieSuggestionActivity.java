@@ -62,21 +62,22 @@ public class MovieSuggestionActivity extends AppCompatActivity {
 
         overallButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Comparator<MovieHelper> myComparator = new Comparator<MovieHelper>() {
+                Comparator<MovieHelper> myComparator =
+                        new Comparator<MovieHelper>() {
                     @Override
                     public int compare(MovieHelper lhs, MovieHelper rhs) {
                         return (int) ((int) lhs.getRating() - rhs.getRating());
                     }
                 };
-                List<MovieHelper> movies = ratingDB.averageOverall(ratingDB); // Average out movies in the database
-                Collections.sort(movies, myComparator); // Sort movies from highest to lowest rating
+                List<MovieHelper> movies = ratingDB.averageOverall(ratingDB);
+                Collections.sort(movies, myComparator);
                 Collections.reverse(movies);
                 ArrayList<String> titles = new ArrayList<>();
                 for (MovieHelper help : movies) {
                     titles.add(help.getTitle());
                     movieIds.put(help.getTitle(), help.getId());
                 }
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>( // Populate the ListView
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                         MovieSuggestionActivity.this,
                         android.R.layout.simple_list_item_1, titles);
                 sortedMovieList.setAdapter(arrayAdapter);
@@ -88,7 +89,8 @@ public class MovieSuggestionActivity extends AppCompatActivity {
 
         majorButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Comparator<MovieHelper> myComparator = new Comparator<MovieHelper>() {
+                Comparator<MovieHelper> myComparator
+                    = new Comparator<MovieHelper>() {
                     @Override
                     public int compare(MovieHelper lhs, MovieHelper rhs) {
                         return (int) ((int) lhs.getRating() - rhs.getRating());
@@ -118,7 +120,8 @@ public class MovieSuggestionActivity extends AppCompatActivity {
 
         // When User taps on a movie item, send him or her
         // to the MovieItemActivity
-        sortedMovieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        sortedMovieList.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 

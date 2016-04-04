@@ -40,7 +40,8 @@ public class UserItemActivity extends AppCompatActivity {
         usernameText.setText(thisItemUser.getUserName());
         emailText.setText(thisItemUser.getEmail());
         majorText.setText(thisItemUser.getMajor());
-        String stringBan = "Ban Status: " + Boolean.toString(thisItemUser.getBanStatus());
+        String stringBan = "Ban Status: "
+                + Boolean.toString(thisItemUser.getBanStatus());
         banStatus.setText(stringBan);
 
         Button banButton = (Button)findViewById(R.id.ban_button);
@@ -49,7 +50,8 @@ public class UserItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userDB.setBanStatusOfUser(userDB, username, true);
-                String stringBan = "Ban Status: " + Boolean.toString(thisItemUser.getBanStatus());
+                String stringBan = "Ban Status: "
+                        + Boolean.toString(thisItemUser.getBanStatus());
                 banStatus.setText(stringBan);
                 CharSequence banSuccessful = "User has been banned.";
                 Context context = getApplicationContext();
@@ -66,12 +68,14 @@ public class UserItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userDB.setBanStatusOfUser(userDB, username, false);
-                String stringBan = "Ban Status: " + Boolean.toString(thisItemUser.getBanStatus());
+                String stringBan = "Ban Status: "
+                        + Boolean.toString(thisItemUser.getBanStatus());
                 banStatus.setText(stringBan);
                 CharSequence unlockSuccessful = "User has been unlocked.";
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;
-                Toast fail = Toast.makeText(context, unlockSuccessful, duration);
+                Toast fail = Toast.makeText(context,
+                        unlockSuccessful, duration);
                 fail.show();
             }
         });

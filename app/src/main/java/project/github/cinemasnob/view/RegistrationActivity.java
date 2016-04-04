@@ -49,7 +49,9 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-        String[] spinnerArray = {"Computer Science", "Industrial Design", "Engineering", "Business"};
+        String[] spinnerArray =
+                {"Computer Science", "Industrial Design",
+                        "Engineering", "Business"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
@@ -84,10 +86,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 usernameBox.getText().toString());
 
         CharSequence failedLogin;
-        String blank = "";
-        if (usernameBox.getText().toString().trim().equals(blank) ||
-                passwordBox.getText().toString().trim().equals(blank) ||
-                emailBox.getText().toString().trim().equals(blank) ||
+        if (usernameBox.getText().toString().trim().equals("") ||
+                passwordBox.getText().toString().trim().equals("") ||
+                emailBox.getText().toString().trim().equals("") ||
                 !(emailBox.getText().toString().contains("@"))) {
             // Invalid entries
             failedLogin = "Please enter a valid username, " +
