@@ -13,11 +13,9 @@ import android.widget.TextView;
 
 import project.github.cinemasnob.R;
 import project.github.cinemasnob.controller.ProfileOpenHelper;
-import project.github.cinemasnob.controller.UserOpenHelper;
-import project.github.cinemasnob.model.User;
 
 /**
- * Activity to EditProfile.
+ * Activity to EditProfile
  */
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -56,7 +54,7 @@ public class EditProfileActivity extends AppCompatActivity {
     /**
      * Method called when 'Login' button is clicked,
      * handles login request and does appropriate
-     * response.
+     * response
      * @param v Current view
      */
     private void onSaveButtonClicked(View v) {
@@ -69,12 +67,6 @@ public class EditProfileActivity extends AppCompatActivity {
         ProfileOpenHelper profileDB = new ProfileOpenHelper(context);
         profileDB.updateMajor(profileDB, majorData);
         profileDB.updateInterests(profileDB, interestsData);
-
-        UserOpenHelper userDB = new UserOpenHelper(context);
-        userDB.updateMajor(userDB,
-                User.getCurrentUser().getUserName(), majorData);
-
-        User.getCurrentUser().setMajor(majorData);
 
         // Go back to ProfileActivity
         Intent goToProfile = new Intent(this, UserProfileActivity.class);

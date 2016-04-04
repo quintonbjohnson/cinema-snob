@@ -21,7 +21,13 @@ import project.github.cinemasnob.model.User;
  */
 public class RegistrationActivity extends AppCompatActivity {
 
+    /**
+     * the context of the current activity
+     */
     private Context context;
+    /**
+     * the spinner to choose your major
+     */
     private Spinner sItems;
 
     @Override
@@ -86,14 +92,14 @@ public class RegistrationActivity extends AppCompatActivity {
             // Invalid entries
             failedLogin = "Please enter a valid username, " +
                     "password, email, and major.";
-            Context context = getApplicationContext();
+            context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast fail = Toast.makeText(context, failedLogin, duration);
             fail.show();
         } else if (!(checkUser == null)) {
             // Username exists already
             failedLogin = "That username already exists.";
-            Context context = getApplicationContext();
+            context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast fail = Toast.makeText(context, failedLogin, duration);
             fail.show();
