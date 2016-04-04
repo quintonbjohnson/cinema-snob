@@ -85,6 +85,7 @@ public class RatingOpenHelper extends SQLiteOpenHelper {
      * @param title the major of the User
      * @param rating the interests of the User
      * @param movieID the id of the Movie
+     * @return whether or not the rating was added
      */
     public boolean putRating(RatingOpenHelper dbHelp, String name,
                           String title, float rating, int movieID) {

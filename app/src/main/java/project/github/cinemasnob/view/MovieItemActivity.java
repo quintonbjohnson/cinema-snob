@@ -23,16 +23,46 @@ import project.github.cinemasnob.model.User;
 
 public class MovieItemActivity extends AppCompatActivity {
 
+    /**
+     * The title of the Movie.
+     */
     private String title = "";
+
+    /**
+     * The actors of the Movie.
+     */
     private String actors = "";
+
+    /**
+     * The genre of the Movie.
+     */
     private String genre = "";
+
+    /**
+     * The Context of the current Activity.
+     */
     private Context context;
-    private RatingOpenHelper ratingdb;
+
+    /**
+     * The rating database.
+     */
+    private RatingOpenHelper ratingDB;
+
+    /**
+     * The current User.
+     */
     private User currentUser;
+
+    /**
+     * The movieID of the Movie.
+     */
     private int movieID;
 
-
+    /**
+     * The API_KEY for the Rotten Tomatoes API
+     */
     private static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,24 +105,26 @@ public class MovieItemActivity extends AppCompatActivity {
                         actors = actors
                                 + actorsArray.getJSONObject(i)
                                 .getString("name");
-                        if (i != actorsArray.length() - 1)
+                        if (i != actorsArray.length() - 1) {
                             actors = actors + ", ";
+                        }
                     }
                     actorText.setText(actors);
 
                     JSONArray genres = response.getJSONArray("genres");
                     for (int i = 0; i < genres.length(); i++) {
                         genre = genre + genres.getString(i);
-                        if (i != genres.length() - 1)
+                        if (i != genres.length() - 1) {
                             genre = genre + ", ";
+                        }
                     }
                     genreText.setText(genre);
 
-                    ratingdb = new RatingOpenHelper(context);
+                    ratingDB = new RatingOpenHelper(context);
                     RatingBar movieRating =
                             (RatingBar) findViewById(R.id.ratingBar2);
                     Rating currentRating =
-                            ratingdb.getRating(ratingdb,
+                            ratingDB.getRating(ratingDB,
                                     currentUser.getUserName(),
                             title, Integer.toString(movieID));
                     if (currentRating != null) {
@@ -120,26 +152,32 @@ public class MovieItemActivity extends AppCompatActivity {
 
         RatingBar movieRating = (RatingBar) findViewById(R.id.ratingBar2);
         movieRating.
-                setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                setOnRatingBarChangeListener(
+                        new RatingBar.OnRatingBarChangeListener() {
 
             // Called when the user swipes the RatingBar
             @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+            public void onRatingChanged(RatingBar ratingBar,
+                                        float rating, boolean fromUser) {
                 onRatingBarChanged(rating);
             }
         });
     }
 
+    /**
+     * Runs when the rating bar is changed.
+     * @param rating the rating of the bar
+     */
     private void onRatingBarChanged(float rating) {
-        Rating currentRating = ratingdb.getRating(ratingdb,
+        Rating currentRating = ratingDB.getRating(ratingDB,
                 currentUser.getUserName(), title,
                 Integer.toString(movieID));
         if ((currentRating) == null) {
-            ratingdb.putRating(ratingdb,
+            ratingDB.putRating(ratingDB,
                     currentUser.getUserName(),
                     title, rating, movieID);
         } else {
-            ratingdb.updateRating(ratingdb, Float.toString(rating), title,
+            ratingDB.updateRating(ratingDB, Float.toString(rating), title,
                     currentUser.getUserName(), Integer.toString(movieID));
         }
     }

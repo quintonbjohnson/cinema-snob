@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import project.github.cinemasnob.R;
 import project.github.cinemasnob.controller.ProfileOpenHelper;
@@ -19,9 +18,19 @@ import project.github.cinemasnob.controller.ProfileOpenHelper;
  */
 public class EditProfileActivity extends AppCompatActivity {
 
+    /**
+     * The context of the current activity.
+     */
     private Context context;
-    private EditText majorBox;
+
+    /**
+     * The interests box in the UI.
+     */
     private EditText interestsBox;
+
+    /**
+     * The spinner for the UI.
+     */
     private Spinner sItems;
 
     @Override
@@ -31,8 +40,8 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        String[] spinnerArray = {"Computer Science",
-                "Industrial Design", "Engineering", "Business"};
+        String[] spinnerArray = {
+            "Computer Science", "Industrial Design", "Engineering", "Business"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
@@ -46,7 +55,7 @@ public class EditProfileActivity extends AppCompatActivity {
         Button saveChangesButton = (Button) findViewById(R.id.SaveChanges);
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                onSaveButtonClicked(view);
+                onSaveButtonClicked();
             }
         });
     }
@@ -55,9 +64,8 @@ public class EditProfileActivity extends AppCompatActivity {
      * Method called when 'Login' button is clicked,
      * handles login request and does appropriate
      * response
-     * @param v Current view
      */
-    private void onSaveButtonClicked(View v) {
+    private void onSaveButtonClicked() {
 
 
         String majorData = sItems.getSelectedItem().toString();

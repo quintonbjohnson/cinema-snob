@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import project.github.cinemasnob.R;
 import project.github.cinemasnob.controller.RatingOpenHelper;
@@ -43,7 +44,7 @@ public class MovieSuggestionActivity extends AppCompatActivity {
     /**
      * map of movie titles and id numbers
      */
-    private final HashMap<String, Integer> movieIds = new HashMap<>();
+    private final Map<String, Integer> movieIds = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

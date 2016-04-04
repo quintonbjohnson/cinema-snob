@@ -36,10 +36,29 @@ import project.github.cinemasnob.model.MovieList;
  */
 public class HomeScreenActivity extends AppCompatActivity {
 
+    /**
+     * The API_KEY for the Rotten Tomatoes API.
+     */
     private static final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
+
+    /**
+     * The maximum movies to show.
+     */
     private static final int MOVIE_PAGE_LIMIT = 10;
+
+    /**
+     * The search list of Movies.
+     */
     private ListView movieList;
+
+    /**
+     * A HashMap to store the movie IDs.
+     */
     private HashMap<String, Integer> movieIds = new HashMap<>();
+
+    /**
+     * The search box used to search for Movies.
+     */
     private EditText searchBox;
 
     @Override
@@ -48,7 +67,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         //Creating a listener for clicking the listview
-        movieList = (ListView)findViewById(R.id.movieList);
+        movieList = (ListView) findViewById(R.id.movieList);
         movieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -67,7 +86,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
 
         // Logout button sends back to login screen
-        Button logout = (Button)findViewById(R.id.admin_logout);
+        Button logout = (Button) findViewById(R.id.admin_logout);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +99,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
 
         // Profile button sends to profile
-        Button profile = (Button)findViewById(R.id.profile_button);
+        Button profile = (Button) findViewById(R.id.profile_button);
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +111,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
 
         // Suggestion button sends to profile
-        Button suggestion = (Button)findViewById(R.id.suggestion_button);
+        Button suggestion = (Button) findViewById(R.id.suggestion_button);
 
         suggestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,19 +123,19 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
 
         // RecentMovies button sends to recent movies
-        Button recentMovies = (Button)findViewById(R.id.recentMovies_button);
+        Button recentMovies = (Button) findViewById(R.id.recentMovies_button);
 
         recentMovies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                movieList = (ListView)findViewById(R.id.movieList);
+                movieList = (ListView) findViewById(R.id.movieList);
                 final MovieList listOfMovies = new MovieList();
                 String url = "";
                 try {
                     url = "http://api.rottentomatoes.com/api/public/v1.0/" +
                             "lists/movies/in_theaters.json?page_limit=15&page=1&country=us&apikey="
                             + API_KEY;
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
@@ -150,11 +169,11 @@ public class HomeScreenActivity extends AppCompatActivity {
                             movieList.setAdapter(arrayAdapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(),
+                            Toast.makeText(getApplicationContext(), "Error: "
+                                            + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
                         }
                     }
-
                 },
                         new Response.ErrorListener() {
                             @Override
@@ -167,7 +186,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
 
         // RecentDVDs button sends to displays DVDs
-        Button recentDVD = (Button)findViewById(R.id.recentDVD_button);
+        Button recentDVD = (Button) findViewById(R.id.recentDVD_button);
 
         recentDVD.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,7 +197,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                     url = "http://api.rottentomatoes.com/api/public/v1.0/" +
                             "lists/dvds/new_releases.json?page_limit=15&page=1&country=us&apikey="
                             + API_KEY;
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
@@ -225,7 +244,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         searchBox = (EditText) findViewById(R.id.searchText);
 
         // Display the movies related to the search text in the list view
-        Button searchForMovies = (Button)findViewById(R.id.searchMovies);
+        Button searchForMovies = (Button) findViewById(R.id.searchMovies);
         searchForMovies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -234,12 +253,12 @@ public class HomeScreenActivity extends AppCompatActivity {
                 String url = "";
                 try {
                     url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q="
-                            + URLEncoder.encode(movieSearchString,"UTF-8")
+                            + URLEncoder.encode(movieSearchString, "UTF-8")
                             + "&page_limit="
                             + MOVIE_PAGE_LIMIT
                             + "&page=1&apikey="
                             + API_KEY;
-                } catch (UnsupportedEncodingException e){
+                } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
                 JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
@@ -274,7 +293,6 @@ public class HomeScreenActivity extends AppCompatActivity {
                                     Toast.LENGTH_LONG).show();
                         }
                     }
-
                 },
                         new Response.ErrorListener() {
                             @Override
