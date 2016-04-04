@@ -4,25 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Maxwell on 2/21/2016.
- * Represents a list of movies returned from the REST call
+ * Represents a list of movies returned from the REST call.
  */
 public class MovieList {
 
     /**
-     * list of movies
+     * List of movies.
      */
     private final List<String> movieList;
 
     /**
-     * Constructor for MovieList
+     * Constructor for MovieList.
      */
     public MovieList() {
         movieList = new ArrayList<>();
     }
 
     /**
-     * Add movie to movie list
+     * Add movie to movie list.
      * @param t the movie title
      */
     public void addTitle(String t) {
@@ -30,7 +29,7 @@ public class MovieList {
     }
 
     /**
-     * get titles of all the movies in the list
+     * Get titles of all the movies in the list.
      * @return arrayList of the titles of all the movies
      */
     public List<String> getTitleList() {

@@ -1,27 +1,27 @@
 package project.github.cinemasnob.model;
 
 /**
- * Represents a single Profile
+ * Represents a single Profile.
  */
 public class Profile {
 
     /**
-     * interests of user
+     * Interests of the User.
      */
     private final String interests;
 
     /**
-     * major of user
+     * Major of the User.
      */
     private final String major;
 
     /**
-     * username of user
+     * Username of the User.
      */
     private final String userName;
 
     /**
-     * Instantiates the Profile object
+     * Instantiates the Profile object.
      * @param n userName
      * @param m major
      * @param i interests
@@ -33,7 +33,7 @@ public class Profile {
     }
 
     /**
-     * Getter method for major
+     * Getter method for major.
      * @return User's major
      */
     public String getMajor() {
@@ -41,7 +41,7 @@ public class Profile {
     }
 
     /**
-     * Getter method for interests
+     * Getter method for interests.
      * @return User's interests
      */
     public String getInterests() {
@@ -49,7 +49,7 @@ public class Profile {
     }
 
     /**
-     * getter method for username
+     * Getter method for the username.
      * @return User's username
      */
     public String getUsername() {
