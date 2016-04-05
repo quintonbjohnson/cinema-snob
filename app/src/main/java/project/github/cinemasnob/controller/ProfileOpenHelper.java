@@ -73,10 +73,13 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
      * @param major the major of the User
      * @param interests the interests of the User
      */
-    public void putProfile(ProfileOpenHelper dbHelp, String name,
+    public boolean putProfile(ProfileOpenHelper dbHelp, String name,
                            String major, String interests) {
         SQLiteDatabase database = dbHelp.getWritableDatabase();
         ContentValues values = new ContentValues();
+        if (name == null || name.equals("")) {
+            return false;
+        }
         values.put(KEY_USERNAME, name);
         values.put(KEY_MAJOR, major);
         values.put(KEY_INTERESTS, interests);
@@ -84,6 +87,7 @@ public class ProfileOpenHelper extends SQLiteOpenHelper {
                 TABLE_NAME,
                 null,
                 values);
+        return true;
     }
 
     /**
