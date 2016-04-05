@@ -65,4 +65,38 @@ public class UserOpenHelperTest {
             System.out.println("Insert uses a null input value.");
         }
     }
+
+    @Test
+    public void testGetUser() {
+        userDB = new UserOpenHelper(mockContext);
+        User testUser = new User();
+        //When database is empty
+        testUser = userDB.getUser(userDB, "username");
+        assertNull(testUser);
+
+        userDB.putUser(userDB, "username", "pass",
+                "email@email.com", "major", false);
+        testUser = userDB.getUser(userDB, "username");
+        //When there is one user in the database that exists
+        assertEquals(new User("username", "pass",
+                "email@email.com", "major", false), testUser);
+
+        /*When there are users in the database but the user
+        /that is searched for does not exist.*/
+        try {
+            testUser = new User("noName", "pass", "email@gmail.com", "Computer Science", false);
+            fail("Expected an NullPointerException to be thrown");
+        } catch (NullPointerException e) {
+            assertEquals(e.getMessage(), "Expected an NullPointerException to be thrown");
+        }
+        /*When one of the User values is null*/
+        try {
+            testUser = new User(null, "pass", "email@gmail.com", "Computer Science", false);
+            fail("Expected an NullPointerException to be thrown");
+        } catch (NullPointerException e) {
+            assertEquals(e.getMessage(), "Expected an NullPointerException to be thrown");
+        }
+
+
+    }
 }
