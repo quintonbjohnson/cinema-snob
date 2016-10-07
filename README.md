@@ -1,6 +1,7 @@
 Cinema Snob
 ===================
 ![CinemaSnob](http://i.imgur.com/5yGcZ0k.png)
+
 By Jacob Goodpasture, Quinton Johnson, Max Kaplan, Erik Maday, and Brandon Seal
 
 About
